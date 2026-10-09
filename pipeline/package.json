@@ -4,7 +4,11 @@
   "description": "Behind-the-scenes jobs: database setup, price collection, scoring, news.",
   "scripts": {
     "migrate": "node --env-file=../.env migrate.js",
-    "prices": "node --env-file=../.env collect-prices.js"
+    "prices": "node --env-file=../.env collect-prices.js",
+    "companies": "node --env-file=../.env companies.js",
+    "test": "node --test",
+    "filings": "node --env-file=../.env collect-filings.js",
+    "news": "node --env-file=../.env collect-news.js"
   },
   "dependencies": {
     "pg": "8.13.1"

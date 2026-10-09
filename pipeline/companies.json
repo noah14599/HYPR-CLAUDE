@@ -1,0 +1,5156 @@
+[
+ {
+  "ticker": "AAPL",
+  "name": "Apple Inc.",
+  "aliases": [
+   "Apple"
+  ],
+  "cik": "0000320193",
+  "ticker_strict": false,
+  "name_strict": true
+ },
+ {
+  "ticker": "NVDA",
+  "name": "Nvidia Corp",
+  "aliases": [
+   "Nvidia"
+  ],
+  "cik": "0001045810",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "MSFT",
+  "name": "Microsoft Corp",
+  "aliases": [
+   "Microsoft"
+  ],
+  "cik": "0000789019",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "GOOGL",
+  "name": "Alphabet Inc. Class A Common Stock",
+  "aliases": [
+   "Google",
+   "Alphabet"
+  ],
+  "cik": "0001652044",
+  "ticker_strict": false,
+  "name_strict": true
+ },
+ {
+  "ticker": "AMZN",
+  "name": "Amazon.Com Inc",
+  "aliases": [
+   "Amazon",
+   "AWS",
+   "Amazon.Com"
+  ],
+  "cik": "0001018724",
+  "ticker_strict": false,
+  "name_strict": true
+ },
+ {
+  "ticker": "META",
+  "name": "Meta Platforms, Inc. Class A Common Stock",
+  "aliases": [
+   "Facebook",
+   "Meta Platforms",
+   "Meta"
+  ],
+  "cik": "0001326801",
+  "ticker_strict": true,
+  "name_strict": true
+ },
+ {
+  "ticker": "TSLA",
+  "name": "Tesla, Inc. Common Stock",
+  "aliases": [
+   "Tesla"
+  ],
+  "cik": "0001318605",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "AVGO",
+  "name": "Broadcom Inc. Common Stock",
+  "aliases": [
+   "Broadcom"
+  ],
+  "cik": "0001730168",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "JPM",
+  "name": "JPMorgan Chase & Co.",
+  "aliases": [
+   "JPMorgan",
+   "JP Morgan",
+   "J.P. Morgan",
+   "JPMorgan Chase"
+  ],
+  "cik": "0000019617",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "NFLX",
+  "name": "NetFlix Inc",
+  "aliases": [
+   "Netflix"
+  ],
+  "cik": "0001065280",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "AMD",
+  "name": "Advanced Micro Devices",
+  "aliases": [
+   "AMD",
+   "Advanced Micro Devices",
+   "Advanced Micro"
+  ],
+  "cik": "0000002488",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "INTC",
+  "name": "Intel Corp",
+  "aliases": [
+   "Intel"
+  ],
+  "cik": "0000050863",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "PYPL",
+  "name": "PayPal Holdings, Inc. Common Stock",
+  "aliases": [
+   "PayPal"
+  ],
+  "cik": "0001633917",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "DIS",
+  "name": "The Walt Disney Company",
+  "aliases": [
+   "Disney",
+   "Walt Disney"
+  ],
+  "cik": "0001744489",
+  "ticker_strict": false,
+  "name_strict": true
+ },
+ {
+  "ticker": "NKE",
+  "name": "Nike, Inc.",
+  "aliases": [
+   "Nike"
+  ],
+  "cik": "0000320187",
+  "ticker_strict": false,
+  "name_strict": true
+ },
+ {
+  "ticker": "SBUX",
+  "name": "Starbucks Corp",
+  "aliases": [
+   "Starbucks"
+  ],
+  "cik": "0000829224",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "F",
+  "name": "Ford Motor Company",
+  "aliases": [
+   "Ford",
+   "Ford Motor"
+  ],
+  "cik": "0000037996",
+  "ticker_strict": true,
+  "name_strict": true
+ },
+ {
+  "ticker": "PFE",
+  "name": "Pfizer Inc.",
+  "aliases": [
+   "Pfizer"
+  ],
+  "cik": "0000078003",
+  "ticker_strict": false,
+  "name_strict": true
+ },
+ {
+  "ticker": "T",
+  "name": "AT&T Inc.",
+  "aliases": [
+   "AT&T"
+  ],
+  "cik": "0000732717",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "LYFT",
+  "name": "Lyft, Inc. Class A Common Stock",
+  "aliases": [
+   "Lyft"
+  ],
+  "cik": "0001759509",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "SNAP",
+  "name": "Snap Inc.",
+  "aliases": [
+   "Snap"
+  ],
+  "cik": "0001564408",
+  "ticker_strict": true,
+  "name_strict": true
+ },
+ {
+  "ticker": "PTON",
+  "name": "Peloton Interactive, Inc. Class A Common Stock",
+  "aliases": [
+   "Peloton Interactive"
+  ],
+  "cik": "0001639825",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "MMM",
+  "name": "3M Company",
+  "aliases": [
+   "3M"
+  ],
+  "cik": "0000066740",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "AOS",
+  "name": "A.O. Smith Corporation",
+  "aliases": [
+   "A.O. Smith",
+   "A. O. Smith"
+  ],
+  "cik": "0000091142",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "ABT",
+  "name": "Abbott Laboratories",
+  "aliases": [
+   "Abbott Laboratories"
+  ],
+  "cik": "0000001800",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "ABBV",
+  "name": "ABBVIE INC.",
+  "aliases": [
+   "AbbVie"
+  ],
+  "cik": "0001551152",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "ACN",
+  "name": "Accenture PLC",
+  "aliases": [
+   "Accenture"
+  ],
+  "cik": "0001467373",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "ADBE",
+  "name": "Adobe Inc.",
+  "aliases": [
+   "Adobe"
+  ],
+  "cik": "0000796343",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "AES",
+  "name": "AES Corporation",
+  "aliases": [
+   "AES"
+  ],
+  "cik": "0000874761",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "AFL",
+  "name": "Aflac Inc.",
+  "aliases": [
+   "Aflac"
+  ],
+  "cik": "0000004977",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "A",
+  "name": "Agilent Technologies Inc.",
+  "aliases": [
+   "Agilent Technologies",
+   "Agilent Tech."
+  ],
+  "cik": "0001090872",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "PLTR",
+  "name": "Palantir Technologies Inc. Class A Common Stock",
+  "aliases": [
+   "Palantir Technologies",
+   "Palantir Tech.",
+   "Palantir"
+  ],
+  "cik": "0001321655",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "RBLX",
+  "name": "Roblox Corporation",
+  "aliases": [
+   "Roblox"
+  ],
+  "cik": "0001315098",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "COIN",
+  "name": "Coinbase Global, Inc. Class A Common Stock",
+  "aliases": [
+   "Coinbase Global"
+  ],
+  "cik": "0001679788",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "SHOP",
+  "name": "Shopify Inc. Class A subordinate voting shares",
+  "aliases": [
+   "Shopify Inc. Class A subordinate voting shares",
+   "Shopify"
+  ],
+  "cik": "0001594805",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "UBER",
+  "name": "Uber Technologies, Inc.",
+  "aliases": [
+   "Uber",
+   "Uber Technologies"
+  ],
+  "cik": "0001543151",
+  "ticker_strict": true,
+  "name_strict": true
+ },
+ {
+  "ticker": "CRWD",
+  "name": "CrowdStrike Holdings, Inc. Class A Common Stock",
+  "aliases": [
+   "CrowdStrike"
+  ],
+  "cik": "0001535527",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "MU",
+  "name": "Micron Technology, Inc.",
+  "aliases": [
+   "Micron Technology",
+   "Micron"
+  ],
+  "cik": "0000723125",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "ANET",
+  "name": "Arista Networks",
+  "aliases": [
+   "Arista Networks"
+  ],
+  "cik": "0001596532",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "DASH",
+  "name": "DoorDash, Inc. Class A Common Stock",
+  "aliases": [
+   "DoorDash"
+  ],
+  "cik": "0001792789",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "SPOT",
+  "name": "Spotify Technology S.A.",
+  "aliases": [
+   "Spotify Technology",
+   "Spotify"
+  ],
+  "cik": "0001639920",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "APP",
+  "name": "Applovin Corporation Class A Common Stock",
+  "aliases": [
+   "Applovin"
+  ],
+  "cik": "0001751008",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "APD",
+  "name": "Air Products & Chemicals, Inc.",
+  "aliases": [
+   "Air Products & Chemicals"
+  ],
+  "cik": "0000002969",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "ABNB",
+  "name": "Airbnb, Inc. Class A Common Stock",
+  "aliases": [
+   "Airbnb"
+  ],
+  "cik": "0001559720",
+  "ticker_strict": false,
+  "name_strict": true
+ },
+ {
+  "ticker": "AKAM",
+  "name": "Akamai Technologies Inc",
+  "aliases": [
+   "Akamai Technologies",
+   "Akamai"
+  ],
+  "cik": "0001086222",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "ALB",
+  "name": "Albemarle Corporation",
+  "aliases": [
+   "Albemarle"
+  ],
+  "cik": "0000915913",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "ARE",
+  "name": "Alexandria Real Estate Equities, Inc.",
+  "aliases": [
+   "Alexandria Real Estate Equities",
+   "Alexandria Real Estate"
+  ],
+  "cik": "0001035443",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "ALGN",
+  "name": "Align Technology Inc",
+  "aliases": [
+   "Align Technology"
+  ],
+  "cik": "0001097149",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "ALLE",
+  "name": "Allegion Public Limited Company",
+  "aliases": [
+   "Allegion Public",
+   "Allegion"
+  ],
+  "cik": "0001579241",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "LNT",
+  "name": "Alliant Energy Corporation Common Stock",
+  "aliases": [
+   "Alliant Energy"
+  ],
+  "cik": "0000352541",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "MO",
+  "name": "Altria Group, Inc.",
+  "aliases": [
+   "Altria"
+  ],
+  "cik": "0000764180",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "AMCR",
+  "name": "Amcor plc Ordinary Shares",
+  "aliases": [
+   "Amcor"
+  ],
+  "cik": "0001748790",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "AEE",
+  "name": "Ameren Corporation",
+  "aliases": [
+   "Ameren"
+  ],
+  "cik": "0001002910",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "AEP",
+  "name": "American Electric Power Company, Inc.",
+  "aliases": [
+   "American Electric Power"
+  ],
+  "cik": "0000004904",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "AXP",
+  "name": "American Express Company",
+  "aliases": [
+   "American Express",
+   "Amex"
+  ],
+  "cik": "0000004962",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "AIG",
+  "name": "American International Group, Inc.",
+  "aliases": [
+   "American International"
+  ],
+  "cik": "0000005272",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "AMT",
+  "name": "American Tower Corporation",
+  "aliases": [
+   "American Tower"
+  ],
+  "cik": "0001053507",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "AWK",
+  "name": "American Water Works Company, Inc",
+  "aliases": [
+   "American Water Works"
+  ],
+  "cik": "0001410636",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "AMP",
+  "name": "Ameriprise Financial, Inc.",
+  "aliases": [
+   "Ameriprise Financial"
+  ],
+  "cik": "0000820027",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "AME",
+  "name": "Ametek, Inc.",
+  "aliases": [
+   "Ametek"
+  ],
+  "cik": "0001037868",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "AMGN",
+  "name": "Amgen Inc",
+  "aliases": [
+   "Amgen"
+  ],
+  "cik": "0000318154",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "APH",
+  "name": "Amphenol Corporation",
+  "aliases": [
+   "Amphenol"
+  ],
+  "cik": "0000820313",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "ADI",
+  "name": "Analog Devices, Inc.",
+  "aliases": [
+   "Analog Devices"
+  ],
+  "cik": "0000006281",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "AON",
+  "name": "Aon plc Class A",
+  "aliases": [
+   "Aon"
+  ],
+  "cik": "0000315293",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "APA",
+  "name": "APA Corporation Common Stock",
+  "aliases": [
+   "APA"
+  ],
+  "cik": "0001841666",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "APO",
+  "name": "Apollo Global Management, Inc.",
+  "aliases": [
+   "Apollo Global Management",
+   "Apollo Global Mgmt",
+   "Apollo"
+  ],
+  "cik": "0001858681",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "AMAT",
+  "name": "Applied Materials Inc",
+  "aliases": [
+   "Applied Materials"
+  ],
+  "cik": "0000006951",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "APTV",
+  "name": "Aptiv PLC",
+  "aliases": [
+   "Aptiv"
+  ],
+  "cik": "0001521332",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "ACGL",
+  "name": "Arch Capital Group Ltd",
+  "aliases": [
+   "Arch Capital"
+  ],
+  "cik": "0000947484",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "ADM",
+  "name": "Archer Daniels Midland Company",
+  "aliases": [
+   "Archer Daniels Midland",
+   "Archer-Daniels-Midland"
+  ],
+  "cik": "0000007084",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "ARES",
+  "name": "Ares Management Corporation Class A Common Stock",
+  "aliases": [
+   "Ares Management"
+  ],
+  "cik": "0001176948",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "AJG",
+  "name": "Arthur J. Gallagher & Co.",
+  "aliases": [
+   "Arthur J. Gallagher"
+  ],
+  "cik": "0000354190",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "AIZ",
+  "name": "Assurant, Inc.",
+  "aliases": [
+   "Assurant"
+  ],
+  "cik": "0001267238",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "ATO",
+  "name": "Atmos Energy Corporation",
+  "aliases": [
+   "Atmos Energy"
+  ],
+  "cik": "0000731802",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "ADSK",
+  "name": "Autodesk Inc",
+  "aliases": [
+   "Autodesk"
+  ],
+  "cik": "0000769397",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "ADP",
+  "name": "Automatic Data Processing",
+  "aliases": [
+   "Automatic Data Processing",
+   "ADP"
+  ],
+  "cik": "0000008670",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "AZO",
+  "name": "AutoZone, Inc.",
+  "aliases": [
+   "AutoZone"
+  ],
+  "cik": "0000866787",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "AVY",
+  "name": "Avery Dennison Corp.",
+  "aliases": [
+   "Avery Dennison"
+  ],
+  "cik": "0000008818",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "AXON",
+  "name": "Axon Enterprise, Inc. Common Stock",
+  "aliases": [
+   "Axon Enterprise"
+  ],
+  "cik": "0001069183",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "BKR",
+  "name": "Baker Hughes Company",
+  "aliases": [
+   "Baker Hughes"
+  ],
+  "cik": "0001701605",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "BALL",
+  "name": "Ball Corporation",
+  "aliases": [
+   "Ball"
+  ],
+  "cik": "0000009389",
+  "ticker_strict": true,
+  "name_strict": true
+ },
+ {
+  "ticker": "BAC",
+  "name": "Bank of America Corporation",
+  "aliases": [
+   "Bank of America",
+   "BofA"
+  ],
+  "cik": "0000070858",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "BNY",
+  "name": "Bank of New York Mellon Corporation",
+  "aliases": [
+   "Bank of New York Mellon",
+   "BNY Mellon"
+  ],
+  "cik": "0001390777",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "BAX",
+  "name": "Baxter International Inc.",
+  "aliases": [
+   "Baxter International"
+  ],
+  "cik": "0000010456",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "BDX",
+  "name": "Becton, Dickinson and Co.",
+  "aliases": [
+   "Becton, Dickinson and",
+   "Becton Dickinson"
+  ],
+  "cik": "0000010795",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "BRK-B",
+  "name": "BERKSHIRE HATHAWAY Class B",
+  "aliases": [
+   "Berkshire Hathaway",
+   "Berkshire"
+  ],
+  "cik": "0001067983",
+  "ticker_strict": false,
+  "name_strict": true
+ },
+ {
+  "ticker": "BBY",
+  "name": "Best Buy Company, Inc.",
+  "aliases": [
+   "Best Buy"
+  ],
+  "cik": "0000764478",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "TECH",
+  "name": "Bio-Techne Corp.",
+  "aliases": [
+   "Bio-Techne"
+  ],
+  "cik": "0000842023",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "BIIB",
+  "name": "Biogen Inc. Common Stock",
+  "aliases": [
+   "Biogen"
+  ],
+  "cik": "0000875045",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "BLK",
+  "name": "Blackrock, Inc.",
+  "aliases": [
+   "BlackRock"
+  ],
+  "cik": "0002012383",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "BX",
+  "name": "Blackstone Inc.",
+  "aliases": [
+   "Blackstone"
+  ],
+  "cik": "0001393818",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "XYZ",
+  "name": "Block, Inc.",
+  "aliases": [
+   "Block",
+   "Square",
+   "Cash App"
+  ],
+  "cik": "0001512673",
+  "ticker_strict": false,
+  "name_strict": true
+ },
+ {
+  "ticker": "BA",
+  "name": "Boeing Company",
+  "aliases": [
+   "Boeing"
+  ],
+  "cik": "0000012927",
+  "ticker_strict": true,
+  "name_strict": true
+ },
+ {
+  "ticker": "BKNG",
+  "name": "Booking Holdings Inc. Common Stock",
+  "aliases": [
+   "Booking"
+  ],
+  "cik": "0001075531",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "BSX",
+  "name": "Boston Scientific Corp.",
+  "aliases": [
+   "Boston Scientific"
+  ],
+  "cik": "0000885725",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "BMY",
+  "name": "Bristol-Myers Squibb Co.",
+  "aliases": [
+   "Bristol Myers",
+   "Bristol-Myers Squibb"
+  ],
+  "cik": "0000014272",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "BR",
+  "name": "Broadridge Financial Solutions Inc",
+  "aliases": [
+   "Broadridge Financial Solutions",
+   "Broadridge Financial"
+  ],
+  "cik": "0001383312",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "BRO",
+  "name": "Brown & Brown, Inc.",
+  "aliases": [
+   "Brown & Brown"
+  ],
+  "cik": "0000079282",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "BF-B",
+  "name": "Brown-Forman Corporation Class B",
+  "aliases": [
+   "Brown-Forman"
+  ],
+  "cik": "0000014693",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "BLDR",
+  "name": "Builders FirstSource, Inc.",
+  "aliases": [
+   "Builders FirstSource"
+  ],
+  "cik": "0001316835",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "BG",
+  "name": "Bunge Global SA",
+  "aliases": [
+   "Bunge Global SA",
+   "Bunge Global"
+  ],
+  "cik": "0001996862",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "BXP",
+  "name": "BXP, Inc.",
+  "aliases": [
+   "BXP"
+  ],
+  "cik": "0001037540",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "CHRW",
+  "name": "C.H. Robinson Worldwide, Inc.",
+  "aliases": [
+   "C.H. Robinson Worldwide",
+   "C.H. Robinson"
+  ],
+  "cik": "0001043277",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "CDNS",
+  "name": "Cadence Design Systems",
+  "aliases": [
+   "Cadence Design Systems"
+  ],
+  "cik": "0000813672",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "CPT",
+  "name": "Camden Property Trust",
+  "aliases": [
+   "Camden Property Trust"
+  ],
+  "cik": "0000906345",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "COF",
+  "name": "Capital One Financial",
+  "aliases": [
+   "Capital One Financial"
+  ],
+  "cik": "0000927628",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "CAH",
+  "name": "Cardinal Health, Inc.",
+  "aliases": [
+   "Cardinal Health"
+  ],
+  "cik": "0000721371",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "CCL",
+  "name": "Carnival Corporation Ltd.",
+  "aliases": [
+   "Carnival"
+  ],
+  "cik": "0000815097",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "CARR",
+  "name": "Carrier Global Corporation",
+  "aliases": [
+   "Carrier Global"
+  ],
+  "cik": "0001783180",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "CVNA",
+  "name": "Carvana Co.",
+  "aliases": [
+   "Carvana"
+  ],
+  "cik": "0001690820",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "CASY",
+  "name": "Casey's General Stores Inc",
+  "aliases": [
+   "Casey's General Stores"
+  ],
+  "cik": "0000726958",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "CAT",
+  "name": "Caterpillar Inc.",
+  "aliases": [
+   "Caterpillar"
+  ],
+  "cik": "0000018230",
+  "ticker_strict": true,
+  "name_strict": true
+ },
+ {
+  "ticker": "CBOE",
+  "name": "Cboe Global Markets, Inc.",
+  "aliases": [
+   "Cboe Global Markets"
+  ],
+  "cik": "0001374310",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "CBRE",
+  "name": "CBRE GROUP, INC.",
+  "aliases": [
+   "CBRE"
+  ],
+  "cik": "0001138118",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "CDW",
+  "name": "CDW Corporation",
+  "aliases": [
+   "CDW"
+  ],
+  "cik": "0001402057",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "COR",
+  "name": "Cencora, Inc.",
+  "aliases": [
+   "Cencora"
+  ],
+  "cik": "0001140859",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "CNC",
+  "name": "Centene Corporation",
+  "aliases": [
+   "Centene"
+  ],
+  "cik": "0001071739",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "CNP",
+  "name": "CenterPoint Energy, Inc.",
+  "aliases": [
+   "CenterPoint Energy"
+  ],
+  "cik": "0001130310",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "CF",
+  "name": "CF Industries Holding, Inc.",
+  "aliases": [
+   "CF Industries"
+  ],
+  "cik": "0001324404",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "CRL",
+  "name": "Charles River Laboratories International, Inc.",
+  "aliases": [
+   "Charles River Laboratories International",
+   "Charles River Labs",
+   "Charles River Laboratories"
+  ],
+  "cik": "0001100682",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "CHTR",
+  "name": "Charter Comm Inc Del CL A New",
+  "aliases": [
+   "Charter Comm Inc Del CL A",
+   "Charter Communications",
+   "Charter"
+  ],
+  "cik": "0001091667",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "CVX",
+  "name": "Chevron Corporation",
+  "aliases": [
+   "Chevron"
+  ],
+  "cik": "0000093410",
+  "ticker_strict": false,
+  "name_strict": true
+ },
+ {
+  "ticker": "CMG",
+  "name": "Chipotle Mexican Grill, Inc.",
+  "aliases": [
+   "Chipotle",
+   "Chipotle Mexican Grill"
+  ],
+  "cik": "0001058090",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "CB",
+  "name": "Chubb Limited",
+  "aliases": [
+   "Chubb"
+  ],
+  "cik": "0000896159",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "CHD",
+  "name": "Church & Dwight Co., Inc.",
+  "aliases": [
+   "Church & Dwight"
+  ],
+  "cik": "0000313927",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "CIEN",
+  "name": "Ciena Corporation",
+  "aliases": [
+   "Ciena"
+  ],
+  "cik": "0000936395",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "CI",
+  "name": "The Cigna Group",
+  "aliases": [
+   "Cigna"
+  ],
+  "cik": "0001739940",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "CINF",
+  "name": "Cincinnati Financial Corp",
+  "aliases": [
+   "Cincinnati Financial"
+  ],
+  "cik": "0000020286",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "CTAS",
+  "name": "Cintas Corp",
+  "aliases": [
+   "Cintas"
+  ],
+  "cik": "0000723254",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "CSCO",
+  "name": "Cisco Systems, Inc. Common Stock (DE)",
+  "aliases": [
+   "Cisco Systems, Inc. Common Stock (DE)",
+   "Cisco Systems"
+  ],
+  "cik": "0000858877",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "C",
+  "name": "Citigroup Inc.",
+  "aliases": [
+   "Citigroup",
+   "Citi"
+  ],
+  "cik": "0000831001",
+  "ticker_strict": true,
+  "name_strict": true
+ },
+ {
+  "ticker": "CFG",
+  "name": "Citizens Financial Group, Inc.",
+  "aliases": [
+   "Citizens Financial"
+  ],
+  "cik": "0000759944",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "CLX",
+  "name": "Clorox Company",
+  "aliases": [
+   "Clorox"
+  ],
+  "cik": "0000021076",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "CME",
+  "name": "CME Group Inc.",
+  "aliases": [
+   "CME"
+  ],
+  "cik": "0001156375",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "CMS",
+  "name": "CMS Energy Corporation",
+  "aliases": [
+   "CMS Energy"
+  ],
+  "cik": "0000811156",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "KO",
+  "name": "Coca-Cola Company",
+  "aliases": [
+   "Coca-Cola"
+  ],
+  "cik": "0000021344",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "CTSH",
+  "name": "Cognizant Technology Solutions",
+  "aliases": [
+   "Cognizant Technology Solutions",
+   "Cognizant Technology"
+  ],
+  "cik": "0001058290",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "COHR",
+  "name": "Coherent Corp.",
+  "aliases": [
+   "Coherent"
+  ],
+  "cik": "0000820318",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "CL",
+  "name": "Colgate-Palmolive Company",
+  "aliases": [
+   "Colgate-Palmolive"
+  ],
+  "cik": "0000021665",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "CMCSA",
+  "name": "Comcast Corp",
+  "aliases": [
+   "Comcast"
+  ],
+  "cik": "0001166691",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "FIX",
+  "name": "Comfort Systems USA, Inc.",
+  "aliases": [
+   "Comfort Systems USA"
+  ],
+  "cik": "0001035983",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "COP",
+  "name": "ConocoPhillips",
+  "aliases": [
+   "ConocoPhillips"
+  ],
+  "cik": "0001163165",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "ED",
+  "name": "Consolidated Edison, Inc.",
+  "aliases": [
+   "Consolidated Edison",
+   "Con Ed"
+  ],
+  "cik": "0001047862",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "STZ",
+  "name": "Constellation Brands, Inc.",
+  "aliases": [
+   "Constellation Brands"
+  ],
+  "cik": "0000016918",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "CEG",
+  "name": "Constellation Energy Corporation Common Stock",
+  "aliases": [
+   "Constellation Energy"
+  ],
+  "cik": "0001868275",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "CPRT",
+  "name": "Copart Inc",
+  "aliases": [
+   "Copart"
+  ],
+  "cik": "0000900075",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "GLW",
+  "name": "Corning Incorporated",
+  "aliases": [
+   "Corning"
+  ],
+  "cik": "0000024741",
+  "ticker_strict": false,
+  "name_strict": true
+ },
+ {
+  "ticker": "CPAY",
+  "name": "Corpay, Inc.",
+  "aliases": [
+   "Corpay"
+  ],
+  "cik": "0001175454",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "CTVA",
+  "name": "Corteva, Inc. Common Stock",
+  "aliases": [
+   "Corteva"
+  ],
+  "cik": "0001755672",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "CSGP",
+  "name": "CoStar Group Inc",
+  "aliases": [
+   "CoStar"
+  ],
+  "cik": "0001057352",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "COST",
+  "name": "Costco Wholesale Corp",
+  "aliases": [
+   "Costco",
+   "Costco Wholesale"
+  ],
+  "cik": "0000909832",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "CRH",
+  "name": "CRH Public Limited Company",
+  "aliases": [
+   "CRH Public",
+   "CRH"
+  ],
+  "cik": "0000849395",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "CCI",
+  "name": "Crown Castle Inc.",
+  "aliases": [
+   "Crown Castle"
+  ],
+  "cik": "0001051470",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "CSX",
+  "name": "CSX Corporation",
+  "aliases": [
+   "CSX"
+  ],
+  "cik": "0000277948",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "CMI",
+  "name": "Cummins Inc.",
+  "aliases": [
+   "Cummins"
+  ],
+  "cik": "0000026172",
+  "ticker_strict": false,
+  "name_strict": true
+ },
+ {
+  "ticker": "CVS",
+  "name": "CVS HEALTH CORPORATION",
+  "aliases": [
+   "CVS",
+   "CVS Health"
+  ],
+  "cik": "0000064803",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "DHI",
+  "name": "D.R. Horton Inc.",
+  "aliases": [
+   "D.R. Horton"
+  ],
+  "cik": "0000882184",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "DHR",
+  "name": "Danaher Corporation",
+  "aliases": [
+   "Danaher"
+  ],
+  "cik": "0000313616",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "DRI",
+  "name": "Darden Restaurants, Inc.",
+  "aliases": [
+   "Darden Restaurants"
+  ],
+  "cik": "0000940944",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "DDOG",
+  "name": "Datadog, Inc. Class A Common Stock",
+  "aliases": [
+   "Datadog"
+  ],
+  "cik": "0001561550",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "DVA",
+  "name": "DaVita Inc.",
+  "aliases": [
+   "DaVita"
+  ],
+  "cik": "0000927066",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "DECK",
+  "name": "Deckers Outdoor Corp",
+  "aliases": [
+   "Deckers Outdoor"
+  ],
+  "cik": "0000910521",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "DE",
+  "name": "Deere & Company",
+  "aliases": [
+   "John Deere",
+   "Deere",
+   "Deere &"
+  ],
+  "cik": "0000315189",
+  "ticker_strict": true,
+  "name_strict": true
+ },
+ {
+  "ticker": "DELL",
+  "name": "Dell Technologies Inc.",
+  "aliases": [
+   "Dell Technologies"
+  ],
+  "cik": "0001571996",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "DAL",
+  "name": "Delta Air Lines, Inc.",
+  "aliases": [
+   "Delta Air Lines"
+  ],
+  "cik": "0000027904",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "DVN",
+  "name": "Devon Energy Corporation",
+  "aliases": [
+   "Devon Energy"
+  ],
+  "cik": "0001090012",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "DXCM",
+  "name": "DexCom, Inc.",
+  "aliases": [
+   "DexCom"
+  ],
+  "cik": "0001093557",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "FANG",
+  "name": "Diamondback Energy, Inc.",
+  "aliases": [
+   "Diamondback Energy",
+   "Diamondback"
+  ],
+  "cik": "0001539838",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "DLR",
+  "name": "Digital Realty Trust, Inc.",
+  "aliases": [
+   "Digital Realty Trust",
+   "Digital Realty"
+  ],
+  "cik": "0001297996",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "DG",
+  "name": "Dollar General Corp.",
+  "aliases": [
+   "Dollar General"
+  ],
+  "cik": "0000029534",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "DLTR",
+  "name": "Dollar Tree Inc.",
+  "aliases": [
+   "Dollar Tree"
+  ],
+  "cik": "0000935703",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "D",
+  "name": "Dominion Energy, Inc Common Stock",
+  "aliases": [
+   "Dominion Energy"
+  ],
+  "cik": "0000715957",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "DPZ",
+  "name": "Domino's Pizza Inc.",
+  "aliases": [
+   "Domino's Pizza",
+   "Domino's"
+  ],
+  "cik": "0001286681",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "DOV",
+  "name": "Dover Corporation",
+  "aliases": [
+   "Dover"
+  ],
+  "cik": "0000029905",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "DOW",
+  "name": "Dow Inc.",
+  "aliases": [
+   "Dow Inc",
+   "Dow Chemical"
+  ],
+  "cik": "0001751788",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "DTE",
+  "name": "DTE Energy Company",
+  "aliases": [
+   "DTE Energy"
+  ],
+  "cik": "0000936340",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "DUK",
+  "name": "Duke Energy Corporation",
+  "aliases": [
+   "Duke Energy"
+  ],
+  "cik": "0001326160",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "DD",
+  "name": "DuPont de Nemours, Inc. Common Stock",
+  "aliases": [
+   "DuPont de Nemours",
+   "DuPont"
+  ],
+  "cik": "0001666700",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "ETN",
+  "name": "Eaton Corporation, plc Ordinary Shares",
+  "aliases": [
+   "Eaton"
+  ],
+  "cik": "0001551182",
+  "ticker_strict": false,
+  "name_strict": true
+ },
+ {
+  "ticker": "EBAY",
+  "name": "eBay Inc",
+  "aliases": [
+   "eBay"
+  ],
+  "cik": "0001065088",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "ECHO",
+  "name": "EchoStar Corporation",
+  "aliases": [
+   "EchoStar"
+  ],
+  "cik": "0001415404",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "ECL",
+  "name": "Ecolab, Inc.",
+  "aliases": [
+   "Ecolab"
+  ],
+  "cik": "0000031462",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "EIX",
+  "name": "Edison International",
+  "aliases": [
+   "Edison International"
+  ],
+  "cik": "0000827052",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "EW",
+  "name": "Edwards Lifesciences Corp",
+  "aliases": [
+   "Edwards Lifesciences"
+  ],
+  "cik": "0001099800",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "ELV",
+  "name": "Elevance Health, Inc.",
+  "aliases": [
+   "Elevance Health"
+  ],
+  "cik": "0001156039",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "LLY",
+  "name": "Eli Lilly & Co.",
+  "aliases": [
+   "Eli Lilly",
+   "Lilly"
+  ],
+  "cik": "0000059478",
+  "ticker_strict": false,
+  "name_strict": true
+ },
+ {
+  "ticker": "EME",
+  "name": "EMCOR Group, Inc.",
+  "aliases": [
+   "Emcor"
+  ],
+  "cik": "0000105634",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "EMR",
+  "name": "Emerson Electric Co.",
+  "aliases": [
+   "Emerson Electric"
+  ],
+  "cik": "0000032604",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "ETR",
+  "name": "Entergy Corporation",
+  "aliases": [
+   "Entergy"
+  ],
+  "cik": "0000065984",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "EOG",
+  "name": "EOG Resources, Inc.",
+  "aliases": [
+   "EOG Resources"
+  ],
+  "cik": "0000821189",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "EQT",
+  "name": "EQT CORP",
+  "aliases": [
+   "EQT"
+  ],
+  "cik": "0000033213",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "EFX",
+  "name": "Equifax, Incorporated",
+  "aliases": [
+   "Equifax"
+  ],
+  "cik": "0000033185",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "EQIX",
+  "name": "Equinix, Inc. Common Stock REIT",
+  "aliases": [
+   "Equinix, Inc. Common Stock REIT",
+   "Equinix"
+  ],
+  "cik": "0001101239",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "ERIE",
+  "name": "Erie Indemnity Co",
+  "aliases": [
+   "Erie Indemnity"
+  ],
+  "cik": "0000922621",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "ESS",
+  "name": "Essex Property Trust, Inc",
+  "aliases": [
+   "Essex Property Trust"
+  ],
+  "cik": "0000920522",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "EG",
+  "name": "Everest Group, Ltd.",
+  "aliases": [
+   "Everest"
+  ],
+  "cik": "0001095073",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "EVRG",
+  "name": "Evergy, Inc.",
+  "aliases": [
+   "Evergy"
+  ],
+  "cik": "0001711269",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "ES",
+  "name": "Eversource Energy",
+  "aliases": [
+   "Eversource Energy"
+  ],
+  "cik": "0000072741",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "EXC",
+  "name": "Exelon Corporation",
+  "aliases": [
+   "Exelon"
+  ],
+  "cik": "0001109357",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "EXE",
+  "name": "Expand Energy Corporation Common Stock",
+  "aliases": [
+   "Expand Energy"
+  ],
+  "cik": "0000895126",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "EXPE",
+  "name": "Expedia Group, Inc. Common Stock",
+  "aliases": [
+   "Expedia"
+  ],
+  "cik": "0001324424",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "EXPD",
+  "name": "Expeditors International of Washington, Inc.",
+  "aliases": [
+   "Expeditors International of Washington",
+   "Expeditors International"
+  ],
+  "cik": "0000746515",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "EXR",
+  "name": "Extra Space Storage, Inc.",
+  "aliases": [
+   "Extra Space Storage"
+  ],
+  "cik": "0001289490",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "XOM",
+  "name": "ExxonMobil Holdings Corporation",
+  "aliases": [
+   "Exxon",
+   "ExxonMobil",
+   "Exxon Mobil"
+  ],
+  "cik": "0002115436",
+  "ticker_strict": false,
+  "name_strict": true
+ },
+ {
+  "ticker": "FFIV",
+  "name": "F5, Inc. Common Stock",
+  "aliases": [
+   "F5"
+  ],
+  "cik": "0001048695",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "FDS",
+  "name": "Factset Research Systems",
+  "aliases": [
+   "Factset Research Systems",
+   "FactSet Research",
+   "FactSet"
+  ],
+  "cik": "0001013237",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "FICO",
+  "name": "Fair Isaac Corporation",
+  "aliases": [
+   "Fair Isaac"
+  ],
+  "cik": "0000814547",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "FAST",
+  "name": "Fastenal Co",
+  "aliases": [
+   "Fastenal"
+  ],
+  "cik": "0000815556",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "FRT",
+  "name": "Federal Realty Investment Trust",
+  "aliases": [
+   "Federal Realty Investment Trust",
+   "Federal Realty"
+  ],
+  "cik": "0000034903",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "FDX",
+  "name": "FedEx Corporation",
+  "aliases": [
+   "FedEx"
+  ],
+  "cik": "0001048911",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "FDXF",
+  "name": "FedEx Freight Holding Company, Inc.",
+  "aliases": [
+   "FedEx Freight"
+  ],
+  "cik": "0002082247",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "FERG",
+  "name": "Ferguson Enterprises Inc.",
+  "aliases": [
+   "Ferguson Enterprises"
+  ],
+  "cik": "0002011641",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "FIS",
+  "name": "Fidelity National Information Services, Inc.",
+  "aliases": [
+   "Fidelity National Information Services",
+   "Fidelity National Info"
+  ],
+  "cik": "0001136893",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "FITB",
+  "name": "Fifth Third Bancorp",
+  "aliases": [
+   "Fifth Third Bancorp"
+  ],
+  "cik": "0000035527",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "FSLR",
+  "name": "First Solar, Inc.",
+  "aliases": [
+   "First Solar"
+  ],
+  "cik": "0001274494",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "FE",
+  "name": "FirstEnergy Corp.",
+  "aliases": [
+   "FirstEnergy"
+  ],
+  "cik": "0001031296",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "FISV",
+  "name": "Fiserv, Inc. Common Stock",
+  "aliases": [
+   "Fiserv"
+  ],
+  "cik": "0000798354",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "FLEX",
+  "name": "Flex Ltd. Ordinary Shares",
+  "aliases": [
+   "Flex"
+  ],
+  "cik": "0000866374",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "FTNT",
+  "name": "Fortinet, Inc.",
+  "aliases": [
+   "Fortinet"
+  ],
+  "cik": "0001262039",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "FTV",
+  "name": "Fortive Corporation",
+  "aliases": [
+   "Fortive"
+  ],
+  "cik": "0001659166",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "FOXA",
+  "name": "Fox Corporation Class A Common Stock",
+  "aliases": [
+   "Fox"
+  ],
+  "cik": "0001754301",
+  "ticker_strict": false,
+  "name_strict": true
+ },
+ {
+  "ticker": "FOX",
+  "name": "Fox Corporation Class B Common Stock",
+  "aliases": [
+   "Fox"
+  ],
+  "cik": "0001754301",
+  "ticker_strict": true,
+  "name_strict": true
+ },
+ {
+  "ticker": "BEN",
+  "name": "Franklin Templeton, Inc.",
+  "aliases": [
+   "Franklin Templeton",
+   "Franklin Resources"
+  ],
+  "cik": "0000038777",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "FCX",
+  "name": "Freeport-McMoran Inc.",
+  "aliases": [
+   "Freeport-McMoran"
+  ],
+  "cik": "0000831259",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "GRMN",
+  "name": "Garmin Ltd",
+  "aliases": [
+   "Garmin"
+  ],
+  "cik": "0001121788",
+  "ticker_strict": false,
+  "name_strict": true
+ },
+ {
+  "ticker": "IT",
+  "name": "Gartner, Inc.",
+  "aliases": [
+   "Gartner"
+  ],
+  "cik": "0000749251",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "GE",
+  "name": "GE Aerospace",
+  "aliases": [
+   "GE Aerospace"
+  ],
+  "cik": "0000040545",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "GEHC",
+  "name": "GE HealthCare Technologies Inc. Common Stock",
+  "aliases": [
+   "GE HealthCare Technologies",
+   "GE HealthCare"
+  ],
+  "cik": "0001932393",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "GEV",
+  "name": "GE Vernova Inc.",
+  "aliases": [
+   "GE Vernova"
+  ],
+  "cik": "0001996810",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "GEN",
+  "name": "Gen Digital Inc. Common Stock",
+  "aliases": [
+   "Gen Digital",
+   "Gen"
+  ],
+  "cik": "0000849399",
+  "ticker_strict": true,
+  "name_strict": true
+ },
+ {
+  "ticker": "GNRC",
+  "name": "GENERAC HOLDINGS INC",
+  "aliases": [
+   "Generac"
+  ],
+  "cik": "0001474735",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "GD",
+  "name": "General Dynamics Corporation",
+  "aliases": [
+   "General Dynamics"
+  ],
+  "cik": "0000040533",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "GIS",
+  "name": "General Mills, Inc.",
+  "aliases": [
+   "General Mills"
+  ],
+  "cik": "0000040704",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "GM",
+  "name": "General Motors Company",
+  "aliases": [
+   "General Motors"
+  ],
+  "cik": "0001467858",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "GPC",
+  "name": "Genuine Parts Company",
+  "aliases": [
+   "Genuine Parts"
+  ],
+  "cik": "0000040987",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "GILD",
+  "name": "Gilead Sciences Inc",
+  "aliases": [
+   "Gilead Sciences"
+  ],
+  "cik": "0000882095",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "GPN",
+  "name": "Global Payments, Inc.",
+  "aliases": [
+   "Global Payments"
+  ],
+  "cik": "0001123360",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "GL",
+  "name": "Globe Life Inc.",
+  "aliases": [
+   "Globe Life"
+  ],
+  "cik": "0000320335",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "GDDY",
+  "name": "GoDaddy Inc",
+  "aliases": [
+   "GoDaddy"
+  ],
+  "cik": "0001609711",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "GS",
+  "name": "Goldman Sachs Group Inc.",
+  "aliases": [
+   "Goldman Sachs",
+   "Goldman"
+  ],
+  "cik": "0000886982",
+  "ticker_strict": true,
+  "name_strict": true
+ },
+ {
+  "ticker": "GOOG",
+  "name": "Alphabet Inc. Class C Capital Stock",
+  "aliases": [
+   "Google",
+   "Alphabet",
+   "Alphabet Inc. Class C Capital Stock"
+  ],
+  "cik": "0001652044",
+  "ticker_strict": false,
+  "name_strict": true
+ },
+ {
+  "ticker": "HAL",
+  "name": "Halliburton Company",
+  "aliases": [
+   "Halliburton"
+  ],
+  "cik": "0000045012",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "HAS",
+  "name": "Hasbro, Inc.",
+  "aliases": [
+   "Hasbro"
+  ],
+  "cik": "0000046080",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "HCA",
+  "name": "HCA Healthcare, Inc.",
+  "aliases": [
+   "HCA Healthcare"
+  ],
+  "cik": "0000860730",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "DOC",
+  "name": "Healthpeak Properties, Inc.",
+  "aliases": [
+   "Healthpeak Properties"
+  ],
+  "cik": "0000765880",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "HSIC",
+  "name": "Henry Schein Inc",
+  "aliases": [
+   "Henry Schein"
+  ],
+  "cik": "0001000228",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "HPE",
+  "name": "Hewlett Packard Enterprise Company",
+  "aliases": [
+   "Hewlett Packard Enterprise"
+  ],
+  "cik": "0001645590",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "HLT",
+  "name": "Hilton Worldwide Holdings Inc.",
+  "aliases": [
+   "Hilton Worldwide"
+  ],
+  "cik": "0001585689",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "HD",
+  "name": "Home Depot, Inc.",
+  "aliases": [
+   "Home Depot"
+  ],
+  "cik": "0000354950",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "HONA",
+  "name": "Honeywell Aerospace Inc. Common Stock",
+  "aliases": [
+   "Honeywell Aerospace"
+  ],
+  "cik": "0002089271",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "HON",
+  "name": "Honeywell International, Inc.",
+  "aliases": [
+   "Honeywell",
+   "Honeywell International"
+  ],
+  "cik": "0000773840",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "HRL",
+  "name": "Hormel Foods Corporation",
+  "aliases": [
+   "Hormel Foods"
+  ],
+  "cik": "0000048465",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "HST",
+  "name": "Host Hotels & Resorts, Inc.",
+  "aliases": [
+   "Host Hotels & Resorts"
+  ],
+  "cik": "0001070750",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "HWM",
+  "name": "Howmet Aerospace Inc.",
+  "aliases": [
+   "Howmet Aerospace"
+  ],
+  "cik": "0000004281",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "HUBB",
+  "name": "Hubbell Incorporated",
+  "aliases": [
+   "Hubbell"
+  ],
+  "cik": "0000048898",
+  "ticker_strict": false,
+  "name_strict": true
+ },
+ {
+  "ticker": "HUM",
+  "name": "Humana Inc.",
+  "aliases": [
+   "Humana"
+  ],
+  "cik": "0000049071",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "HII",
+  "name": "Huntington Ingalls Industries, Inc.",
+  "aliases": [
+   "Huntington Ingalls Industries",
+   "Huntington Ingalls"
+  ],
+  "cik": "0001501585",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "HBAN",
+  "name": "Huntington Bancshares Inc",
+  "aliases": [
+   "Huntington Bancshares"
+  ],
+  "cik": "0000049196",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "IBM",
+  "name": "International Business Machines Corporation",
+  "aliases": [
+   "IBM",
+   "International Business Machines"
+  ],
+  "cik": "0000051143",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "IEX",
+  "name": "IDEX Corporation",
+  "aliases": [
+   "IDEX"
+  ],
+  "cik": "0000832101",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "IDXX",
+  "name": "Idexx Laboratories Inc",
+  "aliases": [
+   "Idexx Laboratories"
+  ],
+  "cik": "0000874716",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "ITW",
+  "name": "Illinois Tool Works Inc.",
+  "aliases": [
+   "Illinois Tool Works"
+  ],
+  "cik": "0000049826",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "INCY",
+  "name": "Incyte Genomics Inc",
+  "aliases": [
+   "Incyte Genomics",
+   "Incyte"
+  ],
+  "cik": "0000879169",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "IR",
+  "name": "Ingersoll Rand Inc. Common Stock",
+  "aliases": [
+   "Ingersoll Rand"
+  ],
+  "cik": "0001699150",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "PODD",
+  "name": "Insulet Corporation",
+  "aliases": [
+   "Insulet"
+  ],
+  "cik": "0001145197",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "IBKR",
+  "name": "Interactive Brokers Group, Inc. Class A Common Stock",
+  "aliases": [
+   "Interactive Brokers"
+  ],
+  "cik": "0001381197",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "ICE",
+  "name": "Intercontinental Exchange  Inc.",
+  "aliases": [
+   "Intercontinental Exchange"
+  ],
+  "cik": "0001571949",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "IFF",
+  "name": "International Flavors & Fragrances Inc.",
+  "aliases": [
+   "International Flavors & Fragrances",
+   "International Flavors"
+  ],
+  "cik": "0000051253",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "IP",
+  "name": "International Paper Co.",
+  "aliases": [
+   "International Paper"
+  ],
+  "cik": "0000051434",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "INTU",
+  "name": "Intuit Inc",
+  "aliases": [
+   "Intuit"
+  ],
+  "cik": "0000896878",
+  "ticker_strict": false,
+  "name_strict": true
+ },
+ {
+  "ticker": "ISRG",
+  "name": "Intuitive Surgical Inc.",
+  "aliases": [
+   "Intuitive Surgical"
+  ],
+  "cik": "0001035267",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "IVZ",
+  "name": "Invesco LTD",
+  "aliases": [
+   "Invesco"
+  ],
+  "cik": "0000914208",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "INVH",
+  "name": "Invitation Homes Inc. Common Stock",
+  "aliases": [
+   "Invitation Homes"
+  ],
+  "cik": "0001687229",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "IQV",
+  "name": "IQVIA Holdings Inc.",
+  "aliases": [
+   "Iqvia"
+  ],
+  "cik": "0001478242",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "IRM",
+  "name": "Iron Mountain Inc.",
+  "aliases": [
+   "Iron Mountain"
+  ],
+  "cik": "0001020569",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "SJM",
+  "name": "The J.M. Smucker Company",
+  "aliases": [
+   "J.M. Smucker"
+  ],
+  "cik": "0000091419",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "JBL",
+  "name": "Jabil Inc.",
+  "aliases": [
+   "Jabil"
+  ],
+  "cik": "0000898293",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "JKHY",
+  "name": "Henry (Jack) & Associates",
+  "aliases": [
+   "Henry (Jack) & Associates",
+   "Jack Henry & Associates",
+   "Jack Henry"
+  ],
+  "cik": "0000779152",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "J",
+  "name": "Jacobs Solutions Inc.",
+  "aliases": [
+   "Jacobs Solutions"
+  ],
+  "cik": "0000052988",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "JBHT",
+  "name": "JB Hunt Transport Services Inc",
+  "aliases": [
+   "JB Hunt Transport Services",
+   "J.B. Hunt Transport"
+  ],
+  "cik": "0000728535",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "JNJ",
+  "name": "Johnson & Johnson",
+  "aliases": [
+   "Johnson & Johnson",
+   "J&J"
+  ],
+  "cik": "0000200406",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "JCI",
+  "name": "Johnson Controls International plc",
+  "aliases": [
+   "Johnson Controls International",
+   "Johnson Controls"
+  ],
+  "cik": "0000833444",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "KVUE",
+  "name": "Kenvue Inc.",
+  "aliases": [
+   "Kenvue"
+  ],
+  "cik": "0001944048",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "KDP",
+  "name": "Keurig Dr Pepper Inc.",
+  "aliases": [
+   "Keurig Dr Pepper"
+  ],
+  "cik": "0001418135",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "KEY",
+  "name": "KeyCorp",
+  "aliases": [
+   "KeyCorp"
+  ],
+  "cik": "0000091576",
+  "ticker_strict": true,
+  "name_strict": true
+ },
+ {
+  "ticker": "KEYS",
+  "name": "Keysight Technologies, Inc.",
+  "aliases": [
+   "Keysight Technologies"
+  ],
+  "cik": "0001601046",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "KMB",
+  "name": "Kimberly-Clark Corp.",
+  "aliases": [
+   "Kimberly-Clark"
+  ],
+  "cik": "0000055785",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "KIM",
+  "name": "Kimco Realty Corp.",
+  "aliases": [
+   "Kimco Realty"
+  ],
+  "cik": "0000879101",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "KMI",
+  "name": "Kinder Morgan, Inc.",
+  "aliases": [
+   "Kinder Morgan"
+  ],
+  "cik": "0001506307",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "KKR",
+  "name": "KKR & Co. Inc.",
+  "aliases": [
+   "KKR"
+  ],
+  "cik": "0001404912",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "KLAC",
+  "name": "KLA Corporation Common Stock",
+  "aliases": [
+   "KLA"
+  ],
+  "cik": "0000319201",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "KR",
+  "name": "The Kroger Co.",
+  "aliases": [
+   "Kroger"
+  ],
+  "cik": "0000056873",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "LHX",
+  "name": "L3Harris Technologies, Inc.",
+  "aliases": [
+   "L3Harris Technologies"
+  ],
+  "cik": "0000202058",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "LH",
+  "name": "Labcorp Holdings Inc.",
+  "aliases": [
+   "Labcorp"
+  ],
+  "cik": "0000920148",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "LRCX",
+  "name": "Lam Research Corp",
+  "aliases": [
+   "Lam Research"
+  ],
+  "cik": "0000707549",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "LVS",
+  "name": "Las Vegas Sands Corp.",
+  "aliases": [
+   "Las Vegas Sands"
+  ],
+  "cik": "0001300514",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "LDOS",
+  "name": "Leidos Holdings, Inc.",
+  "aliases": [
+   "Leidos"
+  ],
+  "cik": "0001336920",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "LEN",
+  "name": "Lennar Corporation Class A",
+  "aliases": [
+   "Lennar"
+  ],
+  "cik": "0000920760",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "LII",
+  "name": "Lennox International Inc.",
+  "aliases": [
+   "Lennox International"
+  ],
+  "cik": "0001069202",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "LIN",
+  "name": "Linde plc Ordinary Share",
+  "aliases": [
+   "Linde plc Ordinary Share",
+   "Linde"
+  ],
+  "cik": "0001707925",
+  "ticker_strict": false,
+  "name_strict": true
+ },
+ {
+  "ticker": "LYV",
+  "name": "Live Nation Entertainment Inc.",
+  "aliases": [
+   "Live Nation Entertainment",
+   "Live Nation"
+  ],
+  "cik": "0001335258",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "LMT",
+  "name": "Lockheed Martin Corp.",
+  "aliases": [
+   "Lockheed Martin"
+  ],
+  "cik": "0000936468",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "L",
+  "name": "Loews Corporation",
+  "aliases": [
+   "Loews"
+  ],
+  "cik": "0000060086",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "LOW",
+  "name": "Lowe's Companies Inc.",
+  "aliases": [
+   "Lowe's",
+   "Lowe's Companies"
+  ],
+  "cik": "0000060667",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "LITE",
+  "name": "Lumentum Holdings Inc. Common Stock",
+  "aliases": [
+   "Lumentum"
+  ],
+  "cik": "0001633978",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "LYB",
+  "name": "LyondellBasell Industries N.V. Class A",
+  "aliases": [
+   "LyondellBasell Industries",
+   "LyondellBasell"
+  ],
+  "cik": "0001489393",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "MTB",
+  "name": "M&T Bank Corp.",
+  "aliases": [
+   "M&T Bank"
+  ],
+  "cik": "0000036270",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "MPC",
+  "name": "MARATHON PETROLEUM CORPORATION",
+  "aliases": [
+   "Marathon Petroleum"
+  ],
+  "cik": "0001510295",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "MAR",
+  "name": "Marriott International Class A Common Stock",
+  "aliases": [
+   "Marriott International",
+   "Marriott"
+  ],
+  "cik": "0001048286",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "MRSH",
+  "name": "Marsh",
+  "aliases": [
+   "Marsh",
+   "Marsh & McLennan"
+  ],
+  "cik": "0000062709",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "MLM",
+  "name": "Martin Marietta Materials",
+  "aliases": [
+   "Martin Marietta Materials",
+   "Martin Marietta"
+  ],
+  "cik": "0000916076",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "MRVL",
+  "name": "Marvell Technology, Inc. Common Stock",
+  "aliases": [
+   "Marvell Technology"
+  ],
+  "cik": "0001835632",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "MAS",
+  "name": "Masco Corporation",
+  "aliases": [
+   "Masco"
+  ],
+  "cik": "0000062996",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "MA",
+  "name": "Mastercard Incorporated",
+  "aliases": [
+   "Mastercard"
+  ],
+  "cik": "0001141391",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "MKC",
+  "name": "McCormick & Company, Incorporated Non-VTG CS",
+  "aliases": [
+   "McCormick & Company, Incorporated Non-VTG CS",
+   "McCormick"
+  ],
+  "cik": "0000063754",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "MCD",
+  "name": "McDonald's Corporation",
+  "aliases": [
+   "McDonald's"
+  ],
+  "cik": "0000063908",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "MCK",
+  "name": "McKesson Corporation",
+  "aliases": [
+   "McKesson"
+  ],
+  "cik": "0000927653",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "MDT",
+  "name": "Medtronic plc",
+  "aliases": [
+   "Medtronic"
+  ],
+  "cik": "0001613103",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "MRK",
+  "name": "Merck & Co., Inc.",
+  "aliases": [
+   "Merck"
+  ],
+  "cik": "0000310158",
+  "ticker_strict": false,
+  "name_strict": true
+ },
+ {
+  "ticker": "MET",
+  "name": "MetLife, Inc.",
+  "aliases": [
+   "MetLife"
+  ],
+  "cik": "0001099219",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "MTD",
+  "name": "Mettler-Toledo International",
+  "aliases": [
+   "Mettler-Toledo International",
+   "Mettler-Toledo"
+  ],
+  "cik": "0001037646",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "MGM",
+  "name": "MGM RESORTS INTERNATIONAL",
+  "aliases": [
+   "MGM Resorts International",
+   "MGM Resorts"
+  ],
+  "cik": "0000789570",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "MCHP",
+  "name": "Microchip Technology Inc",
+  "aliases": [
+   "Microchip Technology"
+  ],
+  "cik": "0000827054",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "MAA",
+  "name": "Mid-America Apartment Communities, Inc.",
+  "aliases": [
+   "Mid-America Apartment Communities",
+   "Mid-America Apartment"
+  ],
+  "cik": "0000912595",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "MRNA",
+  "name": "Moderna, Inc. Common Stock",
+  "aliases": [
+   "Moderna"
+  ],
+  "cik": "0001682852",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "TAP",
+  "name": "Molson Coors Beverage Company Class B",
+  "aliases": [
+   "Molson Coors Beverage"
+  ],
+  "cik": "0000024545",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "MDLZ",
+  "name": "Mondelez International, Inc. Class A",
+  "aliases": [
+   "Mondelez International"
+  ],
+  "cik": "0001103982",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "MPWR",
+  "name": "Monolithic Power Systems, Inc.",
+  "aliases": [
+   "Monolithic Power Systems"
+  ],
+  "cik": "0001280452",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "MNST",
+  "name": "Monster Beverage Corporation",
+  "aliases": [
+   "Monster Beverage"
+  ],
+  "cik": "0000865752",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "MCO",
+  "name": "Moody's Corporation",
+  "aliases": [
+   "Moody's"
+  ],
+  "cik": "0001059556",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "MS",
+  "name": "Morgan Stanley",
+  "aliases": [
+   "Morgan Stanley"
+  ],
+  "cik": "0000895421",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "MSI",
+  "name": "Motorola Solutions, Inc. New",
+  "aliases": [
+   "Motorola Solutions"
+  ],
+  "cik": "0000068505",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "MSCI",
+  "name": "MSCI, Inc.",
+  "aliases": [
+   "MSCI"
+  ],
+  "cik": "0001408198",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "NDAQ",
+  "name": "Nasdaq, Inc. Common Stock",
+  "aliases": [
+   "Nasdaq"
+  ],
+  "cik": "0001120193",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "NTAP",
+  "name": "NetApp, Inc",
+  "aliases": [
+   "NetApp"
+  ],
+  "cik": "0001002047",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "NEM",
+  "name": "Newmont Corporation",
+  "aliases": [
+   "Newmont"
+  ],
+  "cik": "0001164727",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "NWSA",
+  "name": "News Corporation Class A Common Stock",
+  "aliases": [
+   "News"
+  ],
+  "cik": "0001564708",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "NWS",
+  "name": "News Corporation Class B Common Stock",
+  "aliases": [
+   "News"
+  ],
+  "cik": "0001564708",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "NEE",
+  "name": "NextEra Energy, Inc.",
+  "aliases": [
+   "NextEra Energy"
+  ],
+  "cik": "0000753308",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "NI",
+  "name": "NiSource Inc.",
+  "aliases": [
+   "NiSource"
+  ],
+  "cik": "0001111711",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "NDSN",
+  "name": "Nordson Corp",
+  "aliases": [
+   "Nordson"
+  ],
+  "cik": "0000072331",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "NSC",
+  "name": "Norfolk Southern Corp.",
+  "aliases": [
+   "Norfolk Southern"
+  ],
+  "cik": "0000702165",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "NTRS",
+  "name": "Northern Trust Corp",
+  "aliases": [
+   "Northern Trust"
+  ],
+  "cik": "0000073124",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "NOC",
+  "name": "Northrop Grumman Corp.",
+  "aliases": [
+   "Northrop Grumman"
+  ],
+  "cik": "0001133421",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "NCLH",
+  "name": "Norwegian Cruise Line Holdings Ltd. Ordinary Shares",
+  "aliases": [
+   "Norwegian Cruise Line"
+  ],
+  "cik": "0001513761",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "NRG",
+  "name": "NRG Energy, Inc.",
+  "aliases": [
+   "NRG Energy"
+  ],
+  "cik": "0001013871",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "NUE",
+  "name": "Nucor Corporation",
+  "aliases": [
+   "Nucor"
+  ],
+  "cik": "0000073309",
+  "ticker_strict": false,
+  "name_strict": true
+ },
+ {
+  "ticker": "NVR",
+  "name": "NVR, Inc.",
+  "aliases": [
+   "NVR"
+  ],
+  "cik": "0000906163",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "NXPI",
+  "name": "NXP Semiconductors N.V.",
+  "aliases": [
+   "NXP Semiconductors"
+  ],
+  "cik": "0001413447",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "ORLY",
+  "name": "O'Reilly Automotive, Inc.",
+  "aliases": [
+   "O'Reilly Automotive"
+  ],
+  "cik": "0000898173",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "OXY",
+  "name": "Occidental Petroleum Corporation",
+  "aliases": [
+   "Occidental Petroleum"
+  ],
+  "cik": "0000797468",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "ODFL",
+  "name": "Old Dominion Freight Line",
+  "aliases": [
+   "Old Dominion Freight Line",
+   "Old Dominion Freight"
+  ],
+  "cik": "0000878927",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "OMC",
+  "name": "Omnicom Group Inc.",
+  "aliases": [
+   "Omnicom"
+  ],
+  "cik": "0000029989",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "ON",
+  "name": "ON Semiconductor Corp",
+  "aliases": [
+   "ON Semiconductor",
+   "Onsemi"
+  ],
+  "cik": "0001097864",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "OKE",
+  "name": "Oneok, Inc.",
+  "aliases": [
+   "Oneok"
+  ],
+  "cik": "0001039684",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "ORCL",
+  "name": "Oracle Corp",
+  "aliases": [
+   "Oracle"
+  ],
+  "cik": "0001341439",
+  "ticker_strict": false,
+  "name_strict": true
+ },
+ {
+  "ticker": "OTIS",
+  "name": "Otis Worldwide Corporation",
+  "aliases": [
+   "Otis Worldwide",
+   "Otis"
+  ],
+  "cik": "0001781335",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "PCAR",
+  "name": "Paccar Inc",
+  "aliases": [
+   "Paccar"
+  ],
+  "cik": "0000075362",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "PKG",
+  "name": "Packaging Corp of America",
+  "aliases": [
+   "Packaging Corp of America"
+  ],
+  "cik": "0000075677",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "PANW",
+  "name": "Palo Alto Networks, Inc. Common Stock",
+  "aliases": [
+   "Palo Alto Networks"
+  ],
+  "cik": "0001327567",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "PSKY",
+  "name": "Paramount Skydance",
+  "aliases": [
+   "Paramount",
+   "Paramount Skydance"
+  ],
+  "cik": null,
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "PH",
+  "name": "Parker-Hannifin Corporation",
+  "aliases": [
+   "Parker-Hannifin"
+  ],
+  "cik": "0000076334",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "PAYX",
+  "name": "Paychex Inc",
+  "aliases": [
+   "Paychex"
+  ],
+  "cik": "0000723531",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "PNR",
+  "name": "Pentair plc",
+  "aliases": [
+   "Pentair"
+  ],
+  "cik": "0000077360",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "PEP",
+  "name": "PepsiCo, Inc.",
+  "aliases": [
+   "PepsiCo",
+   "Pepsi"
+  ],
+  "cik": "0000077476",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "PM",
+  "name": "Philip Morris International Inc.",
+  "aliases": [
+   "Philip Morris International"
+  ],
+  "cik": "0001413329",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "PSX",
+  "name": "PHILLIPS 66",
+  "aliases": [
+   "Phillips 66"
+  ],
+  "cik": "0001534701",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "PNW",
+  "name": "Pinnacle West Capital Corporation",
+  "aliases": [
+   "Pinnacle West Capital",
+   "Pinnacle West"
+  ],
+  "cik": "0000764622",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "PNC",
+  "name": "PNC Financial Services Group",
+  "aliases": [
+   "PNC Financial Services",
+   "PNC Financial"
+  ],
+  "cik": "0000713676",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "PPG",
+  "name": "PPG Industries, Inc.",
+  "aliases": [
+   "PPG Industries",
+   "PPG"
+  ],
+  "cik": "0000079879",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "PFG",
+  "name": "Principal Financial Group, Inc.",
+  "aliases": [
+   "Principal Financial"
+  ],
+  "cik": "0001126328",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "PG",
+  "name": "Procter & Gamble Company",
+  "aliases": [
+   "Procter & Gamble",
+   "P&G"
+  ],
+  "cik": "0000080424",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "PGR",
+  "name": "Progressive Corporation",
+  "aliases": [
+   "Progressive"
+  ],
+  "cik": "0000080661",
+  "ticker_strict": false,
+  "name_strict": true
+ },
+ {
+  "ticker": "PLD",
+  "name": "PROLOGIS, INC.",
+  "aliases": [
+   "Prologis"
+  ],
+  "cik": "0001045609",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "PRU",
+  "name": "Prudential Financial, Inc.",
+  "aliases": [
+   "Prudential Financial"
+  ],
+  "cik": "0001137774",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "PTC",
+  "name": "PTC, INC",
+  "aliases": [
+   "PTC"
+  ],
+  "cik": "0000857005",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "PEG",
+  "name": "Public Service Enterprise Group Incorporated",
+  "aliases": [
+   "Public Service Enterprise"
+  ],
+  "cik": "0000788784",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "PSA",
+  "name": "Public Storage",
+  "aliases": [
+   "Public Storage"
+  ],
+  "cik": "0001393311",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "PHM",
+  "name": "Pultegroup, Inc.",
+  "aliases": [
+   "Pultegroup"
+  ],
+  "cik": "0000822416",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "Q",
+  "name": "Qnity Electronics, Inc.",
+  "aliases": [
+   "Qnity Electronics",
+   "Qnity"
+  ],
+  "cik": "0002058873",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "QCOM",
+  "name": "Qualcomm Inc",
+  "aliases": [
+   "Qualcomm"
+  ],
+  "cik": "0000804328",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "PWR",
+  "name": "Quanta Services, Inc.",
+  "aliases": [
+   "Quanta Services"
+  ],
+  "cik": "0001050915",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "DGX",
+  "name": "Quest Diagnostics Inc.",
+  "aliases": [
+   "Quest Diagnostics"
+  ],
+  "cik": "0001022079",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "RL",
+  "name": "Ralph Lauren Corporation",
+  "aliases": [
+   "Ralph Lauren"
+  ],
+  "cik": "0001037038",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "RJF",
+  "name": "Raymond James Financial, Inc.",
+  "aliases": [
+   "Raymond James Financial"
+  ],
+  "cik": "0000720005",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "O",
+  "name": "Realty Income Corporation",
+  "aliases": [
+   "Realty Income"
+  ],
+  "cik": "0000726728",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "RDDT",
+  "name": "Reddit, Inc.",
+  "aliases": [
+   "Reddit"
+  ],
+  "cik": "0001713445",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "REG",
+  "name": "Regency Centers Corporation",
+  "aliases": [
+   "Regency Centers"
+  ],
+  "cik": "0000910606",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "REGN",
+  "name": "Regeneron Pharmaceuticals Inc",
+  "aliases": [
+   "Regeneron Pharmaceuticals"
+  ],
+  "cik": "0000872589",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "RF",
+  "name": "Regions Financial Corp.",
+  "aliases": [
+   "Regions Financial"
+  ],
+  "cik": "0001281761",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "RSG",
+  "name": "Republic Services Inc.",
+  "aliases": [
+   "Republic Services"
+  ],
+  "cik": "0001060391",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "RMD",
+  "name": "ResMed Inc.",
+  "aliases": [
+   "ResMed"
+  ],
+  "cik": "0000943819",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "RVTY",
+  "name": "Revvity, Inc.",
+  "aliases": [
+   "Revvity"
+  ],
+  "cik": "0000031791",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "HOOD",
+  "name": "Robinhood Markets, Inc. Class A Common Stock",
+  "aliases": [
+   "Robinhood Markets",
+   "Robinhood"
+  ],
+  "cik": "0001783879",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "ROK",
+  "name": "Rockwell Automation, Inc.",
+  "aliases": [
+   "Rockwell Automation"
+  ],
+  "cik": "0001024478",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "ROL",
+  "name": "Rollins, Inc.",
+  "aliases": [
+   "Rollins"
+  ],
+  "cik": "0000084839",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "ROP",
+  "name": "Roper Technologies, Inc. Common Stock",
+  "aliases": [
+   "Roper Technologies"
+  ],
+  "cik": "0000882835",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "ROST",
+  "name": "Ross Stores Inc",
+  "aliases": [
+   "Ross Stores"
+  ],
+  "cik": "0000745732",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "RCL",
+  "name": "Royal Caribbean Group",
+  "aliases": [
+   "Royal Caribbean"
+  ],
+  "cik": "0000884887",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "RTX",
+  "name": "RTX Corporation",
+  "aliases": [
+   "RTX"
+  ],
+  "cik": "0000101829",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "SPGI",
+  "name": "S&P Global Inc.",
+  "aliases": [
+   "S&P Global"
+  ],
+  "cik": "0000064040",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "CRM",
+  "name": "Salesforce, Inc.",
+  "aliases": [
+   "Salesforce"
+  ],
+  "cik": "0001108524",
+  "ticker_strict": false,
+  "name_strict": true
+ },
+ {
+  "ticker": "SNDK",
+  "name": "Sandisk Corporation Common Stock",
+  "aliases": [
+   "Sandisk"
+  ],
+  "cik": "0002023554",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "SBAC",
+  "name": "SBA Communications Corp",
+  "aliases": [
+   "SBA Communications"
+  ],
+  "cik": "0001034054",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "STX",
+  "name": "Seagate Technology Holdings PLC Ordinary Shares (Ireland)",
+  "aliases": [
+   "Seagate Technology Holdings PLC Ordinary Shares (Ireland)",
+   "Seagate Technology"
+  ],
+  "cik": "0001137789",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "SRE",
+  "name": "Sempra",
+  "aliases": [
+   "Sempra"
+  ],
+  "cik": "0001032208",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "SPG",
+  "name": "Simon Property Group, Inc.",
+  "aliases": [
+   "Simon Property"
+  ],
+  "cik": "0001063761",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "SWKS",
+  "name": "Skyworks Solutions Inc",
+  "aliases": [
+   "Skyworks Solutions"
+  ],
+  "cik": "0000004127",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "SLB",
+  "name": "SLB Limited",
+  "aliases": [
+   "SLB"
+  ],
+  "cik": "0000087347",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "SW",
+  "name": "Smurfit Westrock plc",
+  "aliases": [
+   "Smurfit Westrock"
+  ],
+  "cik": "0002005951",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "SNA",
+  "name": "Snap-on Incorporated",
+  "aliases": [
+   "Snap-on"
+  ],
+  "cik": "0000091440",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "SOLV",
+  "name": "Solventum Corporation",
+  "aliases": [
+   "Solventum"
+  ],
+  "cik": "0001964738",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "LUV",
+  "name": "Southwest Airlines Co.",
+  "aliases": [
+   "Southwest Airlines"
+  ],
+  "cik": "0000092380",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "SWK",
+  "name": "Stanley Black & Decker, Inc.",
+  "aliases": [
+   "Stanley Black & Decker"
+  ],
+  "cik": "0000093556",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "STT",
+  "name": "State Street Corporation",
+  "aliases": [
+   "State Street"
+  ],
+  "cik": "0000093751",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "STLD",
+  "name": "Steel Dynamics Inc",
+  "aliases": [
+   "Steel Dynamics"
+  ],
+  "cik": "0001022671",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "STE",
+  "name": "STERIS plc",
+  "aliases": [
+   "Steris"
+  ],
+  "cik": "0001757898",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "SYK",
+  "name": "Stryker Corporation",
+  "aliases": [
+   "Stryker"
+  ],
+  "cik": "0000310764",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "SMCI",
+  "name": "Super Micro Computer, Inc. Common Stock",
+  "aliases": [
+   "Super Micro Computer"
+  ],
+  "cik": "0001375365",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "SYF",
+  "name": "SYNCHRONY FINANCIAL",
+  "aliases": [
+   "Synchrony Financial"
+  ],
+  "cik": "0001601712",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "SNPS",
+  "name": "Synopsys Inc",
+  "aliases": [
+   "Synopsys"
+  ],
+  "cik": "0000883241",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "SYY",
+  "name": "Sysco Corporation",
+  "aliases": [
+   "Sysco"
+  ],
+  "cik": "0000096021",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "TROW",
+  "name": "T Rowe Price Group Inc",
+  "aliases": [
+   "T Rowe Price",
+   "T. Rowe Price"
+  ],
+  "cik": "0001113169",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "TMUS",
+  "name": "T-Mobile US, Inc.",
+  "aliases": [
+   "T-Mobile",
+   "T-Mobile US"
+  ],
+  "cik": "0001283699",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "TTWO",
+  "name": "Take-Two Interactive Software Inc",
+  "aliases": [
+   "Take-Two Interactive Software",
+   "Take-Two Interactive"
+  ],
+  "cik": "0000946581",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "TPR",
+  "name": "Tapestry, Inc. Common Stock",
+  "aliases": [
+   "Tapestry"
+  ],
+  "cik": "0001116132",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "TRGP",
+  "name": "Targa Resources Corp.",
+  "aliases": [
+   "Targa Resources"
+  ],
+  "cik": "0001389170",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "TGT",
+  "name": "Target Corporation",
+  "aliases": [
+   "Target"
+  ],
+  "cik": "0000027419",
+  "ticker_strict": false,
+  "name_strict": true
+ },
+ {
+  "ticker": "TEL",
+  "name": "TE Connectivity plc",
+  "aliases": [
+   "TE Connectivity"
+  ],
+  "cik": "0001385157",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "TDY",
+  "name": "Teledyne Technologies Incorporated",
+  "aliases": [
+   "Teledyne Technologies"
+  ],
+  "cik": "0001094285",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "TER",
+  "name": "Teradyne, Inc. Common Stock",
+  "aliases": [
+   "Teradyne"
+  ],
+  "cik": "0000097210",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "TXN",
+  "name": "Texas Instruments Incorporated",
+  "aliases": [
+   "Texas Instruments"
+  ],
+  "cik": "0000097476",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "TPL",
+  "name": "Texas Pacific Land Corporation",
+  "aliases": [
+   "Texas Pacific Land"
+  ],
+  "cik": "0001811074",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "TXT",
+  "name": "Textron, Inc.",
+  "aliases": [
+   "Textron"
+  ],
+  "cik": "0000217346",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "ALL",
+  "name": "The Allstate Corporation",
+  "aliases": [
+   "Allstate"
+  ],
+  "cik": "0000899051",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "SCHW",
+  "name": "The Charles Schwab Corporation",
+  "aliases": [
+   "Charles Schwab",
+   "Schwab"
+  ],
+  "cik": "0000316709",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "COO",
+  "name": "The Cooper Companies, Inc. Common Stock",
+  "aliases": [
+   "Cooper Companies",
+   "CooperCompanies"
+  ],
+  "cik": "0000711404",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "EL",
+  "name": "The Estee Lauder Companies Inc. Class A",
+  "aliases": [
+   "Estee Lauder Companies",
+   "Estée Lauder Companies"
+  ],
+  "cik": "0001001250",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "HIG",
+  "name": "The Hartford Insurance Group, Inc.",
+  "aliases": [
+   "Hartford Insurance"
+  ],
+  "cik": "0000874766",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "HSY",
+  "name": "The Hershey Company",
+  "aliases": [
+   "Hershey"
+  ],
+  "cik": "0000047111",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "KHC",
+  "name": "The Kraft Heinz Company",
+  "aliases": [
+   "Kraft Heinz"
+  ],
+  "cik": "0001637459",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "MOS",
+  "name": "The Mosaic Company",
+  "aliases": [
+   "Mosaic"
+  ],
+  "cik": "0001285785",
+  "ticker_strict": false,
+  "name_strict": true
+ },
+ {
+  "ticker": "SHW",
+  "name": "The Sherwin-Williams Company",
+  "aliases": [
+   "Sherwin-Williams"
+  ],
+  "cik": "0000089800",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "SO",
+  "name": "The Southern Company",
+  "aliases": [
+   "Southern"
+  ],
+  "cik": "0000092122",
+  "ticker_strict": true,
+  "name_strict": true
+ },
+ {
+  "ticker": "TRV",
+  "name": "The Travelers Companies, Inc.",
+  "aliases": [
+   "Travelers Companies"
+  ],
+  "cik": "0000086312",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "TMO",
+  "name": "Thermo Fisher Scientific, Inc.",
+  "aliases": [
+   "Thermo Fisher Scientific"
+  ],
+  "cik": "0000097745",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "TJX",
+  "name": "TJX Companies, Inc. (The)",
+  "aliases": [
+   "TJX Companies"
+  ],
+  "cik": "0000109198",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "TKO",
+  "name": "TKO Group Holdings, Inc.",
+  "aliases": [
+   "TKO"
+  ],
+  "cik": "0001973266",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "TSCO",
+  "name": "Tractor Supply Co",
+  "aliases": [
+   "Tractor Supply"
+  ],
+  "cik": "0000916365",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "TTD",
+  "name": "The Trade Desk, Inc.",
+  "aliases": [
+   "Trade Desk"
+  ],
+  "cik": "0001671933",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "TT",
+  "name": "Trane Technologies plc",
+  "aliases": [
+   "Trane Technologies"
+  ],
+  "cik": "0001466258",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "TDG",
+  "name": "TransDigm Group Incorporated",
+  "aliases": [
+   "TransDigm"
+  ],
+  "cik": "0001260221",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "TRMB",
+  "name": "Trimble Inc. Common Stock",
+  "aliases": [
+   "Trimble"
+  ],
+  "cik": "0000864749",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "TFC",
+  "name": "Truist Financial Corporation",
+  "aliases": [
+   "Truist Financial"
+  ],
+  "cik": "0000092230",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "TYL",
+  "name": "Tyler Technologies, Inc.",
+  "aliases": [
+   "Tyler Technologies"
+  ],
+  "cik": "0000860731",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "TSN",
+  "name": "Tyson Foods, Inc.",
+  "aliases": [
+   "Tyson Foods"
+  ],
+  "cik": "0000100493",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "USB",
+  "name": "U.S. Bancorp",
+  "aliases": [
+   "U.S. Bancorp"
+  ],
+  "cik": "0000036104",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "UDR",
+  "name": "UDR, Inc.",
+  "aliases": [
+   "UDR"
+  ],
+  "cik": "0000074208",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "ULTA",
+  "name": "Ulta Beauty, Inc. Common Stock",
+  "aliases": [
+   "Ulta Beauty"
+  ],
+  "cik": "0001403568",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "UNP",
+  "name": "Union Pacific Corp.",
+  "aliases": [
+   "Union Pacific"
+  ],
+  "cik": "0000100885",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "UAL",
+  "name": "United Airlines Holdings, Inc. Common Stock",
+  "aliases": [
+   "United Airlines"
+  ],
+  "cik": "0000100517",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "UPS",
+  "name": "United Parcel Service, Inc. Class B",
+  "aliases": [
+   "UPS",
+   "United Parcel Service"
+  ],
+  "cik": "0001090727",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "URI",
+  "name": "United Rentals, Inc.",
+  "aliases": [
+   "United Rentals"
+  ],
+  "cik": "0001067701",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "UNH",
+  "name": "UNITEDHEALTH GROUP INCORPORATED (Delaware)",
+  "aliases": [
+   "UnitedHealth",
+   "Unitedhealth Group Incorporated (Delaware)"
+  ],
+  "cik": "0000731766",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "UHS",
+  "name": "Universal Health Services, Inc. Class B",
+  "aliases": [
+   "Universal Health Services"
+  ],
+  "cik": "0000352915",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "VLO",
+  "name": "Valero Energy Corporation",
+  "aliases": [
+   "Valero Energy"
+  ],
+  "cik": "0001035002",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "VEEV",
+  "name": "Veeva Systems Inc.",
+  "aliases": [
+   "Veeva Systems",
+   "Veeva"
+  ],
+  "cik": "0001393052",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "VTR",
+  "name": "Ventas, Inc.",
+  "aliases": [
+   "Ventas"
+  ],
+  "cik": "0000740260",
+  "ticker_strict": false,
+  "name_strict": true
+ },
+ {
+  "ticker": "VLTO",
+  "name": "Veralto Corporation",
+  "aliases": [
+   "Veralto"
+  ],
+  "cik": "0001967680",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "VRSN",
+  "name": "VeriSign Inc",
+  "aliases": [
+   "VeriSign"
+  ],
+  "cik": "0001014473",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "VRSK",
+  "name": "Verisk Analytics, Inc. Common Stock",
+  "aliases": [
+   "Verisk Analytics",
+   "Verisk"
+  ],
+  "cik": "0001442145",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "VZ",
+  "name": "Verizon Communications",
+  "aliases": [
+   "Verizon",
+   "Verizon Communications"
+  ],
+  "cik": "0000732712",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "VRTX",
+  "name": "Vertex Pharmaceuticals Inc",
+  "aliases": [
+   "Vertex Pharmaceuticals"
+  ],
+  "cik": "0000875320",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "VRT",
+  "name": "Vertiv Holdings Co Class A Common Stock",
+  "aliases": [
+   "Vertiv"
+  ],
+  "cik": "0001674101",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "VTRS",
+  "name": "Viatris Inc. Common Stock",
+  "aliases": [
+   "Viatris"
+  ],
+  "cik": "0001792044",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "VICI",
+  "name": "VICI Properties Inc. Common Stock",
+  "aliases": [
+   "VICI Properties"
+  ],
+  "cik": "0001705696",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "V",
+  "name": "VISA Inc.",
+  "aliases": [
+   "Visa"
+  ],
+  "cik": "0001403161",
+  "ticker_strict": true,
+  "name_strict": true
+ },
+ {
+  "ticker": "VST",
+  "name": "Vistra Corp.",
+  "aliases": [
+   "Vistra"
+  ],
+  "cik": "0001692819",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "VMRK",
+  "name": "Vivmark Residential",
+  "aliases": [
+   "Vivmark Residential",
+   "Vivmark"
+  ],
+  "cik": "0000906107",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "VMC",
+  "name": "Vulcan Materials Company(Holding Company)",
+  "aliases": [
+   "Vulcan Materials Company(Holding Company)",
+   "Vulcan Materials"
+  ],
+  "cik": "0001396009",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "GWW",
+  "name": "W.W. Grainger, Inc.",
+  "aliases": [
+   "W.W. Grainger"
+  ],
+  "cik": "0000277135",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "WRB",
+  "name": "W.R. Berkley Corporation",
+  "aliases": [
+   "W.R. Berkley"
+  ],
+  "cik": "0000011544",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "WAB",
+  "name": "Wabtec Inc.",
+  "aliases": [
+   "Wabtec",
+   "Westinghouse Air Brake",
+   "Westinghouse Air Brake Technologies"
+  ],
+  "cik": "0000943452",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "WMT",
+  "name": "Walmart Inc. Common Stock",
+  "aliases": [
+   "Walmart"
+  ],
+  "cik": "0000104169",
+  "ticker_strict": false,
+  "name_strict": true
+ },
+ {
+  "ticker": "WBD",
+  "name": "Warner Bros. Discovery",
+  "aliases": [
+   "Warner Bros. Discovery",
+   "Warner Bros"
+  ],
+  "cik": null,
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "WM",
+  "name": "Waste Management, Inc.",
+  "aliases": [
+   "Waste Management"
+  ],
+  "cik": "0000823768",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "WAT",
+  "name": "Waters Corp",
+  "aliases": [
+   "Waters"
+  ],
+  "cik": "0001000697",
+  "ticker_strict": true,
+  "name_strict": true
+ },
+ {
+  "ticker": "WEC",
+  "name": "WEC Energy Group, Inc.",
+  "aliases": [
+   "WEC Energy"
+  ],
+  "cik": "0000783325",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "WFC",
+  "name": "Wells Fargo & Co.",
+  "aliases": [
+   "Wells Fargo"
+  ],
+  "cik": "0000072971",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "WELL",
+  "name": "Welltower Inc.",
+  "aliases": [
+   "Welltower"
+  ],
+  "cik": "0000766704",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "WST",
+  "name": "West Pharmaceutical Services, Inc.",
+  "aliases": [
+   "West Pharmaceutical Services",
+   "West Pharmaceutical"
+  ],
+  "cik": "0000105770",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "WDC",
+  "name": "Western Digital Corp.",
+  "aliases": [
+   "Western Digital"
+  ],
+  "cik": "0000106040",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "WY",
+  "name": "Weyerhaeuser Company",
+  "aliases": [
+   "Weyerhaeuser"
+  ],
+  "cik": "0000106535",
+  "ticker_strict": true,
+  "name_strict": false
+ },
+ {
+  "ticker": "WMB",
+  "name": "Williams Companies Inc.",
+  "aliases": [
+   "Williams Companies",
+   "Williams"
+  ],
+  "cik": "0000107263",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "WSM",
+  "name": "Williams-Sonoma, Inc.",
+  "aliases": [
+   "Williams-Sonoma"
+  ],
+  "cik": "0000719955",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "WTW",
+  "name": "Willis Towers Watson Public Limited Company Ordinary Shares",
+  "aliases": [
+   "Willis Towers Watson Public",
+   "Willis Towers Watson"
+  ],
+  "cik": "0001140536",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "WDAY",
+  "name": "Workday, Inc. Class A Common Stock",
+  "aliases": [
+   "Workday"
+  ],
+  "cik": "0001327811",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "WYNN",
+  "name": "Wynn Resorts Ltd",
+  "aliases": [
+   "Wynn Resorts"
+  ],
+  "cik": "0001174922",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "XEL",
+  "name": "Xcel Energy, Inc.",
+  "aliases": [
+   "Xcel Energy"
+  ],
+  "cik": "0000072903",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "XYL",
+  "name": "Xylem Inc",
+  "aliases": [
+   "Xylem"
+  ],
+  "cik": "0001524472",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "YUM",
+  "name": "Yum! Brands, Inc.",
+  "aliases": [
+   "Yum! Brands"
+  ],
+  "cik": "0001041061",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "ZBRA",
+  "name": "Zebra Technologies Corporation",
+  "aliases": [
+   "Zebra Technologies"
+  ],
+  "cik": "0000877212",
+  "ticker_strict": false,
+  "name_strict": false
+ },
+ {
+  "ticker": "ZBH",
+  "name": "Zimmer Biomet Holdings, Inc.",
+  "aliases": [
+   "Zimmer Biomet"
+  ],
+  "cik": "0001136869",
+  "ticker_strict": false,
+  "name_strict": false
+ }
+]
