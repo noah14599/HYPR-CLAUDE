@@ -1,0 +1,12 @@
+{
+  "name": "hypr-pipeline",
+  "private": true,
+  "description": "Behind-the-scenes jobs: database setup, price collection, scoring, news.",
+  "scripts": {
+    "migrate": "node --env-file=../.env migrate.js",
+    "prices": "node --env-file=../.env collect-prices.js"
+  },
+  "dependencies": {
+    "pg": "8.13.1"
+  }
+}
