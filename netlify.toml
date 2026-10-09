@@ -1,9 +1,9 @@
 # Tells Netlify how to build and publish the site.
-# The real app lives in web/ (Next.js); Netlify detects Next.js and sets up the rest itself.
+# The real app lives in web/ (Next.js) and builds to plain static files in web/out.
 [build]
   base = "web"
   command = "npm run build"
-  publish = ".next"
+  publish = "out"
 
 [build.environment]
   NODE_VERSION = "22"

@@ -6,6 +6,7 @@
 # Generated / bulky
 node_modules/
 .next/
+out/
 dist/
 *.zip
 
