@@ -128,15 +128,15 @@ const WORLDS = [
     { id: "database", t: "Set up the database (Supabase)", xp: 150, d: "Where prices, scores and news live. Free tier.", cost: "free" },
     { id: "sp500-prices", t: "Load all 500 S&P stocks with real prices", xp: 200, d: "Real charts, real day moves." },
   ]},
-  { name: "World 5 · The HYPR score", quests: [
-    { id: "formula", t: "Hand Claude your score formula", you: true, xp: 100, d: "Paste it exactly as you have it." },
-    { id: "score-10", t: "Score engine on 10 stocks", xp: 200, d: "You check every number by hand before we scale." },
-    { id: "score-500", t: "Scores for all 500, updating on a schedule", xp: 250, d: "Runs automatically, all day." },
-  ]},
-  { name: "World 6 · The news brain", quests: [
+  { name: "World 5 · The news brain", quests: [
     { id: "news-collect", t: "Collect news from every source", xp: 200, d: "News APIs, RSS, Google News, press releases. Duplicates removed." },
     { id: "ai-key", t: "Get an Anthropic API key", you: true, xp: 50, d: "Powers the summaries. Pay per use, cents per day to start.", cost: "small cost" },
-    { id: "summaries", t: "1–2 sentence 'what's going on' per stock", xp: 250, d: "Plus the news ±10 in the score." },
+    { id: "summaries", t: "1–2 sentence 'what's going on' per stock", xp: 250, d: "Each story also gets a good/bad read, which feeds the score next." },
+  ]},
+  { name: "World 6 · The HYPR score", quests: [
+    { id: "formula", t: "Hand Claude your score formula", you: true, xp: 100, d: "Paste it exactly as you have it: the price part and the news ±10." },
+    { id: "score-10", t: "Score engine on 10 stocks", xp: 200, d: "Real prices plus the news brain's read. You check every number by hand before we scale." },
+    { id: "score-500", t: "Scores for all 500, updating on a schedule", xp: 250, d: "Runs automatically, all day." },
   ]},
   { name: "World 7 · People", quests: [
     { id: "login", t: "Sign up and log in", xp: 150, d: "Free with Supabase." },
