@@ -1,0 +1,4 @@
+# Tells Netlify where the website lives in this repo.
+[build]
+  publish = "hypr-site"
+  command = ""
