@@ -175,6 +175,7 @@ class Component extends React.Component<any, any> {
     onScroll();
   }
   componentDidUpdate(pp, ps) {
+    if (ps.range !== this.state.range || ps.view !== this.state.view || ps.ticker !== this.state.ticker) this.loadLiveForView();
     this.applyTheme();
     if (this.state.searchOpen && !ps.searchOpen && this._searchInput) this._searchInput.focus();
     if (this.state.wAddOpen && !ps.wAddOpen && this._wAddInput) this._wAddInput.focus();
@@ -291,7 +292,6 @@ class Component extends React.Component<any, any> {
     { t: "F",    tier: "low", name: "Ford Motor Co.",     ex: "NYSE",   mark: "F", color: "#1668c8", bg: "#1e1e22", price: 11.62,  score: 36, sector: "Automotive", seed: 93, g: 0.14, logo: "assets/f.png", fit: "contain" },
     { t: "PFE",  tier: "low", name: "Pfizer Inc.",        ex: "NYSE",   mark: "P", color: "#0093d0", bg: "#1e1e22", price: 25.70,  score: 43, sector: "Pharma", seed: 99, g: 0.20, logo: "assets/pfe.png", fit: "contain" },
     { t: "T",    tier: "low", name: "AT&T Inc.",          ex: "NYSE",   mark: "T", color: "#00a8e0", bg: "#1e1e22", price: 28.15,  score: 55, sector: "Telecom", seed: 105, g: 0.34, logo: "assets/t.png", fit: "contain" },
-    { t: "WBA",  tier: "low", name: "Walgreens Boots",    ex: "NASDAQ", mark: "W", color: "#e01a2b", bg: "#1e1e22", price: 9.84,   score: 28, sector: "Pharmacy retail", seed: 111, g: 0.09, logo: "assets/wba.png", fit: "contain" },
     { t: "LYFT", tier: "low", name: "Lyft Inc.",          ex: "NASDAQ", mark: "L", color: "#ea0b8c", bg: "#1e1e22", price: 15.42,  score: 46, sector: "Mobility", seed: 117, g: 0.24, logo: "assets/lyft.png", fit: "contain" },
     { t: "SNAP", tier: "low", name: "Snap Inc.",          ex: "NYSE",   mark: "S", color: "#fffc00", bg: "#1e1e22", price: 8.76,   score: 33, sector: "Social", seed: 123, g: 0.12, logo: "assets/snap.png", fit: "contain" },
     { t: "PTON", tier: "low", name: "Peloton Interactive", ex: "NASDAQ", mark: "P", color: "#df1c2f", bg: "#1e1e22", price: 7.15,   score: 31, sector: "Fitness tech", seed: 129, g: 0.11, logo: "assets/pton.png", fit: "contain" },
@@ -1039,6 +1039,62 @@ class Component extends React.Component<any, any> {
     return heads.map((h, i) => ({ ...src[i], headline: h[0], ...h[1] }));
   }
 
+  // ---- LIVE DATA (Massive, via our /api routes) ----
+  // Same shape as the demo series, built from real closing prices.
+  realSeries(prices, baseline) {
+    const N = prices.length, W = 1000, H = 240, padY = 20;
+    const lo = Math.min(...prices, baseline ?? Infinity), hi = Math.max(...prices, baseline ?? -Infinity);
+    const span = (hi - lo) || 1;
+    const X = i => i / (N - 1) * W;
+    const Y = p => padY + (1 - (p - lo) / span) * (H - 2 * padY);
+    let d = "M " + X(0).toFixed(1) + " " + Y(prices[0]).toFixed(1);
+    for (let i = 1; i < N; i++) d += " L " + X(i).toFixed(1) + " " + Y(prices[i]).toFixed(1);
+    return { N, W, H, prices, min: Math.min(...prices), max: Math.max(...prices), X, Y, path: d,
+      baseY: Y(baseline ?? prices[0]).toFixed(1), endX: X(N - 1).toFixed(1), endY: Y(prices[N - 1]).toFixed(1) };
+  }
+  liveTickers() { return this.STOCKS.map(x => x.t).join(","); }
+  loadQuotes() {
+    fetch("/api/quotes?tickers=" + this.liveTickers()).then(r => r.json()).then(j => {
+      if (!j || !j.quotes) return;
+      for (const x of this.STOCKS) {
+        const q = j.quotes[x.t];
+        if (!q) continue;
+        x.price = q.price; x.prevClose = q.prevClose; x.dayChgPct = q.chgPct;
+      }
+      this._rc = {};
+      this.setState({ liveAt: j.asOf });
+    }).catch(() => {});
+  }
+  loadPeriod(range) {
+    this._period = this._period || {};
+    if (range === "1D" || this._period[range]) return;
+    this._period[range] = "loading";
+    fetch("/api/period?range=" + range + "&tickers=" + this.liveTickers()).then(r => r.json()).then(j => {
+      if (!j || !j.closes) { delete this._period[range]; return; }
+      this._period[range] = j.closes;
+      this.setState({ periodAt: Date.now() });
+    }).catch(() => { delete this._period[range]; });
+  }
+  loadChart(t, range) {
+    this._charts = this._charts || {};
+    const k = t + "|" + range;
+    const fresh = this._chartAt && this._chartAt[k] && Date.now() - this._chartAt[k] < (range === "1D" ? 60000 : 600000);
+    if (fresh || (this._chartLoading && this._chartLoading[k])) return;
+    this._chartLoading = this._chartLoading || {}; this._chartAt = this._chartAt || {};
+    this._chartLoading[k] = true;
+    fetch("/api/chart?ticker=" + encodeURIComponent(t) + "&range=" + range).then(r => r.json()).then(j => {
+      this._chartLoading[k] = false;
+      if (!j || !j.points || j.points.length < 2) return;
+      this._charts[k] = j.points.map(p => p[1]);
+      this._chartAt[k] = Date.now();
+      if (this._rc) delete this._rc[t];
+      this.setState({ chartAt: Date.now() });
+    }).catch(() => { this._chartLoading[k] = false; });
+  }
+  loadLiveForView() {
+    this.loadPeriod(this.state.range);
+    if (this.state.view === "detail" && this.state.ticker) this.loadChart(this.state.ticker, this.state.range);
+  }
   rangesFor(stock) {
     this._rc = this._rc || {};
     if (this._rc[stock.t]) return this._rc[stock.t];
@@ -1091,10 +1147,25 @@ class Component extends React.Component<any, any> {
       out[key] = { start: c.start, score, label: c.label, jump: score - prev, prev,
         series: build(c.start, c.seed, c.vol, c.shape, end) };
     }
+    // LIVE DATA: when real history for this stock and timeframe has loaded, draw it instead of the demo shape.
+    for (const key in out) {
+      const real = this._charts && this._charts[stock.t + "|" + key];
+      if (!real || real.length < 2) continue;
+      const pr = real.slice();
+      if (Math.abs(pr[pr.length - 1] - end) > 0.005) pr.push(end); // finish on the current price
+      // Change is measured the same way as in the lists: vs. yesterday's close (1D) or the close when the window began.
+      const p0 = this._period && typeof this._period[key] === "object" ? this._period[key][stock.t] : null;
+      const startP = key === "1D" ? (stock.prevClose || pr[0]) : (p0 || pr[0]);
+      out[key] = { ...out[key], start: startP, series: this.realSeries(pr, key === "1D" ? startP : null),
+        label: key === "10Y" ? "past 5 years (all history on our data plan)" : out[key].label };
+    }
     this._rc[stock.t] = out;
     return out;
   }
   componentDidMount() {
+    this.loadQuotes();
+    this._quoteTimer = setInterval(() => this.loadQuotes(), 60000);
+    this.loadLiveForView();
     this.applyTheme();
     this.bindPhoneScroll();
     const RESP = ['--col-flex','--col-w','--side-w','--side-pad','--pane-dir','--pane-pad','--col-pad','--sec-gap',
@@ -1423,6 +1494,7 @@ class Component extends React.Component<any, any> {
     }
   }
   componentWillUnmount() {
+    clearInterval(this._quoteTimer);
     window.removeEventListener('resize', this._fit);
     window.removeEventListener('orientationchange', this._fit);
     window.removeEventListener('load', this._fit);
@@ -2688,16 +2760,15 @@ class Component extends React.Component<any, any> {
       const sc = rr.score;
       const ser = rr.series;
       const scDelta = sc - rr.prev;
-      // Price move for the window — direction tracks the score move so the two agree.
-      const ph = this.rhash(Math.round(x.price * 13) + 5, range);
-      const span = { "1D": 2.6, "1W": 5, "1M": 9, "3M": 16, "1Y": 34, "5Y": 120, "10Y": 240 }[range] || 2.6;
-      const down = scDelta < 0 ? (ph % 100) < 74 : (ph % 100) < 22;
-      const chg = +(((ph % 1000) / 1000 * 0.85 + 0.15) * span * (down ? -1 : 1)).toFixed(2);
+      // LIVE DATA: real price move for the window (today vs. yesterday's close, or vs. the close at the window's start).
+      const p0 = this._period && typeof this._period[range] === "object" ? this._period[range][x.t] : null;
+      const chg = range === "1D" ? (x.dayChgPct != null ? +x.dayChgPct.toFixed(2) : null)
+        : (p0 ? +((x.price - p0) / p0 * 100).toFixed(2) : null);
       return { key: x.t, t: x.t, name: x.name, ex: x.ex, mark: x.mark, color: x.color, bg: x.logo ? "transparent" : x.bg, sector: x.sector,
         hasLogo: !!x.logo, noLogo: !x.logo, logo: this.logoOf(x), fit: x.fit || "contain",
         priceStr: "$" + x.price.toFixed(2),
-        chgStr: (chg >= 0 ? "+" : "−") + Math.abs(chg).toFixed(2) + "%",
-        chgColor: chg >= 0 ? HPAL.up : HPAL.dn,
+        chgStr: chg == null ? "—" : (chg >= 0 ? "+" : "−") + Math.abs(chg).toFixed(2) + "%",
+        chgColor: chg == null ? HPAL.mut3 : chg >= 0 ? HPAL.up : HPAL.dn,
         scoreStr: String(sc), scorePct: sc + "%",
         scoreDeltaStr: (scDelta >= 0 ? "+" : "−") + Math.abs(scDelta),
         // Colour by momentum, scaled to how big the move is.
@@ -2815,7 +2886,7 @@ class Component extends React.Component<any, any> {
       : "—";
     const wEmpty = wRowsAll.length === 0;
     const wAvgVal = wRowsAll.length
-      ? wRowsAll.reduce((a, r) => a + parseFloat(r.chgStr.replace("−", "-").replace("+", "").replace("%", "")) * (r.chgStr.indexOf("−") === 0 ? -1 : 1), 0) / wRowsAll.length
+      ? wRowsAll.reduce((a, r) => a + (parseFloat(r.chgStr.replace("−", "-").replace("+", "").replace("%", "")) || 0) * (r.chgStr.indexOf("−") === 0 ? -1 : 1), 0) / wRowsAll.length
       : 0;
     const wAvgStr = (wAvgVal >= 0 ? "+" : "−") + Math.abs(wAvgVal).toFixed(2) + "% avg today";
     const wAvgCol = wAvgVal >= 0 ? HPAL.up : HPAL.dn;

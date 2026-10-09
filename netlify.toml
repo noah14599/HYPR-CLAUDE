@@ -1,10 +1,14 @@
 # Tells Netlify how to build and publish the site.
-# The real app lives in web/ (Next.js) and builds to plain static files in web/out.
+# The real app lives in web/ (Next.js). It has a small server part (web/app/api) that talks to
+# Massive with the private API key, so Netlify runs it with its Next.js runtime.
 [build]
   base = "web"
   command = "npm run build"
-  publish = "out"
+  publish = ".next"
 
 [build.environment]
   NODE_VERSION = "22"
   NEXT_TELEMETRY_DISABLED = "1"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
