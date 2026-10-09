@@ -1060,6 +1060,7 @@ class Component extends React.Component<any, any> {
         const q = j.quotes[x.t];
         if (!q) continue;
         x.price = q.price; x.prevClose = q.prevClose; x.dayChgPct = q.chgPct;
+        x.session = q.session; x.closeDate = q.closeDate; x.ext = q.ext;
       }
       this._rc = {};
       this.setState({ liveAt: j.asOf });
@@ -3117,6 +3118,17 @@ class Component extends React.Component<any, any> {
     const highStr = "$" + c.max.toFixed(2);
     const lowStr = "$" + c.min.toFixed(2);
     const rangeLabel = R.label;
+    // LIVE DATA: under the price, say what the number is (like Google: market open, or the official close),
+    // and show pre-market / after-hours trading on its own line.
+    const closeDay = d => new Date(d + "T12:00:00Z").toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric", timeZone: "UTC" });
+    const heroNote = hoverActive || range !== "1D" || !stock.session ? rangeLabel
+      : stock.session === "open" ? "Market open · 15 min delayed" : "At close · " + closeDay(stock.closeDate);
+    const extQ = !hoverActive && stock.ext ? stock.ext : null;
+    const hasExt = !!extQ;
+    const extLabel = extQ ? extQ.label : "";
+    const extPrice = extQ ? "$" + extQ.price.toFixed(2) : "";
+    const extChg = extQ ? (extQ.chg >= 0 ? "+" : "−") + Math.abs(extQ.chg).toFixed(2) + " (" + (extQ.chg >= 0 ? "+" : "−") + Math.abs(extQ.chgPct).toFixed(2) + "%)" : "";
+    const extColor = extQ ? (extQ.chg >= 0 ? HPAL.up : HPAL.dn) : HPAL.mut;
 
     const score = R.score;
     const P = this.profileFor(stock);
@@ -4084,7 +4096,7 @@ class Component extends React.Component<any, any> {
       onHover, onLeave, onHoverDown, onHoverUp, hoverActive,
       chartTa: 'var(--chart-ta, auto)', hxPct, hyPct, tipStr,
       priceStr, changeStr, changeColor, highStr, lowStr,
-      rangeLabel, pills, scoreStr, scoreSubtitle,
+      rangeLabel, heroNote, hasExt, extLabel, extPrice, extChg, extColor, pills, scoreStr, scoreSubtitle,
       summaryHeadline, summaryPoints, summaryMeta,
       rangeChip, scoreHeading, summaryHeading, scoreNote,
       openModal, closeModal, modalOpen, modal, newsOpen, allNews, sig,
@@ -12522,8 +12534,15 @@ export default class HyprApp extends Component {
                           </div>
                           {"\n          "}
                           <div style={{"color":"var(--c-tx3,#a1a1aa)","fontSize":"14px","marginTop":"4px"}}>
-                            {__t(__v["rangeLabel"])}
+                            {__t(__v["heroNote"])}
                           </div>
+                          {(__v["hasExt"]) ? (
+                            <div style={{"display":"flex","alignItems":"baseline","gap":"8px","fontSize":"14px","marginTop":"6px","color":"var(--c-tx3,#a1a1aa)"}}>
+                              <span>{__t(__v["extLabel"])}</span>
+                              <span style={{"color":"var(--c-tx1,#e4e4e7)","fontWeight":"600","fontVariantNumeric":"tabular-nums"}}>{__t(__v["extPrice"])}</span>
+                              <span style={__css(`color:${__s(__v["extColor"])};font-variant-numeric:tabular-nums;`)}>{__t(__v["extChg"])}</span>
+                            </div>
+                          ) : null}
                           {"\n        "}
                         </div>
                         {"\n          "}
