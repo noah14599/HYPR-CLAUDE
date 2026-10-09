@@ -1,5 +1,7 @@
 // GET /api/quotes?tickers=AAPL,MSFT,...
 // Current price (15-minute delayed on our plan) and today's change for each ticker, in one Massive request.
+// All three /api routes send "Netlify-Vary: query": without it Netlify's cache ignores ?ticker=…&range=…
+// and serves the first response it stored for every request.
 import { NextResponse } from "next/server";
 import { massive, toMassive } from "@/lib/massive";
 
@@ -39,7 +41,7 @@ export async function GET(req: Request) {
         updated: s.updated ? Math.round(s.updated / 1e6) : null,
       };
     }
-    return NextResponse.json({ quotes, asOf: Date.now() }, { headers: { "Cache-Control": "public, s-maxage=60, stale-while-revalidate=120" } });
+    return NextResponse.json({ quotes, asOf: Date.now() }, { headers: { "Cache-Control": "public, s-maxage=60, stale-while-revalidate=120", "Netlify-Vary": "query" } });
   } catch (e) {
     return NextResponse.json({ error: (e as Error).message }, { status: 502 });
   }

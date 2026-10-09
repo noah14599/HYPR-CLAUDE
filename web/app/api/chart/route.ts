@@ -35,7 +35,7 @@ export async function GET(req: Request) {
       bars = bars.filter(b => dates.includes(etParts(b.t).date));
     }
     const points = bars.map(b => [b.t, b.c] as [number, number]);
-    return NextResponse.json({ ticker, range, points }, { headers: { "Cache-Control": `public, s-maxage=${cfg.cache}, stale-while-revalidate=${cfg.cache * 2}` } });
+    return NextResponse.json({ ticker, range, points }, { headers: { "Cache-Control": `public, s-maxage=${cfg.cache}, stale-while-revalidate=${cfg.cache * 2}`, "Netlify-Vary": "query" } });
   } catch (e) {
     return NextResponse.json({ error: (e as Error).message }, { status: 502 });
   }

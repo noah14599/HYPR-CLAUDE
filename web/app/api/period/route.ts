@@ -24,7 +24,7 @@ export async function GET(req: Request) {
         // Keyed by the app's tickers (BRK.B → BRK-B, BNY → BK, ...).
         const closes: Record<string, number> = {};
         for (const r of json.results) { const t = fromMassive(r.T); if (!want.size || want.has(t)) closes[t] = r.c; }
-        return NextResponse.json({ range, day, closes }, { headers: { "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=7200" } });
+        return NextResponse.json({ range, day, closes }, { headers: { "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=7200", "Netlify-Vary": "query" } });
       }
     }
     return NextResponse.json({ error: "no trading day found" }, { status: 404 });
