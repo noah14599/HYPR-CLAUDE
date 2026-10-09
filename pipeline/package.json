@@ -8,7 +8,8 @@
     "companies": "node --env-file=../.env companies.js",
     "test": "node --test",
     "filings": "node --env-file=../.env collect-filings.js",
-    "news": "node --env-file=../.env collect-news.js"
+    "news": "node --env-file=../.env collect-news.js",
+    "setup-schedule": "node --env-file=../.env setup-schedule.js"
   },
   "dependencies": {
     "pg": "8.13.1"
