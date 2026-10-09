@@ -1,5 +1,5 @@
 /* Desktop: fixed 84px icon rail, content canvas zoomed by --s.
-   Tablet: rail becomes a drawer opened by the burger. Phone: bottom tab bar. */
+   Tablet: same rail, content reflows. Phone: bottom tab bar, rail opens as a drawer. */
 
 .rail {
   position: fixed; left: 0; top: 0; bottom: 0; width: 84px; z-index: 70;
@@ -50,15 +50,21 @@
 
 /* The page canvas: designed at 1920px wide, zoomed to fit. */
 .main {
-  margin-left: var(--rail-w);
+  margin-left: calc(var(--rail-w) / var(--s)); /* margin sits inside the zoom, so undo it */
   zoom: var(--s);
   min-height: calc(100vh / var(--s));
+  padding-top: 26px;
 }
 
-.burger, .scrim, .tabs { display: none; }
+.scrim, .tabs { display: none; }
 
-/* Tablet + phone: the rail is an expanded drawer. */
+/* Tablet: rail stays; content starts 96px in. */
 @media (max-width: 1023px) {
+  .main { margin-left: calc(96px / var(--s)); }
+}
+
+/* Phone: the rail becomes an expanded drawer, opened from the tab bar. */
+@media (max-width: 699px) {
   .rail {
     width: 216px; align-items: stretch; padding: 12px 10px 14px;
     transform: translateX(-110%); box-shadow: none;
@@ -69,22 +75,15 @@
   .item { width: 100%; justify-content: flex-start; padding: 0 16px; }
   .label { display: block; }
   .tip { display: none; }
-  .main { margin-left: 0; }
-  .burger {
-    display: flex; position: fixed; top: 12px; left: 10px; z-index: 60;
-    width: 40px; height: 40px; border-radius: 12px; align-items: center; justify-content: center;
-    background: var(--c-surfa); border: 1px solid var(--c-bd1); color: var(--c-tx1);
-    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); cursor: pointer;
-  }
+  .main { margin-left: 0; padding-top: 0; }
   .scrim {
     display: block; position: fixed; inset: 0; z-index: 65;
     background: var(--c-scrim); backdrop-filter: blur(2px);
   }
 }
 
-/* Phone: bottom tab bar replaces the burger. */
+/* Phone: bottom tab bar. */
 @media (max-width: 699px) {
-  .burger { display: none; }
   .tabs {
     display: flex; position: fixed; left: 12px; right: 12px; bottom: calc(12px + env(safe-area-inset-bottom, 0px)); z-index: 60;
     justify-content: space-around; align-items: center; padding: 6px;

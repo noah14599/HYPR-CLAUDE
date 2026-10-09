@@ -20,7 +20,9 @@
   --c-yel: #eab308; --c-yel2: #fbbf24;
   --hypr-mark: url(/assets/hypr-logo.png);
   --hypr-wide: url(/assets/hypr-logo-wide.png);
-  --score-card: none;
+  --score-card: linear-gradient(150deg,#2b1630 0%,#2c1c2b 28%,#231f2c 52%,#17242f 76%,#0f2a33 100%);
+  --score-lab: rgba(255,255,255,.66);
+  --score-text: linear-gradient(135deg,#ff1818 0%,#ff5c72 14%,#fd7241 29%,#f9ad03 43%,#d4c543 57%,#91d18d 71%,#03d8cf 86%,#03c7e3 100%);
   --ease: cubic-bezier(.22,1,.36,1);
   --card-shadow: 0 1px 0 rgba(255,255,255,.03) inset, 0 10px 30px rgba(0,0,0,.35);
 
@@ -50,6 +52,7 @@
   --hypr-mark: url(/assets/hypr-logo-light.png);
   --hypr-wide: url(/assets/hypr-logo-wide-light.png);
   --score-card: linear-gradient(150deg,#f9d9e2 0%,#fbe3cc 28%,#eef0d3 52%,#d8ecea 76%,#dce9fb 100%);
+  --score-lab: #3f3f46;
   --card-shadow: 0 1px 2px rgba(24,24,27,.04), 0 8px 24px rgba(24,24,27,.06);
   color-scheme: light;
 }

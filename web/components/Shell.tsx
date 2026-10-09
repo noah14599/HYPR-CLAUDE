@@ -69,9 +69,6 @@ export function Shell({ children }: { children: React.ReactNode }) {
       </nav>
       {tip && <span className={s.tip} style={{ top: tip.y }}>{tip.label}</span>}
 
-      <button type="button" className={s.burger} aria-label="Open menu" onClick={() => setOpen(true)}>
-        <Icon name="menu" />
-      </button>
 
       <nav className={s.tabs} aria-label="Tabs">
         {([["Overview", "home", "/"], ["Calendar", "calendar", "/calendar"], ["Watchlist", "watchlist", "/watchlist"], ["Search", "search", "/search"]] as const).map(([label, icon, href]) => (

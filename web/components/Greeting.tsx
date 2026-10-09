@@ -3,17 +3,21 @@
 import { useEffect, useState } from "react";
 
 /** "Good afternoon, Noah" + today's date. Rendered on the client so it uses the visitor's clock. */
-export function Greeting({ name }: { name: string }) {
+export function Greeting({ className, dateClassName }: { className?: string; dateClassName?: string }) {
   const [now, setNow] = useState<Date | null>(null);
-  useEffect(() => setNow(new Date()), []);
-  if (!now) return <span>&nbsp;</span>;
+  const [name, setName] = useState("Noah");
+  useEffect(() => {
+    setNow(new Date());
+    try { const n = localStorage.getItem("hypr:name"); if (n) setName(n); } catch {}
+  }, []);
+  if (!now) return <span className={className}>&nbsp;</span>;
   const h = now.getHours();
-  const word = h < 12 ? "Good morning" : h < 18 ? "Good afternoon" : "Good evening";
+  const word = h < 12 ? "Good morning" : h < 17 ? "Good afternoon" : h < 22 ? "Good evening" : "Still up";
   const date = now.toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric" });
   return (
     <>
-      <span data-title style={{ fontSize: 26, letterSpacing: "-.6px" }}>{word}, {name}</span>
-      <span style={{ fontSize: 13, color: "var(--c-tx4)" }}>{date}</span>
+      <span data-title className={className}>{word}, {name}</span>
+      <span className={dateClassName}>{date}</span>
     </>
   );
 }

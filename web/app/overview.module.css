@@ -1,7 +1,187 @@
-.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
-.cardHead { display: flex; align-items: center; gap: 8px; padding: 0 14px 10px; }
-.cardTitle { font-size: 17px; }
-.cardSub { font-size: 12px; color: var(--c-tx4); }
-.dotUp, .dotDn { width: 7px; height: 7px; border-radius: 50%; background: var(--c-up); }
-.dotDn { background: var(--c-dn); }
-@media (max-width: 1023px) { .grid { grid-template-columns: minmax(0, 1fr); } }
+/* Overview, matched to the design's desktop canvas (1920 wide, zoomed by --s).
+   Negative top margins come from the design: they tighten the 40px section gap where it uses them. */
+
+.col {
+  width: 100%; max-width: 1712px; margin: 0 auto; min-width: 0;
+  display: flex; flex-direction: column; gap: 40px;
+  padding: 26px 48px 56px 28px;
+}
+
+/* Range switch cross-fade */
+.fade { transition: opacity .3s ease, transform .3s var(--ease), filter .3s ease; }
+.swapping { opacity: .18; transform: translateY(7px); filter: blur(3px); }
+.swappingNoShift { opacity: .18; filter: blur(3px); }
+
+.greet { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 12px; margin-bottom: -14px; }
+.greetName { font-size: 26px; letter-spacing: -.6px; }
+.greetDate { font-size: 13px; color: var(--c-tx4); }
+
+/* Ticker strip */
+.strips { display: flex; flex-wrap: wrap; align-items: stretch; gap: 14px; }
+.strip {
+  flex: 1; min-width: 0; display: flex; align-items: center;
+  background: var(--c-bg1); border: 1px solid var(--c-surf); border-radius: 14px; overflow: hidden;
+}
+.stripLab {
+  flex: none; display: flex; align-items: center; align-self: stretch; padding: 0 14px 0 15px;
+  font-size: 10px; font-weight: 700; letter-spacing: 1.1px; color: var(--c-tx4); white-space: nowrap;
+}
+.stripLab:hover { color: var(--c-tx0); }
+.stripItems { flex: 1; min-width: 0; display: flex; align-items: stretch; scrollbar-width: none; }
+.stripItem {
+  flex: 1; min-width: 0; display: flex; align-items: center; gap: 9px; padding: 9px 13px;
+  border-left: 1px solid var(--c-bg5); color: inherit;
+}
+.stripText { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 1px; }
+.stripItemLab, .stripVal, .stripChg { min-width: 0; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.stripItemLab { font-size: 10px; font-weight: 700; letter-spacing: .7px; color: var(--c-tx4); }
+.stripVals { min-width: 0; display: flex; align-items: baseline; gap: 6px; }
+.stripVal { font-size: 13px; font-weight: 600; font-variant-numeric: tabular-nums; color: var(--c-tx1); }
+.stripChg { font-size: 11px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.spark { width: 34px; height: 18px; flex: none; overflow: visible; }
+.stripAll {
+  flex: none; display: flex; align-items: center; align-self: stretch; padding: 0 12px;
+  font-size: 11px; font-weight: 600; color: var(--c-blue); white-space: nowrap;
+}
+
+/* HYPR mark + timeframe pills */
+.hyprRow { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px; margin-top: -16px; }
+.hyprLeft { display: flex; align-items: center; gap: 13px; min-width: 0; }
+.hyprMark { height: 30px; width: 120px; display: block; flex: none; background: var(--hypr-wide) left center / contain no-repeat; }
+.expl { font-size: 13px; color: var(--c-tx4); }
+.expl b { color: var(--c-tx1); font-weight: 600; }
+.pills { display: flex; gap: 3px; background: var(--c-bg1); border: 1px solid var(--c-surf); border-radius: 11px; padding: 4px; flex: none; }
+.pill {
+  text-align: center; padding: 6px 13px; border-radius: 8px; font-size: 12px; font-weight: 600; cursor: pointer;
+  color: var(--c-tx3); border: 1px solid transparent; background: transparent;
+  transition: background .22s var(--ease), color .22s ease, border-color .22s ease, transform .22s var(--ease);
+}
+.pill:hover { color: var(--c-tx0); background: transparent; border-color: transparent; }
+.pillOn, .pillOn:hover { background: var(--c-surf); border-color: var(--c-bd3); color: var(--c-tx0); transform: translateY(-1px); }
+
+/* Top six score cards */
+.picks { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 18px; margin-top: -20px; }
+.pick { display: flex; flex-direction: column; align-items: center; color: inherit; transition: transform .18s var(--ease); }
+.pick:hover { transform: translateY(-4px); color: inherit; }
+.pickPill {
+  height: 48px; min-width: 106px; max-width: 100%; padding: 0 20px; border-radius: 24px;
+  background: var(--c-bg3); border: 1.5px solid var(--c-acc); box-shadow: 0 0 0 3px rgba(167,139,250,.14);
+  display: flex; align-items: center; justify-content: center; gap: 9px; position: relative; z-index: 2;
+}
+.pickLogo {
+  width: 24px; height: 24px; flex: none; border-radius: 7px; position: relative; overflow: hidden;
+  display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700;
+}
+.pickT { font-size: 13px; font-weight: 600; color: var(--c-tx1); letter-spacing: .3px; white-space: nowrap; }
+.pickCard {
+  width: 100%; margin-top: -24px; border-radius: 22px; background: var(--score-card);
+  padding: 34px 14px 14px; display: flex; flex-direction: column; align-items: center;
+}
+.pickScore, .groupScore {
+  font-weight: 700; line-height: 1;
+  background: var(--score-text); -webkit-background-clip: text; background-clip: text; color: transparent;
+  filter: drop-shadow(0 3px 4px rgba(30,25,20,.3)) drop-shadow(0 1px 1px rgba(30,25,20,.22));
+}
+.pickScore { font-size: 92px; letter-spacing: -3px; }
+.pickLab { font-size: 10px; font-weight: 700; letter-spacing: 1.6px; color: var(--score-lab); margin-top: 4px; white-space: nowrap; }
+
+/* Ranked lists */
+.g2 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 18px; }
+.g2b { margin-top: -18px; }
+.card { background: var(--c-bg1); border: 1px solid var(--c-surf); border-radius: 20px; padding: 20px 18px; display: flex; flex-direction: column; }
+.cardHead { display: flex; align-items: center; gap: 9px; padding: 0 14px 10px; }
+.dot { width: 7px; height: 7px; border-radius: 50%; flex: none; }
+.cardTitle { font-size: 17px; white-space: nowrap; }
+.cardNote { font-size: 12px; color: var(--c-tx4); white-space: nowrap; }
+.colPrice, .colScore { flex: none; text-align: right; font-size: 9px; font-weight: 700; letter-spacing: 1px; color: var(--c-tx5); }
+.colPrice { width: 106px; }
+.colScore { width: 70px; }
+.row { display: flex; align-items: center; gap: 14px; padding: 11px 14px; border-radius: 12px; color: inherit; }
+.row:hover { color: inherit; }
+.rowLogo {
+  width: 32px; height: 32px; flex: none; border-radius: 9px; overflow: hidden; position: relative;
+  display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700;
+}
+.logoImg { position: absolute; inset: 0; background-repeat: no-repeat; background-position: center; }
+.lightOnly { display: none; }
+:global([data-theme="light"]) .lightOnly { display: block; }
+:global([data-theme="light"]) .darkOnly { display: none; }
+.rowNames { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.rowT { font-size: 14px; font-weight: 600; color: var(--c-tx0); }
+.rowName { font-size: 11px; color: var(--c-tx4); margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.rowPrice { width: 92px; flex: none; display: flex; flex-direction: column; align-items: flex-end; gap: 2px; }
+.price { font-size: 14px; font-weight: 600; font-variant-numeric: tabular-nums; color: var(--c-tx1); }
+.small { font-size: 11px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.rowScore {
+  width: 56px; flex: none; display: flex; flex-direction: column; align-items: flex-end; gap: 1px;
+  border-left: 1px solid var(--c-surf); padding-left: 14px; box-sizing: content-box;
+}
+.score { font-size: 21px; line-height: 1; font-variant-numeric: tabular-nums; }
+.more {
+  display: inline-flex; align-self: flex-start; align-items: center; gap: 7px; margin: 10px 6px 0;
+  padding: 8px 12px; border-radius: 10px; font-size: 13px; font-weight: 600; color: var(--c-blue);
+  background: transparent; border: none; cursor: pointer;
+}
+.more:hover { background: var(--c-bg1); color: var(--c-blue3); }
+
+/* Watchlist groups */
+.groupsHead { display: flex; align-items: baseline; gap: 14px; }
+.groupsTitle { font-size: 22px; letter-spacing: -.4px; }
+.groupsSub { font-size: 13px; color: var(--c-tx4); }
+.g3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 14px; }
+.group {
+  background: var(--c-bg1); border: 1px solid var(--c-surf); border-radius: 20px; padding: 20px 24px;
+  display: flex; align-items: center; justify-content: space-between; gap: 18px; color: inherit;
+}
+.group:hover { border-color: var(--c-bd2); background: var(--c-bg3); color: inherit; }
+.groupName { display: flex; align-items: center; gap: 8px; }
+.groupIcon { font-size: 15px; color: var(--c-acc); }
+.groupNameText { font-size: 18px; letter-spacing: -.3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.groupCount { display: block; font-size: 12px; color: var(--c-tx4); margin-top: 3px; }
+.groupChip { border-radius: 14px; background: var(--score-card); padding: 10px 20px; flex: none; }
+.groupScore { font-size: 40px; letter-spacing: -1.2px; }
+
+/* Tablet: real reflow (handoff: tablet 700–1023px) */
+@media (max-width: 1023px) {
+  .col { gap: 28px; padding: 22px 26px 36px; }
+  .greet, .hyprRow, .picks, .g2b { margin: 0; }
+  .greetName { font-size: 22px; }
+  .strip { flex-basis: 100%; }
+  .stripVals { flex-direction: column; align-items: flex-start; gap: 0; }
+  .spark, .cardNote { display: none; }
+  .colScore { width: 56px; }
+  .colPrice { width: 92px; }
+}
+@media (max-width: 755px) { .g3 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* Phone */
+@media (max-width: 699px) {
+  .col { gap: 22px; padding: 28px 16px 96px; }
+  .expl { display: none; }
+  .g2 { grid-template-columns: minmax(0, 1fr); }
+  .picks { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .strips { gap: 6px; }
+  .stripItems { overflow-x: auto; }
+  .stripItem { flex: none; min-width: 112px; padding: 5px 9px; }
+  .stripItemLab { font-size: 11px; }
+  .stripVals { flex-direction: row; align-items: baseline; gap: 6px; }
+  .stripLab { padding: 0 9px; }
+  .stripAll { display: none; }
+  .hyprMark { height: 22px; width: 88px; }
+  .pills { width: 100%; justify-content: space-between; }
+  .pill { flex: 1; padding: 6px 0; }
+  .picks { gap: 8px; }
+  .pickPill { height: 32px; min-width: 0; padding: 0 9px; gap: 5px; }
+  .pickLogo { width: 16px; height: 16px; font-size: 10px; }
+  .pickT { font-size: 10px; }
+  .pickCard { margin-top: -17px; border-radius: 16px; padding: 20px 6px 8px; }
+  .pickScore { font-size: 44px; letter-spacing: -1.5px; }
+  .pickLab { font-size: 8px; letter-spacing: .7px; }
+  .card { padding: 16px 10px; }
+  .cardHead, .row { gap: 10px; padding-left: 10px; padding-right: 10px; }
+  .rowPrice, .colPrice { width: 76px; }
+  .rowScore { width: 44px; padding-left: 10px; }
+  .colScore { width: 54px; }
+  .colPrice, .colScore { font-size: 10px; }
+  .g3 { grid-template-columns: minmax(0, 1fr); }
+}
