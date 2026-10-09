@@ -1,0 +1,19 @@
+.row {
+  display: flex; align-items: center; gap: 14px; padding: 10px 14px; border-radius: 12px;
+  color: var(--c-tx0);
+}
+.row:hover { color: var(--c-tx0); }
+.tile {
+  flex: none; border-radius: 9px; background: var(--c-tile); position: relative; overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+}
+.img { position: absolute; inset: 5px; background-repeat: no-repeat; background-position: center; background-size: contain; }
+.lightOnly { display: none; }
+:global([data-theme="light"]) .lightOnly { display: block; }
+:global([data-theme="light"]) .darkOnly { display: none; }
+.mark { font-size: 13px; font-weight: 700; }
+.names { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.ticker { font-size: 15px; }
+.name { font-size: 12px; color: var(--c-tx4); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.price { font-size: 14px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.score { width: 44px; text-align: right; font-size: 22px; font-weight: 700; font-variant-numeric: tabular-nums; }

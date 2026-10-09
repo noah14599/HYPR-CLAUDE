@@ -1,0 +1,101 @@
+/* Desktop: fixed 84px icon rail, content canvas zoomed by --s.
+   Tablet: rail becomes a drawer opened by the burger. Phone: bottom tab bar. */
+
+.rail {
+  position: fixed; left: 0; top: 0; bottom: 0; width: 84px; z-index: 70;
+  background: var(--c-bg0); border-right: 1px solid var(--c-bg4);
+  display: flex; flex-direction: column; align-items: center;
+  padding: 14px 0 16px; gap: 4px;
+  transition: transform .26s var(--ease);
+}
+.logo {
+  width: 38px; height: 38px; margin: 0 0 6px; flex: none;
+  background: var(--hypr-mark) center / contain no-repeat;
+}
+.items {
+  flex: 1 1 0; min-height: 0; width: 100%;
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  overflow-y: auto; scrollbar-width: none;
+}
+.item {
+  width: 42px; height: 42px; min-height: 32px; flex: 0 1 auto;
+  display: flex; align-items: center; justify-content: center; gap: 12px;
+  border-radius: 13px; border: 1px solid transparent;
+  color: var(--c-tx3); background: transparent; padding: 0;
+  font-size: 14px; font-weight: 500; position: relative;
+}
+.item[aria-current="page"] {
+  border-radius: 12px; background: var(--c-bg3); border-color: var(--c-bd1); color: var(--c-tx0);
+}
+.label { display: none; flex: 1; min-width: 0; white-space: nowrap; text-align: left; }
+.spacer { flex: 1; }
+.dot {
+  position: absolute; top: 9px; right: 11px; width: 7px; height: 7px; border-radius: 50%;
+  background: var(--c-dn); border: 1.5px solid var(--c-bg0);
+}
+.avatar {
+  width: 30px; height: 30px; border-radius: 50%; flex: none;
+  background: var(--c-surf); border: 1px solid var(--c-bd2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 600; color: var(--c-tx2);
+}
+
+.tip {
+  position: fixed; left: 84px; z-index: 95; transform: translateY(-50%);
+  pointer-events: none; transition: opacity .14s ease;
+  background: var(--c-surf); border: 1px solid var(--c-bd3); border-radius: 9px;
+  padding: 7px 11px; font-size: 13px; font-weight: 500; color: var(--c-tx0);
+  white-space: nowrap; box-shadow: 0 8px 22px var(--c-k55);
+}
+
+/* The page canvas: designed at 1920px wide, zoomed to fit. */
+.main {
+  margin-left: var(--rail-w);
+  zoom: var(--s);
+  min-height: calc(100vh / var(--s));
+}
+
+.burger, .scrim, .tabs { display: none; }
+
+/* Tablet + phone: the rail is an expanded drawer. */
+@media (max-width: 1023px) {
+  .rail {
+    width: 216px; align-items: stretch; padding: 12px 10px 14px;
+    transform: translateX(-110%); box-shadow: none;
+  }
+  .railOpen { transform: translateX(0); box-shadow: 24px 0 60px rgba(0,0,0,.7); }
+  .logo { width: 104px; height: 26px; margin: 4px 6px 12px; background-image: var(--hypr-wide); background-position: left center; }
+  .items { align-items: stretch; gap: 4px; }
+  .item { width: 100%; justify-content: flex-start; padding: 0 16px; }
+  .label { display: block; }
+  .tip { display: none; }
+  .main { margin-left: 0; }
+  .burger {
+    display: flex; position: fixed; top: 12px; left: 10px; z-index: 60;
+    width: 40px; height: 40px; border-radius: 12px; align-items: center; justify-content: center;
+    background: var(--c-surfa); border: 1px solid var(--c-bd1); color: var(--c-tx1);
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); cursor: pointer;
+  }
+  .scrim {
+    display: block; position: fixed; inset: 0; z-index: 65;
+    background: var(--c-scrim); backdrop-filter: blur(2px);
+  }
+}
+
+/* Phone: bottom tab bar replaces the burger. */
+@media (max-width: 699px) {
+  .burger { display: none; }
+  .tabs {
+    display: flex; position: fixed; left: 12px; right: 12px; bottom: calc(12px + env(safe-area-inset-bottom, 0px)); z-index: 60;
+    justify-content: space-around; align-items: center; padding: 6px;
+    background: var(--c-surfa); border: 1px solid var(--c-bd1); border-radius: 20px;
+    backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+    box-shadow: 0 10px 30px var(--c-k55);
+  }
+  .tab {
+    flex: 1; height: 44px; border-radius: 14px; border: none; background: transparent;
+    display: flex; align-items: center; justify-content: center; color: var(--c-tx4); cursor: pointer; padding: 0;
+  }
+  .tab[aria-current="page"] { background: var(--c-bd2); color: var(--c-tx0); }
+  .main { padding-bottom: 100px; }
+}

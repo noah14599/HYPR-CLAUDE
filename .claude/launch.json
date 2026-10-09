@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "hypr-web",
+      "runtimeExecutable": "/usr/local/bin/npm",
+      "runtimeArgs": ["--prefix", "web", "run", "dev"],
+      "port": 3000
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+/* HYPR design tokens. Dark is the default; light overrides live on [data-theme="light"].
+   Values come straight from the design handoff (hypr-site/index.html). */
+:root {
+  --c-acc: #a78bfa; --c-acc2: #c4b5fd;
+  --c-bd1: #232326; --c-bd2: #2a2a2e; --c-bd3: #2f2f35; --c-bd4: #35353b; --c-bd5: #3f3f46;
+  --c-bg0: #08080a; --c-bg1: #0d0d0f; --c-bg2: #111113; --c-bg2a: rgba(11,11,13,.9);
+  --c-bg3: #141416; --c-bg4: #15151a; --c-bg5: #17171a;
+  --c-blue: #60a5fa; --c-blue2: #3b82f6; --c-blue3: #93c5fd;
+  --c-cyan: #22d3ee; --c-lime: #a3e635; --c-org: #f97316;
+  --c-dn: #f87171; --c-dn2: #ef4444; --c-dnt: rgba(248,113,113,.06);
+  --c-k35: rgba(0,0,0,.35); --c-k4: rgba(0,0,0,.4); --c-k55: rgba(0,0,0,.55);
+  --c-k6: rgba(0,0,0,.6); --c-k7: rgba(0,0,0,.7); --c-k9: rgba(0,0,0,.9);
+  --c-scrim: rgba(4,4,6,.72);
+  --c-surf: #1c1c20; --c-surfa: rgba(28,28,32,.9); --c-tile: #1e1e22;
+  --c-tx0: #f4f4f5; --c-tx1: #e4e4e7; --c-tx2: #d4d4d8; --c-tx3: #a1a1aa; --c-tx4: #71717a; --c-tx5: #52525b;
+  --c-up: #4ade80; --c-up2: #22c55e; --c-up3: #34d399;
+  --c-vioa: rgba(59,47,107,.18); --c-viob: rgba(59,47,107,.06); --c-viobd: #3b2f6b;
+  --c-w03: rgba(255,255,255,.03); --c-w05: rgba(255,255,255,.05); --c-w06: rgba(255,255,255,.06);
+  --c-w08: rgba(255,255,255,.08); --c-w18: rgba(255,255,255,.18);
+  --c-yel: #eab308; --c-yel2: #fbbf24;
+  --hypr-mark: url(/assets/hypr-logo.png);
+  --hypr-wide: url(/assets/hypr-logo-wide.png);
+  --score-card: none;
+  --ease: cubic-bezier(.22,1,.36,1);
+  --card-shadow: 0 1px 0 rgba(255,255,255,.03) inset, 0 10px 30px rgba(0,0,0,.35);
+
+  /* Layout: the rail is 84px on screen; the page canvas is designed at 1920px and zoomed by --s. */
+  --rail-w: 84px;
+  --s: .85;
+  color-scheme: dark;
+}
+
+[data-theme="light"] {
+  --c-acc: #6d28d9; --c-acc2: #5b21b6;
+  --c-bd1: #e2e2e6; --c-bd2: #dcdce1; --c-bd3: #d3d3d9; --c-bd4: #c9c9d1; --c-bd5: #b9b9c2;
+  --c-bg0: #f2f2f4; --c-bg1: #ffffff; --c-bg2: #fafafa; --c-bg2a: rgba(250,250,251,.93);
+  --c-bg3: #f4f4f5; --c-bg4: #e7e7ea; --c-bg5: #eeeef0;
+  --c-blue: #2563eb; --c-blue2: #1d4ed8; --c-blue3: #3b82f6;
+  --c-cyan: #0e7490; --c-lime: #4d7c0f; --c-org: #c2410c;
+  --c-dn: #dc2626; --c-dn2: #b91c1c;
+  --c-k35: rgba(24,24,27,.10); --c-k55: rgba(24,24,27,.15); --c-k6: rgba(24,24,27,.17);
+  --c-k7: rgba(24,24,27,.20); --c-k9: rgba(24,24,27,.25);
+  --c-scrim: rgba(228,228,231,.72);
+  --c-surf: #ffffff; --c-surfa: rgba(255,255,255,.93); --c-tile: #f1f1f3;
+  --c-tx0: #121215; --c-tx1: #27272a; --c-tx2: #3f3f46; --c-tx3: #5b5b64; --c-tx4: #5b5b64; --c-tx5: #71717a;
+  --c-up: #15803d; --c-up2: #15803d; --c-up3: #059669;
+  --c-vioa: rgba(109,40,217,.10); --c-viob: rgba(109,40,217,.04); --c-viobd: #ded9fb;
+  --c-w03: rgba(24,24,27,.02); --c-w05: rgba(24,24,27,.03); --c-w18: rgba(24,24,27,.10);
+  --c-yel: #a16207; --c-yel2: #b45309;
+  --hypr-mark: url(/assets/hypr-logo-light.png);
+  --hypr-wide: url(/assets/hypr-logo-wide-light.png);
+  --score-card: linear-gradient(150deg,#f9d9e2 0%,#fbe3cc 28%,#eef0d3 52%,#d8ecea 76%,#dce9fb 100%);
+  --card-shadow: 0 1px 2px rgba(24,24,27,.04), 0 8px 24px rgba(24,24,27,.06);
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  background: var(--c-bg0);
+  color: var(--c-tx0);
+  font-family: var(--font-dm-sans), 'DM Sans', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+[data-title] { font-family: var(--font-inter), 'Inter', system-ui, sans-serif; font-weight: 600; letter-spacing: -.015em; }
+::-webkit-scrollbar { width: 0; height: 0; }
+a { color: var(--c-acc); text-decoration: none; transition: color .15s ease; }
+a:hover { color: var(--c-acc2); }
+button { font: inherit; color: inherit; transition: transform .18s var(--ease), background .15s ease, border-color .15s ease; }
+button:hover { border-color: var(--c-bd4); background: var(--c-bg5); }
+button:active { transform: scale(.96); transition-duration: .06s; }
+[data-nav] { transition: background .15s ease, color .15s ease, transform .18s var(--ease); cursor: pointer; }
+[data-nav]:hover { background: var(--c-bg3); color: var(--c-tx0); }
+[data-nav]:active { transform: scale(.985); background: var(--c-bg5); transition-duration: .06s; }
+[data-pill] { transition: background .15s ease, color .15s ease, transform .18s var(--ease); cursor: pointer; }
+[data-pill]:hover { color: var(--c-tx0); background: var(--c-bg2); }
+[data-pill]:active { transform: scale(.96); transition-duration: .06s; }
+:focus-visible { outline: 2px solid var(--c-blue); outline-offset: 2px; border-radius: 8px; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition-duration: .12s !important; animation: none !important; }
+  [data-nav]:active, [data-pill]:active, button:active { transform: none !important; }
+}
+@media (prefers-reduced-transparency: reduce) {
+  [data-chrome] { background: var(--c-bg0) !important; backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
+}
+
+/* Breakpoints from the handoff: tablet 700–1023px renders at zoom .84, phone at .82 (.78 under 400px). */
+@media (max-width: 1023px) { :root { --s: .84; } }
+@media (max-width: 699px)  { :root { --s: .82; --rail-w: 0px; } }
+@media (max-width: 399px)  { :root { --s: .78; } }
