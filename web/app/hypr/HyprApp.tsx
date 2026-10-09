@@ -1096,9 +1096,39 @@ class Component extends React.Component<any, any> {
       this.setState({ chartAt: Date.now() });
     }).catch(() => { this._chartLoading[k] = false; });
   }
+  // LIVE DATA: real news for one stock from our news database (refreshed every 2 minutes while open).
+  loadNews(t) {
+    this._news = this._news || {}; this._newsAt = this._newsAt || {};
+    if (this._newsAt[t] && Date.now() - this._newsAt[t] < 110000) return;
+    this._newsAt[t] = Date.now();
+    fetch("/api/news?ticker=" + encodeURIComponent(t)).then(r => r.json()).then(j => {
+      if (!j || !Array.isArray(j.stories)) return;
+      this._news[t] = j.stories;
+      this.setState({ newsAt: Date.now() });
+    }).catch(() => { this._newsAt[t] = 0; });
+  }
+  newsItems(t) {
+    const list = this._news && this._news[t];
+    if (!list) return [];
+    const ago = iso => {
+      const m = Math.max(1, Math.round((Date.now() - new Date(iso).getTime()) / 60000));
+      return m < 60 ? m + "m ago" : m < 1440 ? Math.round(m / 60) + "h ago" : Math.round(m / 1440) + "d ago";
+    };
+    const tones = [HPAL.org, HPAL.blue, HPAL.up, HPAL.yel2, "#fda4af", "#a78bfa", HPAL.cyan, HPAL.dn];
+    return list.map(s => {
+      const name = (s.source || "").replace(/^(www|news|finance|uk|ca|au|sg)\./, "").replace(/\.(com|co\.uk|net|org|io|co)$/, "");
+      const words = name.split(/[.\-\s]+/).filter(Boolean);
+      const logo = (words.length > 1 ? words.slice(0, 3).map(w => w[0]) .join("") : name.slice(0, 2)).toUpperCase();
+      let h = 0; for (const ch of name) h = (h * 31 + ch.charCodeAt(0)) >>> 0;
+      return {
+        logo, logoBg: "#17171a", logoFg: tones[h % tones.length], source: s.source, time: ago(s.published_at), headline: s.title, url: s.url,
+        tag: s.outlets > 1 ? s.outlets + " outlets" : "1 outlet", tagFg: HPAL.mut, tagBg: "transparent", tagBorder: HPAL.bd5,
+      };
+    });
+  }
   loadLiveForView() {
     this.loadPeriod(this.state.range);
-    if (this.state.view === "detail" && this.state.ticker) this.loadChart(this.state.ticker, this.state.range);
+    if (this.state.view === "detail" && this.state.ticker) { this.loadChart(this.state.ticker, this.state.range); this.loadNews(this.state.ticker); }
   }
   rangesFor(stock) {
     this._rc = this._rc || {};
@@ -1176,7 +1206,7 @@ class Component extends React.Component<any, any> {
     this._quoteTimer = setInterval(() => {
       if (document.hidden) return;
       this.loadQuotes();
-      if (this.state.view === "detail" && this.state.ticker) this.loadChart(this.state.ticker, this.state.range);
+      if (this.state.view === "detail" && this.state.ticker) { this.loadChart(this.state.ticker, this.state.range); this.loadNews(this.state.ticker); }
     }, 15000);
     this._onVisible = () => { if (!document.hidden) { this.loadQuotes(); this.loadLiveForView(); } };
     document.addEventListener("visibilitychange", this._onVisible);
@@ -3848,7 +3878,9 @@ class Component extends React.Component<any, any> {
       { logo: "SA", logoBg: "#17171a", logoFg: HPAL.dn, source: "Seeking Alpha", time: "2d ago", headline: "Why the current multiple leaves little room for error", tag: "Bearish", tagFg: HPAL.dn, tagBg: HPAL.dnT, tagBorder: HPAL.dnB },
       { logo: "TV", logoBg: "#17171a", logoFg: HPAL.up, source: "The Verge", time: "2d ago", headline: "Next-gen Vision hardware said to target a lower price point", tag: "Bullish", tagFg: HPAL.up, tagBg: HPAL.upT, tagBorder: HPAL.upB },
     ];
-    const allNews = isAAPL ? appleNews : this.genNews(stock, P);
+    // LIVE DATA: real stories from the news database (the prototype's made-up headlines are no longer shown).
+    void appleNews;
+    const allNews = this.newsItems(stock.t);
     const news = allNews.slice(0, 4);
 
     // ---------- MOBILE HOME (phone only) ----------
@@ -13441,7 +13473,7 @@ export default class HyprApp extends Component {
                     {__arr(__v["news"]).map((item, $index) => (
                       <Fragment key={$index}>
                         {"\n          "}
-                        <div style={{"display":"flex","gap":"14px","alignItems":"flex-start","padding":"16px 0","borderBottom":"1px solid var(--c-surf,#1c1c20)"}}>
+                        <a href={item?.["url"]} target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()} className="hypr-news-row" style={{"display":"flex","gap":"14px","alignItems":"flex-start","padding":"16px 0","borderBottom":"1px solid var(--c-surf,#1c1c20)","color":"inherit","textDecoration":"none","cursor":"pointer"}}>
                           {"\n            "}
                           <span style={__css(`width:34px;height:34px;border-radius:9px;background:${__s(item?.["logoBg"])};color:${__s(item?.["logoFg"])};display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex:none;`)}>
                             {__t(item?.["logo"])}
@@ -13468,7 +13500,7 @@ export default class HyprApp extends Component {
                             {__t(item?.["tag"])}
                           </span>
                           {"\n          "}
-                        </div>
+                        </a>
                         {"\n        "}
                       </Fragment>
                     ))}
@@ -14013,7 +14045,7 @@ export default class HyprApp extends Component {
                 {__arr(__v["allNews"]).map((item, $index) => (
                   <Fragment key={$index}>
                     {"\n          "}
-                    <div style={{"display":"flex","gap":"14px","alignItems":"flex-start","padding":"16px 0","borderBottom":"1px solid var(--c-surf,#1c1c20)"}}>
+                    <a href={item?.["url"]} target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()} className="hypr-news-row" style={{"display":"flex","gap":"14px","alignItems":"flex-start","padding":"16px 0","borderBottom":"1px solid var(--c-surf,#1c1c20)","color":"inherit","textDecoration":"none","cursor":"pointer"}}>
                       {"\n            "}
                       <span style={__css(`width:34px;height:34px;border-radius:9px;background:${__s(item?.["logoBg"])};color:${__s(item?.["logoFg"])};display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex:none;`)}>
                         {__t(item?.["logo"])}
@@ -14040,7 +14072,7 @@ export default class HyprApp extends Component {
                         {__t(item?.["tag"])}
                       </span>
                       {"\n          "}
-                    </div>
+                    </a>
                     {"\n        "}
                   </Fragment>
                 ))}

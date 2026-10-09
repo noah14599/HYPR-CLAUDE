@@ -97,3 +97,7 @@
 .hpa:hover{border-color:var(--c-bd2,#2a2a2e) !important;transform:translateY(-2px) !important}
 .hpb:hover{transform:translateY(-4px) !important}
 .hpc:hover{background:var(--c-bg1,#0d0d0f) !important;color:var(--c-blue3,#93c5fd) !important}
+
+/* Real news rows are links to the article. */
+.hypr-news-row { transition: opacity .15s ease; }
+.hypr-news-row:hover { opacity: .78; }
