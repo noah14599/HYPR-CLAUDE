@@ -3138,8 +3138,11 @@ class Component extends React.Component<any, any> {
     const closeDay = d => new Date(d + "T12:00:00Z").toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric", timeZone: "UTC" });
     const heroNote = hoverActive || range !== "1D" || !stock.session ? rangeLabel
       : stock.session === "open" ? "Market open · 15 min delayed" : "At close · " + closeDay(stock.closeDate);
-    const extQ = !hoverActive && stock.ext ? stock.ext : null;
+    // Always shown (also while scrubbing the chart) and its row always takes the same space, so the
+    // chart card below never moves: moving it under the pointer caused a hover/unhover flicker loop.
+    const extQ = stock.ext || null;
     const hasExt = !!extQ;
+    const extVis = hasExt ? "visible" : "hidden";
     const extLabel = extQ ? extQ.label : "";
     const extPrice = extQ ? "$" + extQ.price.toFixed(2) : "";
     const extChg = extQ ? (extQ.chg >= 0 ? "+" : "−") + Math.abs(extQ.chg).toFixed(2) + " (" + (extQ.chg >= 0 ? "+" : "−") + Math.abs(extQ.chgPct).toFixed(2) + "%)" : "";
@@ -4111,7 +4114,7 @@ class Component extends React.Component<any, any> {
       onHover, onLeave, onHoverDown, onHoverUp, hoverActive,
       chartTa: 'var(--chart-ta, auto)', hxPct, hyPct, tipStr,
       priceStr, changeStr, changeColor, highStr, lowStr,
-      rangeLabel, heroNote, hasExt, extLabel, extPrice, extChg, extColor, pills, scoreStr, scoreSubtitle,
+      rangeLabel, heroNote, hasExt, extVis, extLabel, extPrice, extChg, extColor, pills, scoreStr, scoreSubtitle,
       summaryHeadline, summaryPoints, summaryMeta,
       rangeChip, scoreHeading, summaryHeading, scoreNote,
       openModal, closeModal, modalOpen, modal, newsOpen, allNews, sig,
@@ -12551,13 +12554,11 @@ export default class HyprApp extends Component {
                           <div style={{"color":"var(--c-tx3,#a1a1aa)","fontSize":"14px","marginTop":"4px"}}>
                             {__t(__v["heroNote"])}
                           </div>
-                          {(__v["hasExt"]) ? (
-                            <div style={{"display":"flex","alignItems":"baseline","gap":"8px","fontSize":"14px","marginTop":"6px","color":"var(--c-tx3,#a1a1aa)"}}>
-                              <span>{__t(__v["extLabel"])}</span>
-                              <span style={{"color":"var(--c-tx1,#e4e4e7)","fontWeight":"600","fontVariantNumeric":"tabular-nums"}}>{__t(__v["extPrice"])}</span>
-                              <span style={__css(`color:${__s(__v["extColor"])};font-variant-numeric:tabular-nums;`)}>{__t(__v["extChg"])}</span>
-                            </div>
-                          ) : null}
+                          <div style={__css(`display:flex;align-items:baseline;gap:8px;font-size:14px;line-height:20px;height:20px;margin-top:6px;color:var(--c-tx3,#a1a1aa);visibility:${__s(__v["extVis"])};`)}>
+                            <span>{__t(__v["extLabel"]) ?? "\u00a0"}</span>
+                            <span style={{"color":"var(--c-tx1,#e4e4e7)","fontWeight":"600","fontVariantNumeric":"tabular-nums"}}>{__t(__v["extPrice"])}</span>
+                            <span style={__css(`color:${__s(__v["extColor"])};font-variant-numeric:tabular-nums;`)}>{__t(__v["extChg"])}</span>
+                          </div>
                           {"\n        "}
                         </div>
                         {"\n          "}
