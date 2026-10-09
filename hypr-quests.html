@@ -1,0 +1,217 @@
+<title>HYPR Build Quest</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+/* Layout: one narrow column. Level bar on top, the current quest big, then the world map of every quest below. Dark-first, HYPR palette. */
+:root {
+  --bg: #08080a; --card: #0d0d0f; --line: #1c1c20; --line2: #2a2a2e;
+  --tx: #f4f4f5; --tx2: #a1a1aa; --tx3: #71717a;
+  --acc: #a78bfa; --acc-tint: rgba(59,47,107,.22); --up: #4ade80; --warn: #fbbf24;
+  --grad: linear-gradient(90deg,#ff1818,#fd7241,#f9ad03,#d4c543,#91d18d,#03d8cf,#03c7e3);
+  --f-body: 'DM Sans', system-ui, -apple-system, sans-serif;
+  --f-mono: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) {
+  --bg: #f2f2f4; --card: #ffffff; --line: #e2e2e6; --line2: #d3d3d9;
+  --tx: #121215; --tx2: #5b5b64; --tx3: #71717a;
+  --acc: #6d28d9; --acc-tint: rgba(109,40,217,.08); --up: #15803d; --warn: #b45309; color-scheme: light; } }
+:root[data-theme="light"] {
+  --bg: #f2f2f4; --card: #ffffff; --line: #e2e2e6; --line2: #d3d3d9;
+  --tx: #121215; --tx2: #5b5b64; --tx3: #71717a;
+  --acc: #6d28d9; --acc-tint: rgba(109,40,217,.08); --up: #15803d; --warn: #b45309; color-scheme: light; }
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--tx); font-family: var(--f-body); font-size: 15px; line-height: 1.5; }
+.wrap { max-width: 760px; margin: 0 auto; padding: 32px 16px 64px; display: grid; gap: 24px; }
+.mono { font-family: var(--f-mono); }
+.eyebrow { font-family: var(--f-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--tx3); }
+h1 { font-size: 28px; line-height: 1.15; margin: 4px 0 0; letter-spacing: -.015em; text-wrap: balance; }
+h2 { font-size: 20px; margin: 0; letter-spacing: -.01em; text-wrap: balance; }
+.logo { display: inline-grid; grid-template-columns: repeat(2, 16px); gap: 2px; margin-right: 10px; vertical-align: middle; }
+.logo span { width: 16px; height: 16px; display: grid; place-items: center; font: 600 9px var(--f-mono); border: 1px solid; border-radius: 3px; }
+.top { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap; }
+.lvl { text-align: right; }
+.lvl b { font-size: 30px; font-family: var(--f-mono); background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.bar { height: 8px; background: var(--line); border-radius: 99px; overflow: hidden; }
+.bar i { display: block; height: 100%; width: 0; background: var(--grad); border-radius: 99px; transition: width .7s cubic-bezier(.22,1,.36,1); }
+.barmeta { display: flex; justify-content: space-between; font-size: 12px; color: var(--tx3); margin-top: 6px; font-family: var(--f-mono); }
+.now { background: var(--card); border: 1px solid var(--acc); border-radius: 20px; padding: 24px; display: grid; gap: 14px; box-shadow: 0 0 0 4px var(--acc-tint); }
+.now .who { display: inline-block; font: 600 11px var(--f-mono); letter-spacing: .08em; padding: 3px 8px; border-radius: 6px; background: var(--acc-tint); color: var(--acc); }
+.now p { margin: 0; color: var(--tx2); max-width: 62ch; }
+.now ol { margin: 0; padding-left: 20px; display: grid; gap: 6px; color: var(--tx2); }
+.now ol b, .now p b { color: var(--tx); }
+.now code { font-family: var(--f-mono); font-size: 13px; background: var(--line); padding: 1px 6px; border-radius: 5px; color: var(--tx); }
+.now a, .q a { color: var(--acc); }
+.btn { justify-self: start; font: 600 14px var(--f-body); padding: 10px 16px; border-radius: 12px; border: 1px solid var(--acc); background: var(--acc); color: var(--bg); cursor: pointer; transition: transform .06s; }
+.btn:active { transform: scale(.96); }
+.btn:focus-visible, .q button:focus-visible { outline: 2px solid var(--acc); outline-offset: 2px; }
+.world { display: grid; gap: 8px; }
+.whead { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 0 4px; }
+.whead .cnt { font: 500 12px var(--f-mono); color: var(--tx3); }
+.q { display: grid; grid-template-columns: 28px minmax(0,1fr) auto; gap: 12px; align-items: start; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 12px 14px; }
+.q.cur { border-color: var(--acc); }
+.q.done .t { color: var(--tx3); text-decoration: line-through; text-decoration-color: var(--line2); }
+.q button { width: 24px; height: 24px; border-radius: 7px; border: 1.5px solid var(--line2); background: transparent; cursor: pointer; display: grid; place-items: center; color: var(--bg); font-size: 14px; padding: 0; }
+.q.done button { background: var(--up); border-color: var(--up); }
+.q .t { font-weight: 600; }
+.q .d { font-size: 13px; color: var(--tx3); margin-top: 2px; }
+.xp { font: 600 12px var(--f-mono); color: var(--tx3); white-space: nowrap; padding-top: 3px; }
+.q.done .xp { color: var(--up); }
+.tag { font: 600 10px var(--f-mono); letter-spacing: .06em; padding: 1px 6px; border-radius: 5px; margin-left: 6px; vertical-align: 2px; border: 1px solid var(--line2); color: var(--tx3); }
+.tag.you { color: var(--warn); border-color: var(--warn); }
+.tag.cost { color: var(--tx2); }
+.note { font-size: 12px; color: var(--tx3); text-align: center; }
+.win { text-align: center; padding: 28px; }
+@media (prefers-reduced-motion: reduce) { * { transition-duration: .01s !important; } .btn:active { transform: none; } }
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div>
+      <div class="eyebrow">Build quest</div>
+      <h1><span class="logo" aria-hidden="true"><span style="color:#91d18d">H</span><span style="color:#f9ad03">Y</span><span style="color:#a78bfa">P</span><span style="color:#ff5c72">R</span></span>From mockup to live product</h1>
+    </div>
+    <div class="lvl"><div class="eyebrow">Level</div><b id="lvl">1</b></div>
+  </header>
+
+  <section aria-label="Progress">
+    <div class="bar"><i id="bar"></i></div>
+    <div class="barmeta"><span id="xp">0 XP</span><span id="count">0 of 0 quests</span></div>
+  </section>
+
+  <section class="now" id="now" aria-live="polite"></section>
+
+  <div id="map" class="world-list" style="display:grid;gap:28px"></div>
+
+  <p class="note" id="sync">Loading saved progress…</p>
+</div>
+
+<script>
+const WORLDS = [
+  { name: "World 1 · Get the demo live", quests: [
+    { id: "netlify-account", t: "Make a free Netlify account", you: true, xp: 50,
+      d: "Netlify hosts the site for free.",
+      how: `<ol><li>Go to <a href="https://app.netlify.com/signup" target="_blank" rel="noopener">app.netlify.com/signup</a>.</li><li>Sign up with <b>GitHub</b> if you have it, otherwise email. Free plan.</li><li>Skip any "import from Git" prompts for now.</li></ol>` },
+    { id: "drop-site", t: "Drag the hypr-site folder onto Netlify Drop", you: true, xp: 100,
+      d: "Your demo gets a real public web address.",
+      how: `<ol><li>Open <a href="https://app.netlify.com/drop" target="_blank" rel="noopener">app.netlify.com/drop</a> while signed in.</li><li>Drag the whole <b>hypr-site</b> folder from the Finder window Claude opened onto the page.</li><li>Wait about 30 seconds. You get a link like <code>something-random.netlify.app</code>.</li></ol>` },
+    { id: "rename-site", t: "Give it a proper name", you: true, xp: 50,
+      d: "Site configuration → Change site name → for example hypr-app.",
+      how: `<ol><li>In Netlify open the new site → <b>Site configuration</b> → <b>Change site name</b>.</li><li>Pick something like <code>hypr-app</code>, so the address becomes <code>hypr-app.netlify.app</code>.</li></ol>` },
+    { id: "phone-check", t: "Boss fight: open it on your phone", you: true, xp: 100,
+      d: "Click around every screen and send Claude anything that looks off.",
+      how: `<p>Open the link on your phone and on a laptop. Tap through every screen. Send Claude a list of anything wrong. That list becomes the punch list for the rebuild.</p>` },
+  ]},
+  { name: "World 2 · Set up your workshop", quests: [
+    { id: "project-folder", t: "Pick a permanent home for the project", xp: 50,
+      d: "For example Documents/HYPR. Tell Claude and the session moves there.",
+      how: `<p>Tell Claude <b>"put it in Documents"</b> (or wherever you like). Claude makes a <code>HYPR</code> folder and keeps everything there from now on.</p>` },
+    { id: "install-tools", t: "Install the developer tools", you: true, xp: 100,
+      d: "Node.js and git. Each needs your Mac password, so you do these.",
+      how: `<ol><li>Node.js: download the <b>LTS</b> installer from <a href="https://nodejs.org" target="_blank" rel="noopener">nodejs.org</a> and run it.</li><li>git: open Terminal, run <code>xcode-select --install</code>, click Install.</li><li>Tell Claude when both are done and Claude checks them.</li></ol>` },
+    { id: "github", t: "Create a GitHub account and private repo", you: true, xp: 100,
+      d: "The master copy of your code, with history of every change.",
+      how: `<ol><li>Sign up at <a href="https://github.com/signup" target="_blank" rel="noopener">github.com</a> (free).</li><li>Create a <b>private</b> repository called <code>hypr</code>.</li><li>Claude handles pushing the code into it.</li></ol>` },
+    { id: "autodeploy", t: "Connect Netlify to GitHub", xp: 150,
+      d: "From here on, every change Claude saves goes live automatically.",
+      how: `<p>Claude walks you through linking the Netlify site to the GitHub repo. After this, your site address never changes and updates land there on their own.</p>` },
+  ]},
+  { name: "World 3 · Rebuild it properly", quests: [
+    { id: "scaffold", t: "Start the real app (Next.js)", xp: 150, d: "Same design, built the professional way, still on demo data." },
+    { id: "overview-page", t: "Overview page, pixel-matched", xp: 150, d: "Greeting, ticker strip, top scores, movers, watchlist." },
+    { id: "stock-page", t: "Stock page, pixel-matched", xp: 200, d: "Price, chart, HYPR score card, summary, news." },
+    { id: "other-screens", t: "Markets, Sectors, Screener, Calendar, Settings", xp: 200, d: "The rest of the screens." },
+  ]},
+  { name: "World 4 · Real prices", quests: [
+    { id: "polygon-key", t: "Get a free Massive (Polygon) API key", you: true, xp: 50, d: "Free tier: end-of-day prices, enough to build on.", cost: "free" },
+    { id: "database", t: "Set up the database (Supabase)", xp: 150, d: "Where prices, scores and news live. Free tier.", cost: "free" },
+    { id: "sp500-prices", t: "Load all 500 S&P stocks with real prices", xp: 200, d: "Real charts, real day moves." },
+  ]},
+  { name: "World 5 · The HYPR score", quests: [
+    { id: "formula", t: "Hand Claude your score formula", you: true, xp: 100, d: "Paste it exactly as you have it." },
+    { id: "score-10", t: "Score engine on 10 stocks", xp: 200, d: "You check every number by hand before we scale." },
+    { id: "score-500", t: "Scores for all 500, updating on a schedule", xp: 250, d: "Runs automatically, all day." },
+  ]},
+  { name: "World 6 · The news brain", quests: [
+    { id: "news-collect", t: "Collect news from every source", xp: 200, d: "News APIs, RSS, Google News, press releases. Duplicates removed." },
+    { id: "ai-key", t: "Get an Anthropic API key", you: true, xp: 50, d: "Powers the summaries. Pay per use, cents per day to start.", cost: "small cost" },
+    { id: "summaries", t: "1–2 sentence 'what's going on' per stock", xp: 250, d: "Plus the news ±10 in the score." },
+  ]},
+  { name: "World 7 · People", quests: [
+    { id: "login", t: "Sign up and log in", xp: 150, d: "Free with Supabase." },
+    { id: "saved", t: "Watchlists and portfolios saved per person", xp: 150, d: "Works across phone and laptop." },
+  ]},
+  { name: "World 8 · Launch", quests: [
+    { id: "domain", t: "Buy a real domain", you: true, xp: 50, d: "About $12 a year.", cost: "~$12/yr" },
+    { id: "disclaimer", t: "Add 'not investment advice' wording", xp: 50, d: "Check with a lawyer before charging money." },
+    { id: "launch", t: "Final boss: launch HYPR", xp: 500, d: "Share the link." },
+  ]},
+];
+
+const ALL = WORLDS.flatMap(w => w.quests);
+const TOTAL_XP = ALL.reduce((s, q) => s + q.xp, 0);
+let done = {};
+let doc = null;
+const $ = id => document.getElementById(id);
+
+function esc(s) { const d = document.createElement("div"); d.textContent = s; return d.innerHTML; }
+
+function render() {
+  const xp = ALL.reduce((s, q) => s + (done[q.id] ? q.xp : 0), 0);
+  const n = ALL.filter(q => done[q.id]).length;
+  $("bar").style.width = (xp / TOTAL_XP * 100).toFixed(1) + "%";
+  $("xp").textContent = xp.toLocaleString() + " / " + TOTAL_XP.toLocaleString() + " XP";
+  $("count").textContent = n + " of " + ALL.length + " quests";
+  const worldsCleared = WORLDS.filter(w => w.quests.every(q => done[q.id])).length;
+  $("lvl").textContent = Math.min(WORLDS.length, worldsCleared + 1);
+
+  const cur = ALL.find(q => !done[q.id]);
+  if (!cur) {
+    $("now").innerHTML = `<div class="win"><div class="eyebrow">All quests complete</div><h2>HYPR is live.</h2></div>`;
+  } else {
+    const world = WORLDS.find(w => w.quests.includes(cur)).name;
+    $("now").innerHTML = `
+      <div class="eyebrow">Current quest · ${esc(world)}</div>
+      <h2>${esc(cur.t)}</h2>
+      <div><span class="who">${cur.you ? "YOUR MOVE" : "CLAUDE BUILDS THIS WITH YOU"}</span> <span class="xp">+${cur.xp} XP</span></div>
+      ${cur.how || `<p>${esc(cur.d)}</p>`}
+      <button class="btn" id="finish" type="button">Mark complete</button>`;
+    $("finish").onclick = () => toggle(cur.id);
+  }
+
+  $("map").innerHTML = WORLDS.map(w => {
+    const c = w.quests.filter(q => done[q.id]).length;
+    return `<section class="world"><div class="whead"><h2 style="font-size:16px">${esc(w.name)}</h2><span class="cnt">${c}/${w.quests.length}</span></div>
+      ${w.quests.map(q => `
+        <div class="q ${done[q.id] ? "done" : ""} ${q === cur ? "cur" : ""}">
+          <button type="button" data-id="${q.id}" aria-pressed="${!!done[q.id]}" aria-label="${done[q.id] ? "Mark not done" : "Mark done"}: ${esc(q.t)}">${done[q.id] ? "✓" : ""}</button>
+          <div style="min-width:0"><div class="t">${esc(q.t)}${q.you ? '<span class="tag you">YOU</span>' : ""}${q.cost ? `<span class="tag cost">${esc(q.cost.toUpperCase())}</span>` : ""}</div><div class="d">${esc(q.d)}</div></div>
+          <div class="xp">${q.xp} XP</div>
+        </div>`).join("")}</section>`;
+  }).join("");
+  document.querySelectorAll(".q button").forEach(b => b.onclick = () => toggle(b.dataset.id));
+}
+
+let saving = Promise.resolve();
+function toggle(id) {
+  done = { ...done, [id]: !done[id] };
+  render();
+  if (!doc) return;
+  const snapshot = { done };
+  saving = saving.then(() => doc.set(snapshot)).catch(() => { $("sync").textContent = "Couldn't save that change. Your progress here may be out of date."; });
+}
+
+render();
+
+(async () => {
+  const db = await (window.claude?.use?.("db") ?? null);
+  if (!db) { $("sync").textContent = "Progress isn't being saved in this view. Open it on claude.ai while signed in."; return; }
+  doc = db.doc("progress/main");
+  doc.onSnapshot(snap => {
+    done = (snap.exists && snap.data()?.done) || {};
+    render();
+    $("sync").textContent = "Progress saves automatically. Claude ticks quests off as you finish them together.";
+  }, () => { $("sync").textContent = "Lost the connection to saved progress. Reload the page."; });
+})();
+</script>

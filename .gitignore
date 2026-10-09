@@ -1,0 +1,13 @@
+# Secrets: API keys live here and must never be uploaded
+.env
+.env.*
+!.env.example
+
+# Generated / bulky
+node_modules/
+.next/
+dist/
+*.zip
+
+# Mac clutter
+.DS_Store
