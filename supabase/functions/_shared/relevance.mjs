@@ -32,8 +32,8 @@ function tickerPatterns(ticker) {
 }
 
 // Names that are part of something else: Dow Inc. is not "Dow Jones"; Target Corp. is not a "price target".
-const NOT_FOLLOWED_BY = { Dow: "\\s+(?:Jones|Industrials?|futures)", Target: "\\s+(?:[Pp]rice|[Dd]ate)\\b" };
-const NOT_PRECEDED_BY = { Target: "(?:[Pp]rice|PRICE)[\\s-]+" };
+const NOT_FOLLOWED_BY = { Dow: "\\s+(?:Jones|Industrials?|futures)", Target: "\\s+(?:[Pp]rice|[Dd]ate)\\b", Apple: "\\s+(?:Valley|pie|cider|orchard|juice|picking)\\b" };
+const NOT_PRECEDED_BY = { Target: "(?:[Pp]rice|PRICE)[\\s-]+", Apple: "(?:Big|big|Crab|crab|candy|caramel|green|red)\\s+" };
 
 function namePattern(alias) {
   // Whole words; allow "Apple's", "Meta-owned". Acronyms (CSX, AES, KLA) must be in capitals; other names any case.
@@ -98,6 +98,12 @@ const JUNK_TITLE = /(stock price, news, quote|stock quote|quote (?:&|and) histor
 const JUNK_URL = /\/(?:quote|quotes|options|chart|market-activity\/stocks\/[a-z.-]+$|symbol\/[a-z.-]+$)(?:[/?#]|$)/i;
 
 /** True for pages that aren't news stories (stock quote pages, option chains, prospectus paperwork). */
+// Social media posts are left out for now (owner's decision); news only.
+const SOCIAL = /(?:^|\.)(?:instagram|facebook|tiktok|twitter|x|threads|reddit|pinterest|linkedin|snapchat)\.com$/i;
+
 export function isJunk(title, url) {
+  let host = "";
+  try { host = new URL(url).hostname; } catch {}
+  if (SOCIAL.test(host)) return true;
   return JUNK_TITLE.test(title || "") || JUNK_URL.test((() => { try { return new URL(url).pathname; } catch { return ""; } })());
 }

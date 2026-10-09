@@ -9,7 +9,8 @@
     "test": "node --test",
     "filings": "node --env-file=../.env collect-filings.js",
     "news": "node --env-file=../.env collect-news.js",
-    "setup-schedule": "node --env-file=../.env setup-schedule.js"
+    "setup-schedule": "node --env-file=../.env setup-schedule.js",
+    "recheck-news": "node --env-file=../.env recheck-news.js"
   },
   "dependencies": {
     "pg": "8.13.1"
