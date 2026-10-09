@@ -81,6 +81,8 @@ test("pages that aren't news are dropped", () => {
   assert.ok(isJunk("CAVA Group, Inc. (CAVA) stock price, news, quote and history - Yahoo Finance", "https://sg.finance.yahoo.com/quote/CAVA"));
   assert.ok(isJunk("Guarantor: JPMorgan Chase & Co.", "https://www.sec.gov/Archives/edgar/data/19617/x.htm"));
   assert.ok(isJunk("Apple fans line up for the new iPhone", "https://www.instagram.com/p/abc123/"));
+  assert.ok(isJunk("Apple Valley outreach contacts 102 people", "https://news.google.com/rss/articles/CBMi123", "instagram.com"));
+  assert.ok(!isJunk("Apple faces fresh iPhone demand concerns", "https://news.google.com/rss/articles/CBMi456", "cnbc.com"));
   assert.ok(!isJunk("Judge approves $177 million AT&T settlement", "https://www.reuters.com/legal/judge-approves-att-settlement-2026-10-09/"));
   assert.ok(!isJunk("Why AT&T (T) Shares Are Getting Obliterated Today", "https://finance.yahoo.com/news/why-t-shares-getting-obliterated-180000.html"));
 });

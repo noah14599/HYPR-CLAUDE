@@ -97,13 +97,14 @@ export { compile, match, matchAll, BUSINESS, COMMON_NAMES };
 const JUNK_TITLE = /(stock price, news, quote|stock quote|quote (?:&|and) history|price (?:&|and) chart|stock chart|historical prices|options? chain|\b[A-Z]{1,5}\d{6}[CP]\d{8}\b|\b(?:put|call) \(|^guarantor:|^pricing supplement|^free writing prospectus|^\s*(?:form )?(?:424b|fwp)\b|market cap history|dividend history|earnings date|stock forecast & price target|stock price today)/i;
 const JUNK_URL = /\/(?:quote|quotes|options|chart|market-activity\/stocks\/[a-z.-]+$|symbol\/[a-z.-]+$)(?:[/?#]|$)/i;
 
-/** True for pages that aren't news stories (stock quote pages, option chains, prospectus paperwork). */
 // Social media posts are left out for now (owner's decision); news only.
 const SOCIAL = /(?:^|\.)(?:instagram|facebook|tiktok|twitter|x|threads|reddit|pinterest|linkedin|snapchat)\.com$/i;
 
-export function isJunk(title, url) {
+/** True for pages that aren't news stories (social posts, stock quote pages, option chains, prospectus paperwork).
+ *  `source` is the publisher's domain: Google News links all point at news.google.com, so the link alone can't tell. */
+export function isJunk(title, url, source) {
   let host = "";
   try { host = new URL(url).hostname; } catch {}
-  if (SOCIAL.test(host)) return true;
+  if (SOCIAL.test(host) || SOCIAL.test((source || "").replace(/^www\./, ""))) return true;
   return JUNK_TITLE.test(title || "") || JUNK_URL.test((() => { try { return new URL(url).pathname; } catch { return ""; } })());
 }

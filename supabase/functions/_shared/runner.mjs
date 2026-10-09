@@ -13,7 +13,7 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
 const relevant = (all, stories) => {
   const out = [];
   for (const s of stories) {
-    if (!s.title || !s.url || isJunk(s.title, s.url)) continue;
+    if (!s.title || !s.url || isJunk(s.title, s.url, s.source)) continue;
     const matches = matchAll(all, s.title, s.summary);
     if (matches.length) out.push({ ...s, matches });
   }

@@ -8,14 +8,14 @@ const { compile, matchAll, isJunk } = require("./relevance");
   const db = connect();
   await db.connect();
   const companies = (await db.query("select ticker, name, aliases, cik, ticker_strict, name_strict from public.companies")).rows.map(compile);
-  const arts = (await db.query("select id, title, summary, url from public.news_articles")).rows;
+  const arts = (await db.query("select id, title, summary, url, source from public.news_articles")).rows;
   const links = (await db.query("select article_id, ticker from public.news_article_tickers")).rows;
   const linked = new Map();
   for (const l of links) (linked.get(l.article_id) || linked.set(l.article_id, new Set()).get(l.article_id)).add(l.ticker);
 
   const deleteArticles = [], dropLinks = [];
   for (const a of arts) {
-    if (isJunk(a.title, a.url)) { deleteArticles.push(a.id); continue; }
+    if (isJunk(a.title, a.url, a.source)) { deleteArticles.push(a.id); continue; }
     const keep = new Set(matchAll(companies, a.title, a.summary).map(m => m.ticker));
     const have = linked.get(a.id) || new Set();
     const stay = [...have].filter(t => keep.has(t));
