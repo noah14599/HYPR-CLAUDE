@@ -1,43 +1,24 @@
 import type { Metadata, Viewport } from "next";
-import { DM_Sans, Inter } from "next/font/google";
-import { Shell } from "@/components/Shell";
 import "./globals.css";
-
-const dmSans = DM_Sans({ variable: "--font-dm-sans", subsets: ["latin"], weight: ["400", "500", "600", "700"] });
-const inter = Inter({ variable: "--font-inter", subsets: ["latin"], weight: ["400", "500", "600", "700"] });
+import "./hypr/hypr.css";
 
 export const metadata: Metadata = {
-  title: { default: "HYPR", template: "%s · HYPR" },
+  title: "HYPR",
   description: "Every S&P 500 stock, its news in one line, and the HYPR score.",
 };
 
-export const viewport: Viewport = {
-  width: "device-width",
-  initialScale: 1,
-  viewportFit: "cover",
-  themeColor: "#08080a",
-};
-
-// Runs before first paint: restores the saved theme and sets the desktop canvas zoom
-// (designed at 1920px, scaled by min(0.85, width / 1920)) so nothing jumps on load.
-const boot = `(function(){
-  try { if (localStorage.getItem("hypr:theme") === "light") document.documentElement.dataset.theme = "light"; } catch (e) {}
-  function fit(){
-    var w = window.innerWidth, r = document.documentElement.style;
-    if (w >= 1024) r.setProperty("--s", String(Math.min(0.85, w / 1920))); else r.removeProperty("--s");
-  }
-  fit(); window.addEventListener("resize", fit);
-})();`;
+export const viewport: Viewport = { width: "device-width", initialScale: 1 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en">
       <head>
-        <script dangerouslySetInnerHTML={{ __html: boot }} />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        {/* eslint-disable-next-line @next/next/no-page-custom-font */}
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Inter:wght@400;500;600;700&display=swap" />
       </head>
-      <body className={`${dmSans.variable} ${inter.variable}`}>
-        <Shell>{children}</Shell>
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

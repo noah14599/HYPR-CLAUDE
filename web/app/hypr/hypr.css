@@ -1,0 +1,99 @@
+/* GENERATED: the prototype's global styles plus its hover rules. */
+* { box-sizing: border-box; }
+  body { margin: 0; font-family: 'DM Sans', system-ui, sans-serif; }
+  [data-title] { font-family: 'Inter', system-ui, sans-serif; font-weight: 600; letter-spacing: -.015em; }
+  ::-webkit-scrollbar { width: 0; height: 0; }
+  a { color: var(--c-acc,#a78bfa); text-decoration: none; transition: color .15s ease; }
+  a:hover { color: var(--c-acc2,#c4b5fd); }
+  button { transition: transform .18s cubic-bezier(.22,1,.36,1), background .15s ease, border-color .15s ease; }
+  button:hover { border-color: var(--c-bd4,#35353b); background: var(--c-bg5,#17171a); }
+  button:active { transform: scale(.96); transition-duration: .06s; }
+  [data-nav] { transition: background .15s ease, color .15s ease, transform .18s cubic-bezier(.22,1,.36,1); cursor: pointer; }
+  [data-nav]:hover { background: var(--c-bg3,#141416); color: var(--c-tx0,#f4f4f5); }
+  [data-nav]:active { transform: scale(.985); background: var(--c-bg5,#17171a); transition-duration: .06s; }
+  [data-pill] { transition: background .15s ease, color .15s ease, transform .18s cubic-bezier(.22,1,.36,1); cursor: pointer; }
+  [data-pill]:hover { color: var(--c-tx0,#f4f4f5); background: var(--c-bg2,#111113); }
+  [data-pill]:active { transform: scale(.96); transition-duration: .06s; }
+  :focus-visible { outline: 2px solid var(--c-blue,#60a5fa); outline-offset: 2px; border-radius: 8px; }
+  @media (prefers-reduced-motion: reduce) {
+    * { transition-duration: .12s !important; animation: none !important; }
+    [data-nav]:active, [data-pill]:active, button:active { transform: none !important; }
+  }
+  @media (prefers-reduced-transparency: reduce) {
+    [data-chrome] { background: var(--c-bg0,#08080a) !important; backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
+  }
+
+  body[data-theme="light"] {
+    --c-acc: #6d28d9;
+    --c-acc2: #5b21b6;
+    --c-bd1: #e2e2e6;
+    --c-bd2: #dcdce1;
+    --c-bd3: #d3d3d9;
+    --c-bd4: #c9c9d1;
+    --c-bd5: #b9b9c2;
+    --c-bg0: #f2f2f4;
+    --c-bg1: #ffffff;
+    --c-bg2: #fafafa;
+    --c-bg2a: rgba(250,250,251,.93);
+    --c-bg3: #f4f4f5;
+    --c-bg4: #e7e7ea;
+    --c-bg5: #eeeef0;
+    --c-blue: #2563eb;
+    --c-blue2: #1d4ed8;
+    --c-blue3: #3b82f6;
+    --c-chrome: rgba(250,250,251,.75);
+    --c-cyan: #0e7490;
+    --c-dn: #dc2626;
+    --c-dn2: #b91c1c;
+    --c-k35: rgba(24,24,27,.10);
+    --c-k55: rgba(24,24,27,.15);
+    --c-k6: rgba(24,24,27,.17);
+    --c-k7: rgba(24,24,27,.20);
+    --c-k9: rgba(24,24,27,.25);
+    --c-lime: #4d7c0f;
+    --c-org: #c2410c;
+    --c-scrim: rgba(228,228,231,.72);
+    --c-surf: #ffffff;
+    --c-surfa: rgba(255,255,255,.93);
+    --c-tx0: #121215;
+    --c-tx1: #27272a;
+    --c-tx2: #3f3f46;
+    --c-tx3: #5b5b64;
+    --c-tx4: #5b5b64;
+    --c-tx5: #71717a;
+    --c-up: #15803d;
+    --c-up2: #15803d;
+    --c-up3: #059669;
+    --c-vioa: rgba(109,40,217,.10);
+    --c-viob: rgba(109,40,217,.04);
+    --c-viobd: #ded9fb;
+    --c-w03: rgba(24,24,27,.02);
+    --c-w05: rgba(24,24,27,.03);
+    --c-w18: rgba(24,24,27,.10);
+    --c-yel: #a16207;
+    --c-yel2: #b45309;
+    background: #f2f2f4;
+    --hypr-mark: url(/assets/hypr-logo-light.png);
+    --hypr-wide: url(/assets/hypr-logo-wide-light.png);
+    --c-tile: #f1f1f3;
+    --cal-out: #eaeaee;
+    --cal-sel: rgba(109,40,217,.10);
+    --score-card: linear-gradient(150deg,#f9d9e2 0%,#fbe3cc 28%,#eef0d3 52%,#d8ecea 76%,#dce9fb 100%);
+    --score-lab: #3f3f46;
+  }
+  body[data-theme="light"] img[data-logo] { mix-blend-mode: normal; }
+
+/* style-hover rules from the markup */
+.hp0:hover{color:var(--c-tx0,#f4f4f5) !important}
+.hp1:hover{border-color:var(--c-bd4,#35353b) !important;transform:translateY(-2px) !important}
+.hp2:hover{border-color:var(--c-bd2,#2a2a2e) !important;background:var(--c-bg3,#141416) !important}
+.hp3:hover{background:var(--c-bg5,#17171a) !important;color:var(--c-tx1,#e4e4e7) !important}
+.hp4:hover{border-color:var(--c-tx5,#52525b) !important;background:var(--c-bg3,#141416) !important}
+.hp5:hover{background:var(--c-bg4,#15151a) !important}
+.hp6:hover{border-color:var(--c-bd3,#2f2f35) !important}
+.hp7:hover{transform:translateY(-3px) !important}
+.hp8:hover{border-color:var(--c-bd2,#2a2a2e) !important;transform:translateY(-3px) !important}
+.hp9:hover{opacity:.75 !important}
+.hpa:hover{border-color:var(--c-bd2,#2a2a2e) !important;transform:translateY(-2px) !important}
+.hpb:hover{transform:translateY(-4px) !important}
+.hpc:hover{background:var(--c-bg1,#0d0d0f) !important;color:var(--c-blue3,#93c5fd) !important}
