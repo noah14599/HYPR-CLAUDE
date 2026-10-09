@@ -1056,6 +1056,10 @@ class Component extends React.Component<any, any> {
   loadQuotes() {
     fetch("/api/quotes?tickers=" + this.liveTickers()).then(r => r.json()).then(j => {
       if (!j || !j.quotes) return;
+      // Only redraw when something actually changed.
+      const sig = Object.keys(j.quotes).map(t => t + j.quotes[t].price + (j.quotes[t].ext ? j.quotes[t].ext.price : "")).join("|");
+      if (sig === this._quoteSig) return;
+      this._quoteSig = sig;
       for (const x of this.STOCKS) {
         const q = j.quotes[x.t];
         if (!q) continue;
@@ -1079,7 +1083,7 @@ class Component extends React.Component<any, any> {
   loadChart(t, range) {
     this._charts = this._charts || {};
     const k = t + "|" + range;
-    const fresh = this._chartAt && this._chartAt[k] && Date.now() - this._chartAt[k] < (range === "1D" ? 60000 : 600000);
+    const fresh = this._chartAt && this._chartAt[k] && Date.now() - this._chartAt[k] < (range === "1D" ? 50000 : 590000);
     if (fresh || (this._chartLoading && this._chartLoading[k])) return;
     this._chartLoading = this._chartLoading || {}; this._chartAt = this._chartAt || {};
     this._chartLoading[k] = true;
@@ -1165,7 +1169,17 @@ class Component extends React.Component<any, any> {
   }
   componentDidMount() {
     this.loadQuotes();
-    this._quoteTimer = setInterval(() => this.loadQuotes(), 60000);
+    // LIVE DATA: Massive publishes a new 1-minute bar for each stock about once a minute (15 minutes delayed).
+    // Check every 15 seconds so each one shows up within seconds, everywhere. The open stock's chart reloads
+    // when it's due (1D: every minute, so it grows a bar at a time; longer timeframes: every 10 minutes).
+    // Paused while the tab is in the background; catches up as soon as it's visible again.
+    this._quoteTimer = setInterval(() => {
+      if (document.hidden) return;
+      this.loadQuotes();
+      if (this.state.view === "detail" && this.state.ticker) this.loadChart(this.state.ticker, this.state.range);
+    }, 15000);
+    this._onVisible = () => { if (!document.hidden) { this.loadQuotes(); this.loadLiveForView(); } };
+    document.addEventListener("visibilitychange", this._onVisible);
     this.loadLiveForView();
     this.applyTheme();
     this.bindPhoneScroll();
@@ -1496,6 +1510,7 @@ class Component extends React.Component<any, any> {
   }
   componentWillUnmount() {
     clearInterval(this._quoteTimer);
+    document.removeEventListener("visibilitychange", this._onVisible);
     window.removeEventListener('resize', this._fit);
     window.removeEventListener('orientationchange', this._fit);
     window.removeEventListener('load', this._fit);

@@ -59,7 +59,7 @@ export async function GET(req: Request) {
   try {
     const [status, snap] = await Promise.all([
       massive<Status>("/v1/marketstatus/now", 30),
-      massive<{ tickers?: Snap[] }>(`/v2/snapshot/locale/us/markets/stocks/tickers?tickers=${encodeURIComponent([...byMassive.keys()].join(","))}`, 60),
+      massive<{ tickers?: Snap[] }>(`/v2/snapshot/locale/us/markets/stocks/tickers?tickers=${encodeURIComponent([...byMassive.keys()].join(","))}`, 10),
     ]);
     const now = etParts(Date.now());
     let sessions: Awaited<ReturnType<typeof lastTwoSessions>> | null = null;
@@ -95,7 +95,7 @@ export async function GET(req: Request) {
     }
     return NextResponse.json(
       { quotes, market: status.market, asOf: Date.now() },
-      { headers: { "Cache-Control": "public, s-maxage=60, stale-while-revalidate=120", "Netlify-Vary": "query" } },
+      { headers: { "Cache-Control": "public, s-maxage=10, stale-while-revalidate=20", "Netlify-Vary": "query" } },
     );
   } catch (e) {
     return NextResponse.json({ error: (e as Error).message }, { status: 502 });

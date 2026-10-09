@@ -5,7 +5,7 @@ import { massive, toMassive, inSession, etParts, ymd, daysAgo } from "@/lib/mass
 
 // Bar size and lookback per timeframe. Intraday ranges keep regular trading hours only.
 const RANGES: Record<string, { mult: number; span: string; back: number; cache: number; sessions?: number }> = {
-  "1D":  { mult: 5,  span: "minute", back: 6,    cache: 60,   sessions: 1 },
+  "1D":  { mult: 1,  span: "minute", back: 6,    cache: 30,   sessions: 1 }, // 1-minute bars: a new one each minute
   "1W":  { mult: 30, span: "minute", back: 10,   cache: 300,  sessions: 5 },
   "1M":  { mult: 1,  span: "hour",   back: 31,   cache: 900 },
   "3M":  { mult: 1,  span: "day",    back: 92,   cache: 3600 },
