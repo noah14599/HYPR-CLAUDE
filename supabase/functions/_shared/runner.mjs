@@ -1,13 +1,15 @@
 // One scheduled run of one source. Per-company sources pick up where the last run left off and handle a small
 // batch at their own pace; feeds and SEC check everything once. Refusals stop the source and back off.
 import { compile, matchAll, isJunk } from "./relevance.mjs";
-import { loadCompanies, saveArticles, saveFilings, health, backingOff, getState, setState, getFeedCache, setFeedCache } from "./db.mjs";
+import { rest, loadCompanies, saveArticles, saveFilings, health, backingOff, getState, setState, getFeedCache, setFeedCache } from "./db.mjs";
 import { google, yahoo, finnhub } from "./sources/per-company.mjs";
 import { FEEDS, readFeed } from "./sources/feeds.mjs";
 import { latest } from "./sources/sec.mjs";
+import { refreshCompany } from "./facts/collect.mjs";
 
 const PER_COMPANY = { google, yahoo, finnhub };
-const BACKOFF_MS = { google: 2 * 3600e3, yahoo: 2 * 3600e3, finnhub: 15 * 60e3, feeds: 3600e3, sec: 10 * 60e3 };
+const BACKOFF_MS = { google: 2 * 3600e3, yahoo: 2 * 3600e3, finnhub: 15 * 60e3, feeds: 3600e3, sec: 10 * 60e3, facts: 15 * 60e3 };
+const FACTS_PER_RUN = 3; // ×4 Finnhub calls = 12/min, next to the news collector's 40 (Finnhub's free limit is 60)
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
 const relevant = (all, stories) => {
@@ -79,6 +81,25 @@ export async function run(source) {
     }
     await health("feeds", errors.length ? { ok: true, found: added, error: errors.join(" | ") } : { ok: true, found: added });
     return { source, feeds: FEEDS.length, unchanged, found, relevant: kept, added, errors };
+  }
+
+  if (source === "facts") {
+    const due = await rest("rpc/facts_due", { method: "POST", body: JSON.stringify({ n: FACTS_PER_RUN }) });
+    const byTicker = new Map(companies.map(c => [c.ticker, c]));
+    const done = [], errors = [];
+    let skipFinnhub = false;
+    for (const { ticker } of due) {
+      const c = byTicker.get(ticker);
+      const prev = (await rest(`company_facts?select=sources&ticker=eq.${encodeURIComponent(ticker)}`))[0]?.sources || {};
+      const r = await refreshCompany(c, prev, { skipFinnhub });
+      await rest("company_facts?on_conflict=ticker", { method: "POST", headers: { Prefer: "resolution=merge-duplicates,return=minimal" }, body: JSON.stringify(r.row) });
+      done.push(ticker);
+      errors.push(...r.errors.map(e => `${ticker} ${e}`));
+      if (r.blocked === "finnhub") skipFinnhub = true; // Finnhub said slow down: the rest of this run skips it
+      if (r.blocked === "sec" || r.blocked === "massive") { await health("facts", { error: r.errors.at(-1), backoffUntil: new Date(Date.now() + BACKOFF_MS.facts).toISOString() }); break; }
+    }
+    await health("facts", errors.length && errors.length >= done.length * 3 ? { error: errors[0] } : { ok: true, found: done.length, ...(errors.length ? { error: errors.join(" | ") } : {}) });
+    return { source, companies: done, errors };
   }
 
   if (source === "sec") {

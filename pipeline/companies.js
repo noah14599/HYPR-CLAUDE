@@ -15,6 +15,9 @@ if (!KEY) throw new Error("MASSIVE_API_KEY must be set");
 const ONLY = { DOW: ["Dow Inc", "Dow Chemical"] };
 
 // Names people actually use that official names don't contain.
+// SEC IDs Massive doesn't list (looked up in sec.gov/files/company_tickers.json and the SEC's company records).
+const MISSING_CIK = { PSKY: "0002041610", WBD: "0001437107" };
+
 const EXTRA = {
   GOOGL: ["Google", "Alphabet"], GOOG: ["Google", "Alphabet"], META: ["Facebook"], AMZN: ["Amazon", "AWS"],
   "BRK-B": ["Berkshire Hathaway", "Berkshire"], JPM: ["JPMorgan", "JP Morgan", "J.P. Morgan"], BAC: ["Bank of America", "BofA"],
@@ -87,7 +90,7 @@ async function details(ticker) {
       ticker: s.t,
       name: d?.name || s.name,
       aliases,
-      cik: d?.cik || null,
+      cik: d?.cik || MISSING_CIK[s.t] || null,
       ticker_strict: s.t.replace("-", "").length <= 2 || WORD_TICKERS.has(s.t),
       name_strict: aliases.some(a => COMMON_NAMES.has(a.toLowerCase())),
     });

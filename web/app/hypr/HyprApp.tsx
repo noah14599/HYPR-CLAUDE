@@ -1126,9 +1126,176 @@ class Component extends React.Component<any, any> {
       };
     });
   }
+  // LIVE DATA: key stats, financial statements and company profile (SEC filings, Massive, Finnhub), every 2 minutes.
+  loadFacts(t) {
+    this._facts = this._facts || {}; this._factsAt = this._factsAt || {};
+    if (this._factsAt[t] && Date.now() - this._factsAt[t] < 110000) return;
+    this._factsAt[t] = Date.now();
+    fetch("/api/facts?ticker=" + encodeURIComponent(t)).then(r => r.json()).then(j => {
+      if (!j || j.error) return;
+      this._facts[t] = j;
+      this.setState({ factsAt: Date.now() });
+    }).catch(() => { this._factsAt[t] = 0; });
+  }
+  // Everything the Key stats / Financials / About sections show, as display strings. Price-based numbers use the
+  // same live price as the top of the page. Anything we don't have shows "—" (never a made-up number).
+  factsView(stock) {
+    const F = this._facts && this._facts[stock.t];
+    const D = "—";
+    const ok = v => v != null && isFinite(v);
+    const scale = (a, dp) => a >= 1e12 ? (a / 1e12).toFixed(dp) + "T" : a >= 1e9 ? (a / 1e9).toFixed(dp) + "B" : a >= 1e6 ? (a / 1e6).toFixed(dp) + "M" : a >= 1e3 ? (a / 1e3).toFixed(dp) + "K" : null;
+    const money = (v, dp = 2) => !ok(v) ? D : (v < 0 ? "−$" : "$") + (scale(Math.abs(v), dp) || Math.abs(v).toFixed(2));
+    const big = (v, dp = 2) => !ok(v) ? D : (v < 0 ? "−" : "") + (scale(Math.abs(v), dp) || String(Math.round(Math.abs(v))));
+    const usd = v => !ok(v) ? D : (v < 0 ? "−$" : "$") + Math.abs(v).toFixed(2);
+    const pct = (v, dp = 2) => !ok(v) ? D : (v < 0 ? "−" : "") + Math.abs(v * 100).toFixed(dp) + "%";
+    const signed = v => !ok(v) ? "" : (v >= 0 ? "+" : "−") + Math.abs(v * 100).toFixed(1) + "% YoY";
+    const ratio = v => !ok(v) || v <= 0 ? D : v.toFixed(2);
+    const date = s => { if (!s) return D; const d = new Date(s + "T12:00:00Z"); return d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" }); };
+    if (!F) return { loaded: false, top: [], finTop: [], ksSections: [], finCols: [], finSections: [], about: null, ksNote: "Loading…", finNote: "Loading…" };
+
+    const price = stock.price, P = F.profile || {}, T = F.ttm || {}, Q = F.quarters || [], q = Q[Q.length - 1] || {};
+    const M = F.metrics || {}, X = F.trading || {};
+    const shares = P.shares;
+    const mcap = ok(price) && shares ? price * shares : null;
+    const eps = ok(T.eps) ? T.eps : ok(M.epsTTM) ? M.epsTTM : null;
+    const pe = eps > 0 && ok(price) ? price / eps : null;
+    const ev = mcap != null ? mcap + (q.longTermDebt || 0) - (q.cash || 0) : null;
+    // The four quarters before the last four, for "vs a year ago".
+    const prior = Q.length >= 8 ? Q.slice(-8, -4) : null;
+    const sumPrior = k => prior && prior.every(r => ok(r[k])) ? prior.reduce((s, r) => s + r[k], 0) : null;
+    const yoy = (now, before) => ok(now) && ok(before) && before > 0 ? now / before - 1 : null;
+    // Regular cash dividends with an ex-date in the last ~13 months.
+    const cutoff = new Date(Date.now() - 400 * 864e5).toISOString().slice(0, 10);
+    const divs = (F.dividends || []).filter(d => d.type === "CD" && d.ex >= cutoff);
+    const lastDiv = divs[0];
+    const annualDiv = lastDiv && lastDiv.frequency ? lastDiv.amount * lastDiv.frequency : null;
+    const divYield = annualDiv && ok(price) ? annualDiv / price : null;
+    const sh = F.short;
+    const A = (F.analysts || [])[0];
+    const nA = A ? A.strongBuy + A.buy + A.hold + A.sell + A.strongSell : 0;
+    const meanA = nA ? (A.strongBuy * 1 + A.buy * 2 + A.hold * 3 + A.sell * 4 + A.strongSell * 5) / nA : null;
+    const consensus = meanA == null ? D : (meanA < 1.5 ? "Strong buy" : meanA < 2.5 ? "Buy" : meanA < 3.5 ? "Hold" : meanA < 4.5 ? "Sell" : "Strong sell") + " (" + meanA.toFixed(1) + ")";
+    const E = F.earnings || {}, nx = E.next, lastE = (E.recent || [])[0];
+    const when = h => h === "bmo" ? " · before open" : h === "amc" ? " · after close" : "";
+    const qLabel = r => r.fiscal ? r.fiscal.replace(/ FY\d\d(\d\d)$/, " FY$1") : r.end;
+    const yoyCol = v => v == null ? HPAL.mut : v >= 0 ? HPAL.up : HPAL.dn;
+
+    const top = [
+      { label: "Market Cap", val: money(mcap) },
+      { label: "P/E (TTM)", val: pe ? pe.toFixed(2) : D },
+      { label: "EPS (TTM)", val: usd(eps) },
+      { label: "Volume", val: big(X.volume, 1) },
+      { label: "52W Range", val: ok(X.low52) ? X.low52.toFixed(2) + " – " + X.high52.toFixed(2) : D },
+      { label: "Dividend Yield", val: divYield ? pct(divYield) : "None" },
+    ];
+    const finTop = [["Revenue", "revenue"], ["Net Income", "netIncome"], ["Free Cash Flow", "freeCashFlow"]].map(([label, k]) => {
+      const g = yoy(T[k], sumPrior(k));
+      return { label, val: money(T[k], 1), chg: signed(g), col: yoyCol(g) };
+    });
+    const row = (key, label, val) => ({ key, label, val });
+    const ksSections = [
+      { key: "price", title: "PRICE & VOLUME", rows: [
+        row("a", "Previous close", usd(stock.prevClose)),
+        row("b", "Open", usd(X.open)),
+        row("c", "Day range", ok(X.dayLow) ? usd(X.dayLow) + " – " + usd(X.dayHigh) : D),
+        row("d", "52-week range", ok(X.low52) ? usd(X.low52) + " – " + usd(X.high52) : D),
+        row("e", "Volume", big(X.volume)),
+        row("f", "Avg volume (3M)", big(X.avgVolume3M)),
+        row("g", "Beta", ok(M.beta) ? M.beta.toFixed(2) : D),
+      ]},
+      { key: "val", title: "VALUATION", rows: [
+        row("a", "Market cap", money(mcap)),
+        row("b", "Enterprise value", money(ev)),
+        row("c", "P/E (TTM)", pe ? pe.toFixed(2) : eps != null && eps <= 0 ? "n/a (loss)" : D),
+        row("d", "Forward P/E", ratio(M.forwardPE)),
+        row("e", "PEG ratio (forward)", ratio(M.forwardPEG)),
+        row("f", "Price / sales", mcap && T.revenue > 0 ? (mcap / T.revenue).toFixed(2) : D),
+        row("g", "Price / book", mcap && q.equity > 0 ? (mcap / q.equity).toFixed(2) : D),
+        row("h", "EV / EBITDA", ev && T.ebitda > 0 ? (ev / T.ebitda).toFixed(2) : D),
+      ]},
+      { key: "fin", title: "FINANCIAL HIGHLIGHTS", rows: [
+        row("a", "Revenue (TTM)", money(T.revenue)),
+        row("b", "Net income (TTM)", money(T.netIncome)),
+        row("c", "Diluted EPS (TTM)", usd(eps)),
+        row("d", "Profit margin", T.revenue > 0 && ok(T.netIncome) ? pct(T.netIncome / T.revenue) : D),
+        row("e", "Operating margin", T.revenue > 0 && ok(T.operatingIncome) ? pct(T.operatingIncome / T.revenue) : D),
+        row("f", "Return on equity", q.equity > 0 && ok(T.netIncome) ? pct(T.netIncome / q.equity) : D),
+        row("g", "Free cash flow (TTM)", money(T.freeCashFlow)),
+        row("h", "Long-term debt / equity", q.equity > 0 && ok(q.longTermDebt) ? pct(q.longTermDebt / q.equity) : D),
+      ]},
+      { key: "div", title: "DIVIDENDS & SHARES", rows: [
+        row("a", "Forward dividend", annualDiv ? usd(annualDiv) + " (" + pct(divYield) + ")" : "None"),
+        row("b", "Payout ratio", annualDiv && T.netIncome > 0 && ok(T.dividendsPaid) ? pct(T.dividendsPaid / T.netIncome) : D),
+        row("c", "Ex-dividend date", lastDiv ? date(lastDiv.ex) : D),
+        row("d", "Shares outstanding", big(shares)),
+        row("e", "Short interest", sh && shares ? pct(sh.shares / shares) + " of shares" : D),
+        row("f", "Days to cover", sh && ok(sh.daysToCover) ? sh.daysToCover.toFixed(2) : D),
+      ]},
+      { key: "est", title: "ANALYSTS & EARNINGS", rows: [
+        row("a", "Recommendation", consensus),
+        row("b", "Buy / hold / sell", nA ? (A.strongBuy + A.buy) + " / " + A.hold + " / " + (A.sell + A.strongSell) : D),
+        row("c", "Analysts covering", nA ? String(nA) : D),
+        row("d", "Next earnings", nx ? date(nx.date) + when(nx.hour) : D),
+        row("e", "EPS estimate (next)", nx && ok(nx.epsEstimate) ? usd(nx.epsEstimate) : D),
+        row("f", "Last quarter vs estimate", lastE && ok(lastE.surprisePct) ? (lastE.surprisePct >= 0 ? "Beat by " : "Missed by ") + Math.abs(lastE.surprisePct).toFixed(1) + "%" : D),
+      ]},
+    ];
+
+    // Statements: the latest four quarters, newest first.
+    const cols = Q.slice(-4).reverse();
+    const lineFn = (key, label, fn, fmt = v => big(v)) => ({ key, label, vals: cols.map(r => fmt(fn(r))) });
+    const line = (key, label, k) => lineFn(key, label, r => r[k]);
+    const neg = k => r => ok(r[k]) ? -r[k] : null;
+    const margin = k => r => r.revenue > 0 && ok(r[k]) ? r[k] / r.revenue : null;
+    const finSections = [
+      { key: "is", title: "INCOME STATEMENT", rows: [
+        line("rev", "Revenue", "revenue"), line("cor", "Cost of revenue", "costOfRevenue"), line("gp", "Gross profit", "grossProfit"),
+        line("rd", "R&D expense", "rnd"), line("opi", "Operating income", "operatingIncome"), line("ni", "Net income", "netIncome"),
+        { key: "eps", label: "Diluted EPS", vals: cols.map(r => ok(r.eps) ? (r.epsDerived ? "≈" : "") + r.eps.toFixed(2) : D) },
+      ]},
+      { key: "mar", title: "MARGINS", rows: [
+        lineFn("gm", "Gross margin", margin("grossProfit"), v => pct(v, 1)),
+        lineFn("om", "Operating margin", margin("operatingIncome"), v => pct(v, 1)),
+        lineFn("nm", "Net margin", margin("netIncome"), v => pct(v, 1)),
+      ]},
+      { key: "bs", title: "BALANCE SHEET", rows: [
+        line("ca", "Cash & equivalents", "cash"), line("ta", "Total assets", "totalAssets"), line("tl", "Total liabilities", "totalLiabilities"),
+        line("td", "Long-term debt", "longTermDebt"), line("eq", "Shareholders' equity", "equity"),
+      ]},
+      { key: "cf", title: "CASH FLOW", rows: [
+        line("ocf", "Operating cash flow", "operatingCashFlow"), lineFn("capex", "Capital expenditure", neg("capex")),
+        line("fcf", "Free cash flow", "freeCashFlow"), lineFn("bb", "Share repurchases", neg("buybacks")),
+        lineFn("div", "Dividends paid", neg("dividendsPaid")),
+      ]},
+    ];
+    const finNote = "From the company's SEC filings (10-Q / 10-K). Companies don't file a separate fourth quarter: it's the full year minus the first three."
+      + (cols.some(r => r.epsDerived) ? " ≈ EPS worked out from the company's other filed figures." : "");
+
+    // About: facts only.
+    const titleCase = s => s ? s.toLowerCase().replace(/\b([a-z])/g, c => c.toUpperCase()).replace(/\b(And|Of|Or|In|The|For|To)\b/g, w => w.toLowerCase()) : D;
+    const sentences = (P.description || "").match(/[^.!?]+[.!?]+(\s|$)/g) || [];
+    const revY = yoy(T.revenue, sumPrior("revenue"));
+    const returned = (T.buybacks || 0) + (T.dividendsPaid || 0);
+    const bullets = [];
+    if (ok(T.revenue)) bullets.push({ tone: revY == null ? "neu" : revY >= 0 ? "pos" : "neg", weight: "Sales", text: "Revenue over the last 12 months was " + money(T.revenue, 1) + (revY != null ? ", " + (revY >= 0 ? "up " : "down ") + Math.abs(revY * 100).toFixed(1) + "% on the 12 months before." : ".") });
+    if (T.revenue > 0 && ok(T.netIncome)) bullets.push({ tone: T.netIncome >= 0 ? "pos" : "neg", weight: "Profit", text: T.netIncome >= 0 ? "It kept " + Math.round(T.netIncome / T.revenue * 100) + " cents of every dollar of sales as profit (" + money(T.netIncome, 1) + " over the last 12 months)." : "It lost " + money(-T.netIncome, 1) + " over the last 12 months." });
+    if (returned > 0) bullets.push({ tone: "pos", weight: "Shareholders", text: "Returned " + money(returned, 1) + " to shareholders in the last 12 months" + (T.buybacks > 0 && T.dividendsPaid > 0 ? " (" + money(T.buybacks, 1) + " in buybacks, " + money(T.dividendsPaid, 1) + " in dividends)." : T.buybacks > 0 ? " through buybacks." : " through dividends.") });
+    if (nx) bullets.push({ tone: "neu", weight: "Next up", text: "Next results expected " + date(nx.date) + when(nx.hour).replace(" · ", ", ") + "." });
+    const about = {
+      desc: sentences.slice(0, 2).join("").trim() || P.description || D,
+      fullDesc: P.description || D,
+      industry: titleCase(P.industry), employees: ok(P.employees) ? P.employees.toLocaleString("en-US") : D,
+      hq: P.city ? titleCase(P.city).replace(/, ([A-Za-z]{2})$/, (m, st) => ", " + st.toUpperCase()) : D,
+      listed: P.listed ? P.listed.slice(0, 4) : D, website: P.website ? P.website.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "") : D,
+      bullets,
+    };
+    const updated = F.updatedAt ? new Date(F.updatedAt).toLocaleString("en-US", { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" }) : D;
+    const ksNote = "Prices 15 min delayed. Financials from SEC filings (latest: " + (q.end ? qLabel(q) + ", quarter ended " + date(q.end) : D) + "). TTM = trailing twelve months. Analyst data from Finnhub. Updated " + updated + ".";
+    return { loaded: true, top, finTop, ksSections, finCols: cols.map(qLabel), finSections, about, ksNote, finNote };
+  }
   loadLiveForView() {
     this.loadPeriod(this.state.range);
-    if (this.state.view === "detail" && this.state.ticker) { this.loadChart(this.state.ticker, this.state.range); this.loadNews(this.state.ticker); }
+    if (this.state.view === "detail" && this.state.ticker) { this.loadChart(this.state.ticker, this.state.range); this.loadNews(this.state.ticker); this.loadFacts(this.state.ticker); this.loadChart(this.state.ticker, "1M"); this.loadPeriod("1M"); }
   }
   rangesFor(stock) {
     this._rc = this._rc || {};
@@ -1206,7 +1373,7 @@ class Component extends React.Component<any, any> {
     this._quoteTimer = setInterval(() => {
       if (document.hidden) return;
       this.loadQuotes();
-      if (this.state.view === "detail" && this.state.ticker) { this.loadChart(this.state.ticker, this.state.range); this.loadNews(this.state.ticker); }
+      if (this.state.view === "detail" && this.state.ticker) { this.loadChart(this.state.ticker, this.state.range); this.loadNews(this.state.ticker); this.loadFacts(this.state.ticker); }
     }, 15000);
     this._onVisible = () => { if (!document.hidden) { this.loadQuotes(); this.loadLiveForView(); } };
     document.addEventListener("visibilitychange", this._onVisible);
@@ -3181,8 +3348,22 @@ class Component extends React.Component<any, any> {
     const score = R.score;
     const P = this.profileFor(stock);
     const isAAPL = stock.t === "AAPL";
+    const FV = this.factsView(stock);
+    // Price performance card: the real past month (hourly closes), measured from the close a month ago.
+    const perf1m = (() => {
+      const pts = this._charts && this._charts[stock.t + "|1M"];
+      const start = this._period && this._period["1M"] && this._period["1M"][stock.t];
+      if (!pts || pts.length < 2) return { path: "", pct: "—", col: HPAL.mut };
+      const base = typeof start === "number" ? start : pts[0];
+      const series = [base, ...pts.slice(1, -1), stock.price || pts[pts.length - 1]];
+      const lo = Math.min(...series), hi = Math.max(...series), span = hi - lo || 1;
+      const path = series.map((v, i) => (i ? "L" : "M") + (4 + i / (series.length - 1) * 252).toFixed(1) + " " + (8 + (1 - (v - lo) / span) * 74).toFixed(1)).join(" ");
+      const ch = series[series.length - 1] / base - 1;
+      return { path, pct: (ch >= 0 ? "+" : "−") + Math.abs(ch * 100).toFixed(2) + "%", col: ch >= 0 ? HPAL.up : HPAL.dn };
+    })();
+    const AB = FV.about || { desc: "", fullDesc: "", industry: "—", employees: "—", hq: "—", listed: "—", website: "—", bullets: [] };
     const co = { name: stock.name, t: stock.t, ticker: stock.t + " · " + stock.ex, mark: stock.logo ? "" : stock.mark, color: stock.color, bg: stock.logo ? "transparent" : stock.bg,
-      sector: stock.sector, desc: P.desc, ceo: P.ceo, staff: P.staff, founded: P.founded,
+      sector: AB.industry, desc: AB.desc, hq: AB.hq, staff: AB.employees, listed: AB.listed,
       logo: this.logoOf(stock), hasLogo: !!stock.logo, fit: stock.fit || "contain", pad: stock.logo && stock.fit === "cover" ? "0" : "12px" };
     const scoreStr = String(this.state.animScore);
     const scoreSubtitle = score >= 93 ? "Strong bullish · High conviction"
@@ -3589,20 +3770,15 @@ class Component extends React.Component<any, any> {
       } : null,
       about: {
         eyebrow: "COMPANY PROFILE", dot: "#f4f4f5", title: stock.name, chip: stock.ex + " · " + stock.t,
-        blurb: P.desc,
-        bulletsTitle: "THE BUSINESS",
-        bullets: [
-          { tone: "pos", weight: "Moat", text: P.moat },
-          { tone: "pos", weight: "Driver", text: "Growth is currently led by " + P.driver + "." },
-          { tone: "neg", weight: "Risk", text: "The principal risk is " + P.risk + "." },
-          { tone: "neu", weight: "Narrative", text: "Coverage frames the company around " + P.theme + "." },
-        ],
+        blurb: AB.fullDesc,
+        bulletsTitle: "THE NUMBERS",
+        bullets: AB.bullets,
         gridTitle: "AT A GLANCE",
         grid: [
-          { name: "Founded", val: P.founded, tone: HPAL.ink1 },
-          { name: "CEO", val: P.ceo, tone: HPAL.ink1 },
-          { name: "Employees", val: P.staff, tone: HPAL.ink1 },
-          { name: "HQ", val: P.hq, tone: HPAL.ink1 },
+          { name: "Industry", val: AB.industry, tone: HPAL.ink1 },
+          { name: "Employees", val: AB.employees, tone: HPAL.ink1 },
+          { name: "HQ", val: AB.hq, tone: HPAL.ink1 },
+          { name: "Listed since", val: AB.listed, tone: HPAL.ink1 },
         ],
       },
     };
@@ -3615,89 +3791,10 @@ class Component extends React.Component<any, any> {
     const ksOpen = mk === "keystats";
     const modalOpen = !!M && !summaryOpen && !hyprOpen && !finOpen && !ksOpen;
 
-    const ksSections = [
-      { key: "price", title: "PRICE & VOLUME", rows: [
-        { key: "a", label: "Previous close", val: "$330.02" },
-        { key: "b", label: "Open", val: "$331.15" },
-        { key: "c", label: "Day range", val: "$328.90 – $333.60" },
-        { key: "d", label: "52-week range", val: "$164.08 – $335.20" },
-        { key: "e", label: "Volume", val: "64.20M" },
-        { key: "f", label: "Avg volume (3M)", val: "63.85M" },
-        { key: "g", label: "Beta (5Y monthly)", val: "1.21" },
-      ]},
-      { key: "val", title: "VALUATION", rows: [
-        { key: "a", label: "Market cap", val: "$4.93T" },
-        { key: "b", label: "Enterprise value", val: "$4.98T" },
-        { key: "c", label: "P/E (TTM)", val: "31.20" },
-        { key: "d", label: "Forward P/E", val: "28.40" },
-        { key: "e", label: "PEG ratio", val: "2.85" },
-        { key: "f", label: "Price / sales", val: "8.02" },
-        { key: "g", label: "Price / book", val: "73.80" },
-        { key: "h", label: "EV / EBITDA", val: "24.10" },
-      ]},
-      { key: "fin", title: "FINANCIAL HIGHLIGHTS", rows: [
-        { key: "a", label: "Revenue (TTM)", val: "$409.52B" },
-        { key: "b", label: "Net income (TTM)", val: "$99.28B" },
-        { key: "c", label: "Diluted EPS (TTM)", val: "$10.67" },
-        { key: "d", label: "Profit margin", val: "24.24%" },
-        { key: "e", label: "Operating margin", val: "29.70%" },
-        { key: "f", label: "Return on equity", val: "147.00%" },
-        { key: "g", label: "Free cash flow (TTM)", val: "$96.12B" },
-        { key: "h", label: "Total debt / equity", val: "152.20%" },
-      ]},
-      { key: "div", title: "DIVIDENDS & SHARES", rows: [
-        { key: "a", label: "Forward dividend", val: "$1.04 (0.31%)" },
-        { key: "b", label: "Payout ratio", val: "15.60%" },
-        { key: "c", label: "Ex-dividend date", val: "Aug 11, 2026" },
-        { key: "d", label: "Shares outstanding", val: "14.84B" },
-        { key: "e", label: "Float", val: "14.82B" },
-        { key: "f", label: "Short % of float", val: "0.68%" },
-      ]},
-      { key: "est", title: "ANALYST ESTIMATES", rows: [
-        { key: "a", label: "Mean target", val: "$352.40" },
-        { key: "b", label: "High / low target", val: "$410.00 / $255.00" },
-        { key: "c", label: "Recommendation", val: "Buy (1.9)" },
-        { key: "d", label: "Analysts covering", val: "42" },
-        { key: "e", label: "Next earnings", val: "Oct 29, 2026" },
-      ]},
-    ];
-
-    const finCols = ["Q3 25", "Q2 25", "Q1 25", "Q4 24"];
-    const finSections = [
-      { key: "is", title: "INCOME STATEMENT", rows: [
-        { key: "rev", label: "Revenue", vals: ["94.93B", "95.36B", "124.30B", "94.93B"] },
-        { key: "cor", label: "Cost of revenue", vals: ["50.55B", "50.49B", "66.03B", "51.05B"] },
-        { key: "gp",  label: "Gross profit", vals: ["44.38B", "44.87B", "58.27B", "43.88B"] },
-        { key: "rd",  label: "R&D expense", vals: ["8.30B", "8.55B", "8.27B", "7.77B"] },
-        { key: "opi", label: "Operating income", vals: ["28.20B", "29.59B", "42.83B", "29.59B"] },
-        { key: "ni",  label: "Net income", vals: ["23.43B", "24.78B", "36.33B", "14.74B"] },
-        { key: "eps", label: "Diluted EPS", vals: ["1.57", "1.65", "2.40", "0.97"] },
-      ]},
-      { key: "mar", title: "MARGINS", rows: [
-        { key: "gm", label: "Gross margin", vals: ["46.7%", "47.1%", "46.9%", "46.2%"] },
-        { key: "om", label: "Operating margin", vals: ["29.7%", "31.0%", "34.5%", "31.2%"] },
-        { key: "nm", label: "Net margin", vals: ["24.7%", "26.0%", "29.2%", "15.5%"] },
-      ]},
-      { key: "bs", title: "BALANCE SHEET", rows: [
-        { key: "ca", label: "Cash & equivalents", vals: ["48.50B", "46.75B", "53.77B", "65.17B"] },
-        { key: "ta", label: "Total assets", vals: ["331.53B", "331.08B", "344.09B", "364.98B"] },
-        { key: "td", label: "Total debt", vals: ["101.70B", "98.19B", "96.80B", "106.63B"] },
-        { key: "eq", label: "Shareholders' equity", vals: ["66.80B", "66.71B", "66.76B", "56.95B"] },
-      ]},
-      { key: "cf", title: "CASH FLOW", rows: [
-        { key: "ocf", label: "Operating cash flow", vals: ["27.87B", "24.00B", "29.94B", "26.81B"] },
-        { key: "capex", label: "Capital expenditure", vals: ["-3.46B", "-3.19B", "-2.94B", "-2.91B"] },
-        { key: "fcf", label: "Free cash flow", vals: ["24.41B", "20.81B", "27.00B", "23.90B"] },
-        { key: "bb",  label: "Share repurchases", vals: ["-21.01B", "-25.00B", "-23.60B", "-25.00B"] },
-        { key: "div", label: "Dividends paid", vals: ["-3.87B", "-3.79B", "-3.86B", "-3.80B"] },
-      ]},
-      { key: "val", title: "VALUATION", rows: [
-        { key: "pe", label: "P/E (TTM)", vals: ["31.2", "30.4", "29.8", "28.1"] },
-        { key: "ps", label: "P/S (TTM)", vals: ["8.0", "7.8", "7.6", "7.1"] },
-        { key: "roe", label: "Return on equity", vals: ["147%", "151%", "144%", "136%"] },
-        { key: "shr", label: "Shares outstanding", vals: ["14.84B", "14.94B", "15.04B", "15.12B"] },
-      ]},
-    ];
+    const ksSections = FV.ksSections;
+    const finCols = FV.finCols;
+    const finSections = FV.finSections;
+    const ksTop = FV.top, finTop = FV.finTop, ksNote = FV.ksNote, finNote = FV.finNote;
 
     const metricNotes = {
       Momentum: { weight: "Heaviest input", text: "Trend and rate of change over " + rangeLabel + ", normalised against sector peers. " + SIG.momentum.verdict + " — " + SIG.momentum.sub.toLowerCase() + "." },
@@ -4308,7 +4405,7 @@ class Component extends React.Component<any, any> {
       secSentVerdict, secSentSub, secMomVerdict, secMomSub, secMomNote, secMenVerdict, secMenSub,
       moversHasMore, lowHasMore, toggleMovers, toggleLow, moversSeeMoreLabel, lowSeeMoreLabel, moversArrow, lowArrow,
       summaryOpen, summaryReasons, whyTitle, whyIntro, hyprOpen, scoreRows,
-      finOpen, finCols, finSections, ksOpen, ksSections,
+      finOpen, finCols, finSections, ksOpen, ksSections, ksTop, finTop, ksNote, finNote, perf1m,
       sentBars, momPath, menCols,
       sentChart: mk === "sentiment", sentPeriodBars, sentUnit,
       momChart: mk === "momentum", momDetailPath, momAxis, momStats,
@@ -13086,7 +13183,7 @@ export default class HyprApp extends Component {
                           {"Market Cap"}
                         </div>
                         <div style={{"fontSize":"22px","fontWeight":"600"}}>
-                          {"$3.15T"}
+                          {__t(__v["ksTop"]?.[0]?.["val"] ?? "—")}
                         </div>
                       </div>
                       {"\n          "}
@@ -13095,7 +13192,7 @@ export default class HyprApp extends Component {
                           {"P/E (TTM)"}
                         </div>
                         <div style={{"fontSize":"22px","fontWeight":"600"}}>
-                          {"31.21"}
+                          {__t(__v["ksTop"]?.[1]?.["val"] ?? "—")}
                         </div>
                       </div>
                       {"\n          "}
@@ -13104,7 +13201,7 @@ export default class HyprApp extends Component {
                           {"EPS (TTM)"}
                         </div>
                         <div style={{"fontSize":"22px","fontWeight":"600"}}>
-                          {"$10.67"}
+                          {__t(__v["ksTop"]?.[2]?.["val"] ?? "—")}
                         </div>
                       </div>
                       {"\n          "}
@@ -13113,7 +13210,7 @@ export default class HyprApp extends Component {
                           {"Volume"}
                         </div>
                         <div style={{"fontSize":"22px","fontWeight":"600"}}>
-                          {"64.2M"}
+                          {__t(__v["ksTop"]?.[3]?.["val"] ?? "—")}
                         </div>
                       </div>
                       {"\n          "}
@@ -13122,7 +13219,7 @@ export default class HyprApp extends Component {
                           {"52W Range"}
                         </div>
                         <div style={{"fontSize":"22px","fontWeight":"600"}}>
-                          {"164.08 – 337.49"}
+                          {__t(__v["ksTop"]?.[4]?.["val"] ?? "—")}
                         </div>
                       </div>
                       {"\n          "}
@@ -13131,7 +13228,7 @@ export default class HyprApp extends Component {
                           {"Dividend Yield"}
                         </div>
                         <div style={{"fontSize":"22px","fontWeight":"600"}}>
-                          {"0.52%"}
+                          {__t(__v["ksTop"]?.[5]?.["val"] ?? "—")}
                         </div>
                       </div>
                       {"\n        "}
@@ -13163,13 +13260,13 @@ export default class HyprApp extends Component {
                       {"\n          "}
                       <svg viewBox={"0 0 260 90"} width={"100%"} height={"90"} style={{"margin":"22px 0 16px"}}>
                         {"\n            "}
-                        <path d={"M4 60 L20 52 L36 62 L52 48 L68 55 L84 40 L100 58 L116 46 L132 64 L148 50 L164 55 L180 38 L196 44 L212 26 L228 34 L244 14 L256 20"} fill={"none"} stroke={"var(--c-up,#4ade80)"} strokeWidth={"2"} strokeLinecap={"round"} strokeLinejoin={"round"} />
+                        <path d={__v["perf1m"]?.["path"]} fill={"none"} stroke={__v["perf1m"]?.["col"]} strokeWidth={"2"} strokeLinecap={"round"} strokeLinejoin={"round"} />
                         {"\n          "}
                       </svg>
                       {"\n          "}
                       <div style={{"marginTop":"auto"}}>
-                        <span style={{"color":"var(--c-up,#4ade80)","fontSize":"17px","fontWeight":"600"}}>
-                          {"+12.32%"}
+                        <span style={{"color":__v["perf1m"]?.["col"],"fontSize":"17px","fontWeight":"600"}}>
+                          {__t(__v["perf1m"]?.["pct"])}
                         </span>
                         {" "}
                         <span style={{"color":"var(--c-tx3,#a1a1aa)","fontSize":"14px"}}>
@@ -13202,10 +13299,10 @@ export default class HyprApp extends Component {
                         {"\n            "}
                         <span style={{"display":"flex","gap":"14px","alignItems":"center"}}>
                           <span style={{"fontSize":"15px","fontWeight":"600"}}>
-                            {"$394.3B"}
+                            {__t(__v["finTop"]?.[0]?.["val"] ?? "—")}
                           </span>
-                          <span style={{"color":"var(--c-up,#4ade80)","fontSize":"13px"}}>
-                            {"+7.8% YoY"}
+                          <span style={{"color":__v["finTop"]?.[0]?.["col"],"fontSize":"13px"}}>
+                            {__t(__v["finTop"]?.[0]?.["chg"] ?? "")}
                           </span>
                         </span>
                         {"\n          "}
@@ -13219,10 +13316,10 @@ export default class HyprApp extends Component {
                         {"\n            "}
                         <span style={{"display":"flex","gap":"14px","alignItems":"center"}}>
                           <span style={{"fontSize":"15px","fontWeight":"600"}}>
-                            {"$99.8B"}
+                            {__t(__v["finTop"]?.[1]?.["val"] ?? "—")}
                           </span>
-                          <span style={{"color":"var(--c-up,#4ade80)","fontSize":"13px"}}>
-                            {"+5.1% YoY"}
+                          <span style={{"color":__v["finTop"]?.[1]?.["col"],"fontSize":"13px"}}>
+                            {__t(__v["finTop"]?.[1]?.["chg"] ?? "")}
                           </span>
                         </span>
                         {"\n          "}
@@ -13236,10 +13333,10 @@ export default class HyprApp extends Component {
                         {"\n            "}
                         <span style={{"display":"flex","gap":"14px","alignItems":"center"}}>
                           <span style={{"fontSize":"15px","fontWeight":"600"}}>
-                            {"$93.0B"}
+                            {__t(__v["finTop"]?.[2]?.["val"] ?? "—")}
                           </span>
-                          <span style={{"color":"var(--c-up,#4ade80)","fontSize":"13px"}}>
-                            {"+10.2% YoY"}
+                          <span style={{"color":__v["finTop"]?.[2]?.["col"],"fontSize":"13px"}}>
+                            {__t(__v["finTop"]?.[2]?.["chg"] ?? "")}
                           </span>
                         </span>
                         {"\n          "}
@@ -13280,10 +13377,10 @@ export default class HyprApp extends Component {
                         {"\n            "}
                         <div>
                           <div style={{"fontSize":"12px","color":"var(--c-tx4,#71717a)"}}>
-                            {"CEO"}
+                            {"HQ"}
                           </div>
                           <div style={{"fontSize":"13px","fontWeight":"600","marginTop":"4px"}}>
-                            {__t(__v["co"]?.["ceo"])}
+                            {__t(__v["co"]?.["hq"])}
                           </div>
                         </div>
                         {"\n            "}
@@ -13298,10 +13395,10 @@ export default class HyprApp extends Component {
                         {"\n            "}
                         <div>
                           <div style={{"fontSize":"12px","color":"var(--c-tx4,#71717a)"}}>
-                            {"Founded"}
+                            {"Listed since"}
                           </div>
                           <div style={{"fontSize":"13px","fontWeight":"600","marginTop":"4px"}}>
-                            {__t(__v["co"]?.["founded"])}
+                            {__t(__v["co"]?.["listed"])}
                           </div>
                         </div>
                         {"\n          "}
@@ -13653,7 +13750,7 @@ export default class HyprApp extends Component {
               </div>
               {"\n\n      "}
               <div style={{"fontSize":"12px","color":"var(--c-tx5,#52525b)","marginTop":"var(--mdl-lgap,24px)"}}>
-                {"Figures as reported. TTM = trailing twelve months."}
+                {__t(__v["ksNote"])}
               </div>
               {"\n    "}
             </div>
@@ -13755,7 +13852,7 @@ export default class HyprApp extends Component {
               ))}
               {"\n\n      "}
               <div style={{"fontSize":"12px","color":"var(--c-tx5,#52525b)","marginTop":"22px"}}>
-                {"Figures as reported. Fiscal quarters ending September."}
+                {__t(__v["finNote"])}
               </div>
               {"\n    "}
             </div>
